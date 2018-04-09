@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/DuLichDoDay.iml" filepath="$PROJECT_DIR$/DuLichDoDay.iml" />
+      <module fileurl="file://E:\Mobile-Themes-Group-6\Code Project\DuLichDoDay\DuLichDoDay.iml" filepath="E:\Mobile-Themes-Group-6\Code Project\DuLichDoDay\DuLichDoDay.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\Mobile-Themes-Group-6\Code Project\DuLichDoDay\app\app.iml" filepath="E:\Mobile-Themes-Group-6\Code Project\DuLichDoDay\app\app.iml" />
     </modules>
   </component>
 </project>
