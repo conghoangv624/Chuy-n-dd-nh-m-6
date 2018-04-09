@@ -18,9 +18,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
+        <activity android:name=".PasswordActivity" />
+        <activity android:name=".DetailPersonalActivity" />
+        <activity android:name=".DialogComment"></activity>
+=======
         <activity android:name=".ManagerTourActivity" />
         <activity android:name=".AddPlaceActivity" />
         <activity android:name=".EditPlaceActivity"></activity>
+>>>>>>> 58640c0e7a4f6309d25da934b7a7440eb7e04583
     </application>
 
 </manifest>
