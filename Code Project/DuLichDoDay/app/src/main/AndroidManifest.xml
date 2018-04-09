@@ -21,9 +21,10 @@
         <activity android:name=".ManagerTourActivity" />
         <activity android:name=".AddPlaceActivity" />
         <activity android:name=".EditPlaceActivity" />
-        <activity android:name=".DetailTourActivity"></activity>
-        <activity android:name=".DetailPersonalActivity"></activity>
-        <activity android:name=".PasswordActivity"></activity>
+        <activity android:name=".DetailTourActivity" />
+        <activity android:name=".DetailPersonalActivity" />
+        <activity android:name=".PasswordActivity" />
+        <activity android:name=".DialogComment"></activity>
     </application>
 
 </manifest>

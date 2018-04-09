@@ -21,7 +21,10 @@ public class MainLayoutActivity extends AppCompatActivity {
                     mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_new:
-                    mTextMessage.setText(R.string.title_new);
+                    NewFragment fragmentNew = new NewFragment();
+                    android.support.v4.app.FragmentTransaction fragmentTransaction2 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction2.replace(R.id.content,fragmentNew,"Fragment");
+                    fragmentTransaction2.commit();
                     return true;
                 case R.id.navigation_tour:
                     mTextMessage.setText(R.string.title_tour);
