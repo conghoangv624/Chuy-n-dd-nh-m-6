@@ -1,5 +1,6 @@
 package com.example.group6.dulichdoday;
 
+<<<<<<< HEAD
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,20 @@ public class UserBusinessFragment extends Fragment {
     private LinearLayout personal;
     private LinearLayout manager;
     private LinearLayout password;
+=======
+
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class UserBusinessFragment extends Fragment {
+>>>>>>> 58640c0e7a4f6309d25da934b7a7440eb7e04583
 
 
     public UserBusinessFragment() {
@@ -25,6 +40,7 @@ public class UserBusinessFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+<<<<<<< HEAD
         View view = inflater.inflate(R.layout.fragment_user_business, container, false);
 
         personal = (LinearLayout) view.findViewById(R.id.linear_personal);
@@ -57,4 +73,9 @@ public class UserBusinessFragment extends Fragment {
 
         return view;
     }
+=======
+        return inflater.inflate(R.layout.fragment_user_business, container, false);
+    }
+
+>>>>>>> 58640c0e7a4f6309d25da934b7a7440eb7e04583
 }

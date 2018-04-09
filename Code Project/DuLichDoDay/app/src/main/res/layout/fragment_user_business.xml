@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -5,6 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.group6.dulichdoday.DetailPersonalActivity">
+=======
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.group6.dulichdoday.UserBusinessFragment">
+>>>>>>> 58640c0e7a4f6309d25da934b7a7440eb7e04583
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -129,4 +137,9 @@
 
 
     </LinearLayout>
+<<<<<<< HEAD
 </android.support.constraint.ConstraintLayout>
+=======
+
+</FrameLayout>
+>>>>>>> 58640c0e7a4f6309d25da934b7a7440eb7e04583
