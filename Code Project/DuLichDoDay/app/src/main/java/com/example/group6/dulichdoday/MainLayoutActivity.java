@@ -27,7 +27,10 @@ public class MainLayoutActivity extends AppCompatActivity {
                     fragmentTransaction2.commit();
                     return true;
                 case R.id.navigation_tour:
-                    mTextMessage.setText(R.string.title_tour);
+                    TourFragment fragmentTour = new TourFragment();
+                    android.support.v4.app.FragmentTransaction fragmentTransaction3 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction3.replace(R.id.content,fragmentTour,"Fragment");
+                    fragmentTransaction3.commit();
                     return true;
                 case R.id.navigation_users:
                     UserFragment userFragment = new UserFragment();
