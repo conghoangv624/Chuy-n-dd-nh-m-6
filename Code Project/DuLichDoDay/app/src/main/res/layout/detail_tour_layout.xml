@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.group6.dulichdoday.DetailTourActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/color_main"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/travel" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Chi tiet tour"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/cancel_update"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="110dp"
+                    android:text="Trở về"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:layout_weight="11"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:src="@mipmap/img_nhatrang"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:paddingTop="5dp"
+                            android:paddingLeft="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:text="TPHCM - Nha Trang"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/black"
+                                android:textSize="18dp"
+                                android:text="2 ngày 1 đêm"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@android:color/holo_red_dark"
+                                android:textSize="18dp"
+                                android:text="2.560.000 đ"/>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    style="@style/customhome_product_widget">
+
+                                    <CheckBox
+                                        android:id="@+id/cbx_like"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:button="@drawable/cbx_like"/>
+                                    <TextView
+                                        android:id="@+id/tv_number_like"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="39"
+                                        android:layout_marginLeft="10dp"/>
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/customhome_product_widget">
+
+                                    <CheckBox
+                                        android:id="@+id/cbx_unlike"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:button="@drawable/cbx_unlike"/>
+                                    <TextView
+                                        android:id="@+id/tv_number_unlike"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="40"
+                                        android:layout_marginLeft="10dp"/>
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    style="@style/customhome_product_widget">
+
+                                    <ImageView
+                                        android:id="@+id/cbx_comment"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/ic_chat"/>
+                                    <TextView
+                                        android:id="@+id/tv_number_comment"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="10"
+                                        android:layout_marginLeft="10dp"/>
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="10dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableLeft="@drawable/descio_add"
+                            android:drawablePadding="10dp"
+                            android:text="Mô tả chi tiết : "
+                            android:textStyle="bold"
+                            android:textColor="@color/color_main"
+                            android:textSize="18dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textColor="@android:color/black"
+                            android:text="- Ngày 1:
+0h: xuất phát từ  TPHCM
+6h check phong + ăn uống
+7h30: tắm biển (chụp hình các kiểu …)
+9h30: tham quan tháp bà pobagar + tắm bùn của người chăm
+11h30: về khách sạn ăn trưa + nghỉ ngơi
+14h: tham quan Viện Hải Dương Học + Nhà Thờ Đá + chùa Long Sơn + thác YangBay
+18h:ăn uống tại Khách Sạn
+19h: tham quan chợ Đêm Nha Trang
+"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textColor="@android:color/black"
+                            android:text="-Ngày 2:
+0h: xuất phát từ  TPHCM
+6h check phong + ăn uống
+7h30: tắm biển (chụp hình các kiểu …)
+9h30: tham quan tháp bà pobagar + tắm bùn của người chăm
+11h30: về khách sạn ăn trưa + nghỉ ngơi
+14h: tham quan Viện Hải Dương Học + Nhà Thờ Đá + chùa Long Sơn + thác YangBay
+18h:ăn uống tại Khách Sạn
+19h: tham quan chợ Đêm Nha Trang
+"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textColor="@android:color/black"
+                            android:text="-Ngày 3:
+0h: xuất phát từ  TPHCM
+6h check phong + ăn uống
+7h30: tắm biển (chụp hình các kiểu …)
+9h30: tham quan tháp bà pobagar + tắm bùn của người chăm
+11h30: về khách sạn ăn trưa + nghỉ ngơi
+14h: tham quan Viện Hải Dương Học + Nhà Thờ Đá + chùa Long Sơn + thác YangBay
+18h:ăn uống tại Khách Sạn
+19h: tham quan chợ Đêm Nha Trang
+"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvDatTour"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/color_main"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:textSize="18dp"
+                android:text="Đặt tour"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
