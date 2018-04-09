@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PasswordActivity" />
-        <activity android:name=".DetailPersonalActivity"></activity>
+        <activity android:name=".DetailPersonalActivity" />
+        <activity android:name=".DialogComment"></activity>
     </application>
 
 </manifest>
