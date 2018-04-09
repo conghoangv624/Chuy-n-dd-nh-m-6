@@ -1,0 +1,131 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.group6.dulichdoday.UserBusinessFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/color_main"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp"
+                android:gravity="center|left">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/travel" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cá nhân"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="11"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/bg_main_x"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/linear_personal"
+                    style="@style/choosen_user">
+
+                    <ImageView
+                        style="@style/img_user"
+                        android:src="@drawable/user"/>
+                    <TextView
+                        style="@style/text_user"
+                        android:text="Trang cá nhân"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_product_manager"
+                    style="@style/choosen_user">
+
+                    <ImageView
+                        style="@style/img_user"
+                        android:src="@drawable/ic_list"/>
+                    <TextView
+                        style="@style/text_user"
+                        android:text="Chỉnh sửa bài đăng"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_product_manager_personal"
+                    style="@style/choosen_user">
+
+                    <ImageView
+                        style="@style/img_user"
+                        android:src="@drawable/ic_list"/>
+                    <TextView
+                        style="@style/text_user"
+                        android:text="Tour khách đặt"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_pass"
+                    style="@style/choosen_user"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        style="@style/img_user"
+                        android:src="@drawable/ic_pass"/>
+                    <TextView
+                        style="@style/text_user"
+                        android:text="Đổi mật khẩu"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linear_logout"
+                    style="@style/choosen_user">
+
+                    <ImageView
+                        style="@style/img_user"
+                        android:src="@drawable/ic_logout"/>
+                    <TextView
+                        style="@style/text_user"
+                        android:text="Đăng xuất"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</FrameLayout>
