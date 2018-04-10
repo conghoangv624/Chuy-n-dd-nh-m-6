@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+
 import com.example.group6.dulichdoday.Models.Tour;
 import com.example.group6.dulichdoday.Adapter.AdapterTour;
 

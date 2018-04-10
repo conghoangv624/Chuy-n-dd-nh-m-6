@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">DuLichDoDay</string>
+    <string name="key_map"> AIzaSyBuYrVlonqcGwPvZDHLVAk7rAuM6Sr_kfw </string>
+    <string name="app_name">TravelLocation</string>
     <string name="title_home">Home</string>
     <string name="title_new">New</string>
     <string name="title_tour">Tour</string>
