@@ -29,6 +29,8 @@
         <activity android:name=".DetailTourActivity" />
         <activity android:name=".DetailPersonalActivity" />
         <activity android:name=".PasswordActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".RegistrationActivity"/>
         <activity android:name=".DialogComment"></activity>
     </application>
 
