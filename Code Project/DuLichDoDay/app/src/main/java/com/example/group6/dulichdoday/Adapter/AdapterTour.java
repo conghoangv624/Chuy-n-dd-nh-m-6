@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.group6.dulichdoday.Models.Tour;
 import com.example.group6.dulichdoday.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -31,48 +32,18 @@ public class AdapterTour extends RecyclerView.Adapter<AdapterTour.ViewHolder> {
     public AdapterTour.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View itemView = layoutInflater.inflate(R.layout.custom_tour,parent,false);
-
-        return new AdapterTour.ViewHolder(itemView);
+        return new ViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(final AdapterTour.ViewHolder holder, final int position) {
-        holder.img.setImageResource(arrNew.get(position).getImgProduct());
+    public void onBindViewHolder(AdapterTour.ViewHolder holder, int position) {
+
+        Picasso.with(context).load(arrNew.get(position).getImgProduct()).into(holder.img);
         holder.tvCode.setText(arrNew.get(position).getCodeTour());
-        holder.add.setText(arrNew.get(position).getAddTour());
-        holder.descip.setText(arrNew.get(position).getDiscripTour());
-        holder.price.setText(arrNew.get(position).getPriceTour());
-        holder.tvNumberLike.setText(arrNew.get(position).getnNumberLike());
-        holder.tvNumberUnlike.setText(arrNew.get(position).getnNumberUnlike());
-        holder.tvNumberCommment.setText(arrNew.get(position).getnNumberComment());
+        holder.tvAdd.setText(arrNew.get(position).getAddTour());
+        holder.tvDesciption.setText(arrNew.get(position).getDiscripTour());
+        holder.tvPrice.setText(arrNew.get(position).getPriceTour());
 
-        holder.cbxHomeLike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if ( holder.cbxHomeLike.isChecked())
-                {
-                    arrNew.get(position).setCheckLike(true);
-                }
-                else
-                {
-                    arrNew.get(position).setCheckLike(false);
-                }
-            }
-        });
-
-        holder.cbxHomeUnlike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if ( holder.cbxHomeUnlike.isChecked())
-                {
-                    arrNew.get(position).setCheckUnLike(true);
-                }
-                else
-                {
-                    arrNew.get(position).setCheckUnLike(false);
-                }
-            }
-        });
     }
 
     @Override
@@ -83,28 +54,16 @@ public class AdapterTour extends RecyclerView.Adapter<AdapterTour.ViewHolder> {
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
         TextView tvCode;
-        TextView add;
-        TextView descip;
-        TextView price;
-        TextView tvNumberLike;
-        TextView tvNumberUnlike;
-        TextView tvNumberCommment;
-        CheckBox cbxHomeLike;
-        CheckBox cbxHomeUnlike;
-
+        TextView tvAdd;
+        TextView tvDesciption;
+        TextView tvPrice;
         public ViewHolder(View itemView) {
             super(itemView);
-
             img = (ImageView) itemView.findViewById(R.id.img_tour);
             tvCode = (TextView) itemView.findViewById(R.id.tv_code_tour);
-            add = (TextView) itemView.findViewById(R.id.tv_add_tour);
-            descip = (TextView) itemView.findViewById(R.id.tv_discip_tour);
-            price = (TextView) itemView.findViewById(R.id.tv_price_tour);
-            tvNumberLike = (TextView) itemView.findViewById(R.id.tv_number_like);
-            tvNumberUnlike = (TextView) itemView.findViewById(R.id.tv_number_unlike);
-            tvNumberCommment = (TextView) itemView.findViewById(R.id.tv_number_comment);
-            cbxHomeLike = (CheckBox) itemView.findViewById(R.id.cbx_like);
-            cbxHomeUnlike = (CheckBox) itemView.findViewById(R.id.cbx_unlike);
+            tvAdd = (TextView) itemView.findViewById(R.id.tv_add_tour);
+            tvDesciption = (TextView) itemView.findViewById(R.id.tv_discip_tour);
+            tvPrice = (TextView) itemView.findViewById(R.id.tv_price_tour);
         }
     }
 }

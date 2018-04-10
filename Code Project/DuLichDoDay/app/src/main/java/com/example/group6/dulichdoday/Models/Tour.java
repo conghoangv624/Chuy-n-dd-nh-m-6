@@ -5,40 +5,30 @@ package com.example.group6.dulichdoday.Models;
  */
 
 public class Tour {
-    private int imgProduct;
+    private String imgProduct;
     private String codeTour;
     private String addTour;
     private String discripTour;
     private String priceTour;
-    private String nNumberLike;
-    private String nNumberUnlike;
-    private String nNumberComment;
-    private boolean isCheckLike;
-    private boolean isCheckUnLike;
-
+    private String tenmien;
 
     public Tour() {
-        // Return
     }
 
-    public Tour(int imgProduct, String codeTour, String addTour, String discripTour, String priceTour, String nNumberLike, String nNumberUnlike, String nNumberComment) {
+    public Tour(String imgProduct, String codeTour, String addTour, String discripTour, String priceTour, String tenmien) {
         this.imgProduct = imgProduct;
         this.codeTour = codeTour;
         this.addTour = addTour;
         this.discripTour = discripTour;
         this.priceTour = priceTour;
-        this.nNumberLike = nNumberLike;
-        this.nNumberUnlike = nNumberUnlike;
-        this.nNumberComment = nNumberComment;
-        this.isCheckLike = isCheckLike;
-        this.isCheckUnLike = isCheckUnLike;
+        this.tenmien = tenmien;
     }
 
-    public int getImgProduct() {
+    public String getImgProduct() {
         return imgProduct;
     }
 
-    public void setImgProduct(int imgProduct) {
+    public void setImgProduct(String imgProduct) {
         this.imgProduct = imgProduct;
     }
 
@@ -74,43 +64,12 @@ public class Tour {
         this.priceTour = priceTour;
     }
 
-    public String getnNumberLike() {
-        return nNumberLike;
+    public String getTenmien() {
+        return tenmien;
     }
 
-    public void setnNumberLike(String nNumberLike) {
-        this.nNumberLike = nNumberLike;
-    }
-
-    public String getnNumberUnlike() {
-        return nNumberUnlike;
-    }
-
-    public void setnNumberUnlike(String nNumberUnlike) {
-        this.nNumberUnlike = nNumberUnlike;
-    }
-
-    public String getnNumberComment() {
-        return nNumberComment;
-    }
-
-    public void setnNumberComment(String nNumberComment) {
-        this.nNumberComment = nNumberComment;
-    }
-
-    public boolean isCheckLike() {
-        return isCheckLike;
-    }
-
-    public void setCheckLike(boolean checkLike) {
-        isCheckLike = checkLike;
-    }
-
-    public boolean isCheckUnLike() {
-        return isCheckUnLike;
-    }
-
-    public void setCheckUnLike(boolean checkUnLike) {
-        isCheckUnLike = checkUnLike;
+    public void setTenmien(String tenmien) {
+        this.tenmien = tenmien;
     }
 }
+

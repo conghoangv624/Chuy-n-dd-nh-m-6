@@ -30,13 +30,6 @@ public class ManagerTourActivity extends AppCompatActivity {
 
         // Mảng thêm
         arrayList = new ArrayList<Tour>();
-        arrayList.add(new Tour(R.mipmap.img_nhatrang,"Mã tour : 01","TP.HCM - Nha Trang","3 ngày 2 đêm","560.000 đ","26","24","11"));
-        arrayList.add(new Tour(R.mipmap.img1,"Mã tour : 02","TP.HCM - Đà Lạt","3 ngày 2 đêm","560.000 đ","26","24","11"));
-        arrayList.add(new Tour(R.mipmap.img_2,"Mã tour : 03","TP.HCM - Vũng Tàu","3 ngày 2 đêm","560.000 đ","26","24","11"));
-        arrayList.add(new Tour(R.mipmap.img_3,"Mã tour : 01","TP.HCM - Nha Trang","3 ngày 2 đêm","560.000 đ","26","24","11"));
-        arrayList.add(new Tour(R.mipmap.img_4,"Mã tour : 02","TP.HCM - TP.HCM","3 ngày 2 đêm","560.000 đ","26","24","11"));
-        arrayList.add(new Tour(R.mipmap.img_5,"Mã tour : 03","TP.HCM - Vịnh Hạ Long","3 ngày 2 đêm","560.000 đ","26","24","11"));
-
 
         adapterTour = new AdapterTour(arrayList,getApplicationContext());
         recyclerViewTour.setAdapter(adapterTour);

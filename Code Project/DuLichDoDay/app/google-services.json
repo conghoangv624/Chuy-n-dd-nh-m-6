@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1066462079715",
+    "firebase_url": "https://fir-bd3d4.firebaseio.com",
+    "project_id": "fir-bd3d4",
+    "storage_bucket": "fir-bd3d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1066462079715:android:7de9d999beec2bef",
+        "android_client_info": {
+          "package_name": "com.example.group6.dulichdoday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1066462079715-hv453fskf1nrscfml1ha0hlm0cahd9r7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZ7UDIjVPRDZAvseV4knVyrus--2cK7Vo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
