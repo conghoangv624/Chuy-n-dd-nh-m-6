@@ -16,8 +16,9 @@ import android.widget.LinearLayout;
  */
 public class UserBusinessFragment extends Fragment {
 
-    private LinearLayout personal;
+    private LinearLayout business;
     private LinearLayout manager;
+    private LinearLayout listTour;
 
 
     public UserBusinessFragment() {
@@ -31,14 +32,30 @@ public class UserBusinessFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user_business, container, false);
 
-        personal = (LinearLayout) view.findViewById(R.id.linear_personal);
+        business = (LinearLayout) view.findViewById(R.id.linear_business);
         manager = (LinearLayout) view.findViewById(R.id.linear_product_manager);
+        listTour = (LinearLayout) view.findViewById(R.id.linear_list_tour);
+
+        business.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent inBusiness = new Intent(getContext(),DetailBusinessActivity.class);
+                startActivity(inBusiness);
+            }
+        });
 
         manager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent inManager = new Intent(getContext(),UserBusinessFragment.class);
+                Intent inManager = new Intent(getContext(),ManagerTourActivity.class);
                 startActivity(inManager);
+            }
+        });
+        listTour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent inTour = new Intent(getContext(),TourListActivity.class);
+                startActivity(inTour);
             }
         });
         return view;

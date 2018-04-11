@@ -54,7 +54,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:id="@+id/linear_personal"
+                    android:id="@+id/linear_business"
                     style="@style/choosen_user">
 
                     <ImageView
