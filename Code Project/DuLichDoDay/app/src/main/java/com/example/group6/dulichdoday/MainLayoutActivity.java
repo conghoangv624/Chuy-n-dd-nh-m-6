@@ -54,6 +54,11 @@ public class MainLayoutActivity extends AppCompatActivity {
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        HomeFragment fragmentHome = new HomeFragment();
+        android.support.v4.app.FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction1.replace(R.id.content,fragmentHome,"Fragment");
+        fragmentTransaction1.commit();
     }
 
 }

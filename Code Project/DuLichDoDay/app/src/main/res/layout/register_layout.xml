@@ -22,34 +22,48 @@
             android:src="@drawable/travel"/>
 
         <EditText
+            android:id="@+id/edtMail"
             android:drawableLeft="@drawable/ic_text_email"
             android:hint="@string/edt_mail"
             style="@style/Edittext"/>
 
         <EditText
+            android:id="@+id/edtPass"
             android:drawableLeft="@drawable/ic_text_pass"
             android:hint="@string/edt_pass"
             android:inputType="textPassword"
             style="@style/Edittext"/>
 
         <EditText
+            android:id="@+id/edtPassAg"
             android:drawableLeft="@drawable/ic_text_pass"
             android:hint="@string/edt_pass2"
             android:inputType="textPassword"
             style="@style/Edittext"/>
 
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="120dp"
+        <RadioGroup
+            android:id="@+id/rdg"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="90dp"
-            android:paddingLeft="5dp"
-            android:paddingBottom="5dp"
-            android:paddingTop="5dp"
-            android:paddingRight="5dp"></Spinner>
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/rdb1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="Khách hàng"/>
+            <RadioButton
+                android:id="@+id/rdb2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:textStyle="bold"
+                android:text="Quản lý"/>
+        </RadioGroup>
 
         <Button
+            android:id="@+id/btnRegister"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/custom_btn_login"
@@ -61,7 +75,6 @@
             android:layout_marginTop="20dp"/>
 
     </LinearLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
