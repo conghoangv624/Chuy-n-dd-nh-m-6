@@ -18,7 +18,10 @@ public class MainLayoutActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
+                    HomeFragment fragmentHome = new HomeFragment();
+                    android.support.v4.app.FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
+                    fragmentTransaction1.replace(R.id.content,fragmentHome,"Fragment");
+                    fragmentTransaction1.commit();
                     return true;
                 case R.id.navigation_new:
                     NewFragment fragmentNew = new NewFragment();
@@ -33,7 +36,7 @@ public class MainLayoutActivity extends AppCompatActivity {
                     fragmentTransaction3.commit();
                     return true;
                 case R.id.navigation_users:
-                    UserFragment userFragment = new UserFragment();
+                    UserBusinessFragment userFragment = new UserBusinessFragment();
                     android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
                     fragmentTransaction4.replace(R.id.content,userFragment,"Fragment");
                     fragmentTransaction4.commit();

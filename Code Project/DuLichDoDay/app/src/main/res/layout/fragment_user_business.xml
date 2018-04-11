@@ -80,6 +80,20 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/linear_list_tour"
+                    style="@style/choosen_user"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        style="@style/img_user"
+                        android:src="@drawable/ic_pass"/>
+                    <TextView
+                        style="@style/text_user"
+                        android:text="Danh sách tour"/>
+
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/linear_product_manager_personal"
                     style="@style/choosen_user">
 
@@ -89,20 +103,6 @@
                     <TextView
                         style="@style/text_user"
                         android:text="Tour khách đặt"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/linear_pass"
-                    style="@style/choosen_user"
-                    android:layout_marginBottom="8dp">
-
-                    <ImageView
-                        style="@style/img_user"
-                        android:src="@drawable/ic_pass"/>
-                    <TextView
-                        style="@style/text_user"
-                        android:text="Đổi mật khẩu"/>
 
                 </LinearLayout>
 
