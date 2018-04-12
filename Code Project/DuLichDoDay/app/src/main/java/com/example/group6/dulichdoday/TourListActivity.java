@@ -20,36 +20,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class TourListActivity extends AppCompatActivity {
-    // Hãng
-    private ArrayList<String> arraylistMien;
-    private ArrayList<String> arrayListPrice;
-    private Spinner spinnerMien;
     private AdapterTour adapterTour;
     private ArrayList<Tour> arrTour;
     private RecyclerView recyclerViewTour;
     private DatabaseReference mData;
-    int posi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tour_list_layout);
-
-        //FIREBASE
         mData = FirebaseDatabase.getInstance().getReference();
-        spinnerMien = (Spinner) findViewById(R.id.spinnerTour);
         recyclerViewTour = (RecyclerView) findViewById(R.id.recyclerViewTour);
-        // Spinner
-        arraylistMien = new ArrayList<String>();
-        arraylistMien.add("Tất Cả");
-        arraylistMien.add("Miền Nam");
-        arraylistMien.add("Miền Bắc");
-        arraylistMien.add("Miền Trung");
-
-        ArrayAdapter<String> arrayAdapterMien = new ArrayAdapter<String>(this.getBaseContext(), R.layout.support_simple_spinner_dropdown_item, arraylistMien);
-        arrayAdapterMien.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerMien.setAdapter(arrayAdapterMien);
-
-
         // Xử lý hiển thị recycler
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         recyclerViewTour.setHasFixedSize(true);
@@ -69,68 +50,41 @@ public class TourListActivity extends AppCompatActivity {
 
         loadData();
     }
-
     private void loadData() {
-
         arrTour = new ArrayList<Tour>();
         // Set adapter
         adapterTour = new AdapterTour(arrTour,this);
         recyclerViewTour.setAdapter(adapterTour);
         recyclerViewTour.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener());
-        spinnerMien.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mData.child("Tour").addChildEventListener(new ChildEventListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                arrTour.clear();
-                posi = i;
-                mData.child("Tour").addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        final Tour tour = dataSnapshot.getValue(Tour.class);
-                        if (posi == 0)
-                        {
-                            arrTour.add(new Tour(tour.getImgProduct(),tour.getCodeTour(),tour.getAddTour(),tour.getDiscripTour(),tour.getPriceTour(),tour.getTenmien()));
-                            adapterTour.notifyDataSetChanged();
-                        }
-                        else if (posi == 1 && tour.getTenmien().equalsIgnoreCase("Miền Nam"))
-                        {
-                            arrTour.add(new Tour(tour.getImgProduct(),tour.getCodeTour(),tour.getAddTour(),tour.getDiscripTour(),tour.getPriceTour(),tour.getTenmien()));
-                            adapterTour.notifyDataSetChanged();
-                        }else if (posi == 2 && tour.getTenmien().equalsIgnoreCase("Miền Trung")) {
-                            arrTour.add(new Tour(tour.getImgProduct(),tour.getCodeTour(),tour.getAddTour(),tour.getDiscripTour(),tour.getPriceTour(),tour.getTenmien()));
-                            adapterTour.notifyDataSetChanged();
-                        }else if (posi == 3 && tour.getTenmien().equalsIgnoreCase("Miền Bắc")) {
-                            arrTour.add(new Tour(tour.getImgProduct(),tour.getCodeTour(),tour.getAddTour(),tour.getDiscripTour(),tour.getPriceTour(),tour.getTenmien()));
-                            adapterTour.notifyDataSetChanged();
-                        }
-                    }
-
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                final Tour tour = dataSnapshot.getValue(Tour.class);
+                arrTour.add(new Tour(tour.getImgProduct(),tour.getCodeTour(),tour.getAddTour(),tour.getDiscripTour(),tour.getPriceTour(),tour.getTenmien()));
+                adapterTour.notifyDataSetChanged();
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
             }
         });
     }
 
 }
+

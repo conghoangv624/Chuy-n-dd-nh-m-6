@@ -53,13 +53,18 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chưa có tài khoản?"
+            android:textColor="@android:color/white"/>
 
         <TextView
             android:id="@+id/tv_Register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chưa có tài khoản"
-            android:textColor="@android:color/white"/>
+            android:text="Đăng ký"
+            android:textColor="@android:color/holo_blue_light"/>
 
     </LinearLayout>
 </LinearLayout>
