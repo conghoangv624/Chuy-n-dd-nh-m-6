@@ -49,6 +49,10 @@ public class AdapterBookTour extends RecyclerView.Adapter<AdapterBookTour.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
+
+
+
+
         TextView tvCode;
         TextView tvAdd;
         TextView tvDesciption;
