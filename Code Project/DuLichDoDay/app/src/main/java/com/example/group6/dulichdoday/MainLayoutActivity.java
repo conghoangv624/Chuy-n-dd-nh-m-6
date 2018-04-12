@@ -39,15 +39,15 @@ public class MainLayoutActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_users:
 
-                        UserFragment userFragment = new UserFragment();
+                        /*UserFragment userFragment = new UserFragment();
                         android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction4.replace(R.id.content, userFragment, "Fragment");
-                        fragmentTransaction4.commit();
+                        fragmentTransaction4.commit();*/
 
-                        /*UserBusinessFragment userBusinessFragment = new UserBusinessFragment();
+                        UserBusinessFragment userBusinessFragment = new UserBusinessFragment();
                         android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction4.replace(R.id.content, userBusinessFragment, "Fragment");
-                        fragmentTransaction4.commit();*/
+                        fragmentTransaction4.commit();
                     return true;
             }
             return false;

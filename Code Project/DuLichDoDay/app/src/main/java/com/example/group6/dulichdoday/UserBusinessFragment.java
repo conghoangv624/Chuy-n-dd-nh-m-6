@@ -19,6 +19,7 @@ public class UserBusinessFragment extends Fragment {
     private LinearLayout business;
     private LinearLayout manager;
     private LinearLayout listTour;
+    private  LinearLayout tourOrder;
 
 
     public UserBusinessFragment() {
@@ -35,6 +36,7 @@ public class UserBusinessFragment extends Fragment {
         business = (LinearLayout) view.findViewById(R.id.linear_business);
         manager = (LinearLayout) view.findViewById(R.id.linear_product_manager);
         listTour = (LinearLayout) view.findViewById(R.id.linear_list_tour);
+        tourOrder = (LinearLayout) view.findViewById(R.id.linear_product_manager_personal);
 
         business.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +58,13 @@ public class UserBusinessFragment extends Fragment {
             public void onClick(View view) {
                 Intent inTour = new Intent(getContext(),TourListActivity.class);
                 startActivity(inTour);
+            }
+        });
+        tourOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent inTourOrder = new Intent(getContext(),ManagerBookingTourActivity.class);
+                startActivity(inTourOrder);
             }
         });
         return view;
