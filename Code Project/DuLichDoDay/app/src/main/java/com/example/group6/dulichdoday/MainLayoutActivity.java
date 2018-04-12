@@ -5,11 +5,13 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 public class MainLayoutActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
+    private RadioButton rb1, rb2;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -36,10 +38,16 @@ public class MainLayoutActivity extends AppCompatActivity {
                     fragmentTransaction3.commit();
                     return true;
                 case R.id.navigation_users:
-                    UserBusinessFragment userFragment = new UserBusinessFragment();
-                    android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
-                    fragmentTransaction4.replace(R.id.content,userFragment,"Fragment");
-                    fragmentTransaction4.commit();
+
+                        UserFragment userFragment = new UserFragment();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction4.replace(R.id.content, userFragment, "Fragment");
+                        fragmentTransaction4.commit();
+
+                        /*UserBusinessFragment userBusinessFragment = new UserBusinessFragment();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction4.replace(R.id.content, userBusinessFragment, "Fragment");
+                        fragmentTransaction4.commit();*/
                     return true;
             }
             return false;
@@ -59,6 +67,9 @@ public class MainLayoutActivity extends AppCompatActivity {
         android.support.v4.app.FragmentTransaction fragmentTransaction1 = getSupportFragmentManager().beginTransaction();
         fragmentTransaction1.replace(R.id.content,fragmentHome,"Fragment");
         fragmentTransaction1.commit();
+        rb1 = (RadioButton) findViewById(R.id.rdb1);
+        rb2 = (RadioButton) findViewById(R.id.rdb2);
+
     }
 
 }
