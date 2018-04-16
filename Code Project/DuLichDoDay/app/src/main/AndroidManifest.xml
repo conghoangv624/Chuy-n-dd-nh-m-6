@@ -16,7 +16,6 @@
         <activity
             android:name=".MainLayoutActivity"
             android:label="@string/app_name" />
-
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,20 +24,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-
         <activity android:name=".DetailTourActivity" />
         <activity android:name=".DetailPersonalActivity" />
         <activity android:name=".PasswordActivity" />
-
-
         <activity android:name=".BusinessActivity" />
-        <activity android:name=".DetailBusinessActivity"/>
+        <activity android:name=".DetailBusinessActivity" />
         <activity android:name=".UpdateInforBusinessActivity" />
         <activity android:name=".ManagerTourActivity" />
         <activity android:name=".AddPlaceActivity" />
         <activity android:name=".EditPlaceActivity" />
-        <activity android:name=".TourListActivity"/>
-        <activity android:name=".ManagerBookingTourActivity"/>
+        <activity android:name=".TourListActivity" />
+        <activity android:name=".ManagerBookingTourActivity" />
+        <activity
+            android:name=".BookTour">
+
+        </activity>
     </application>
 
 </manifest>
