@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:background="@color/color_main">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center|left"
+                android:textSize="20dp"
+                android:padding="5dp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:text="Bạn muốn đặt tour ?"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:background="@color/color_main"
+            style="@style/linear">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ok"
+                android:drawablePadding="10dp"
+                android:textColor="@android:color/white"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Chấp nhận"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginBottom="0dp"
+            android:background="@color/color_main"
+            style="@style/linear">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/cancel"
+                android:drawablePadding="10dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Hủy bỏ"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
