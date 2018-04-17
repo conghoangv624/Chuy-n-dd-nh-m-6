@@ -56,7 +56,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Get FireBasae
         mAuth = FirebaseAuth.getInstance();
-        mData = FirebaseDatabase.getInstance().getReference();
+       mData = FirebaseDatabase.getInstance().getReference();
 
         mData.child("Users");
         btnRegister.setOnClickListener(new View.OnClickListener() {
@@ -97,15 +97,15 @@ public class RegisterActivity extends AppCompatActivity {
                                 mProgress.dismiss();
                                 String userID = mAuth.getCurrentUser().getUid();
                                 DatabaseReference current_user_id = mData.child(userID);
-                                current_user_id.child("name").setValue(email);
-                                current_user_id.child("password").setValue(pass);
+                                current_user_id.child("User").child("name").setValue(email);
+                                current_user_id.child("User").child("password").setValue(pass);
                                 if (rb1.isSelected())
                                 {
                                     rb1.getText().toString().trim();
-                                    current_user_id.child("type").setValue(rb1);
+                                    current_user_id.child("User").child("type").setValue(rb1);
                                 }else {
                                     rb2.getText().toString().trim();
-                                    current_user_id.child("type").setValue(rb2);
+                                    current_user_id.child("User").child("type").setValue(rb2);
                                 }
 
                             }
@@ -117,6 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
                 edtMail.setText("");
                 edtPass.setText("");
                 edtPASS.setText("");
+
             }
         });
 

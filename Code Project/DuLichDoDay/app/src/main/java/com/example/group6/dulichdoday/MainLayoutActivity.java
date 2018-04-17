@@ -3,15 +3,21 @@ package com.example.group6.dulichdoday;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.SupportActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import java.security.Key;
 
 public class MainLayoutActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private RadioButton rb1, rb2;
+    private RadioButton rb1;
+    private RadioButton rb2;
+    private TextView User;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -44,10 +50,11 @@ public class MainLayoutActivity extends AppCompatActivity {
                         fragmentTransaction4.replace(R.id.content, userFragment, "Fragment");
                         fragmentTransaction4.commit();
 
-                       /* UserBusinessFragment userBusinessFragment = new UserBusinessFragment();
-                        android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction4.replace(R.id.content, userBusinessFragment, "Fragment");
-                        fragmentTransaction4.commit();*/
+                        /*UserBusinessFragment userBusinessFragment = new UserBusinessFragment();
+                        android.support.v4.app.FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction();
+                        fragmentTransaction5.replace(R.id.content, userBusinessFragment, "Fragment");
+                        fragmentTransaction5.commit();*/
+
                     return true;
             }
             return false;

@@ -55,8 +55,8 @@ public class TourFragment extends Fragment {
         arraylistMien = new ArrayList<String>();
         arraylistMien.add("Tất Cả");
         arraylistMien.add("Miền Nam");
-        arraylistMien.add("Miền Bắc");
         arraylistMien.add("Miền Trung");
+        arraylistMien.add("Miền Bắc");
 
         ArrayAdapter<String> arrayAdapterMien = new ArrayAdapter<String>(getActivity().getBaseContext(), R.layout.support_simple_spinner_dropdown_item, arraylistMien);
         arrayAdapterMien.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -69,13 +69,21 @@ public class TourFragment extends Fragment {
         recyclerViewTour.setLayoutManager(layoutManager);
 
         arrTour = new ArrayList<Tour>();
-        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_dalat.jpg?alt=media&token=f2348f25-972e-48f1-b4b8-4bf90407f1da","01","Hà Nội - Đà Lạt","7 Ngày 6 Đêm","1.700.000 đ","Miền Nam"));
-        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_nhatrang.jpg?alt=media&token=a3943d59-2ff7-4ea4-8e85-6385b289708b","02","TP.HCM - Nha Trang","3 Ngày 2 Đêm","1.900.000 đ","Miền Bắc"));
-        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_vhl.jpg?alt=media&token=eff78159-b024-4a8e-b7c9-d8001c044702","03","Hải Phòng - Vịnh Hạ Long","3 Ngày 2 Đêm","200.000 đ","Miền Bắc"));
-        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/nha.jpg?alt=media&token=6b05d90d-df3e-4a44-96c2-e384bf05b7cb","04","TP.HCM - Vũng Tàu","3 Ngày 2 Đêm","250.000 đ","Miền Nam"));
-        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_4.jpg?alt=media&token=821952da-ba43-40f9-9e0c-0b221c4d289f","05","Đà Lạt - Phan Thiết","3 Ngày 2 Đêm","1.000.000 đ","Miền Trung"));
-        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_5.jpg?alt=media&token=c773de58-1020-4f73-aafe-514d5cfb5249","06","Hạ Long - Lagi","3 Ngày 2 Đêm","1.200.000 đ","Miền Trung"));
-
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_nhatrang.jpg?alt=media&token=a3943d59-2ff7-4ea4-8e85-6385b289708b","01","Hà Nội- Phú Yên","3 Ngày 2 Đêm","1.900.000 đ","Miền Bắc"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_vhl.jpg?alt=media&token=eff78159-b024-4a8e-b7c9-d8001c044702","02","Hà Nội - Vịnh Hạ Long","3 Ngày 2 Đêm","200.000 đ","Miền Bắc"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_4.jpg?alt=media&token=821952da-ba43-40f9-9e0c-0b221c4d289f","03","Nha Trang - Phan Thiết","3 Ngày 2 Đêm","1.000.000 đ","Miền Trung"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_5.jpg?alt=media&token=c773de58-1020-4f73-aafe-514d5cfb5249","04","Nha Trang - Bình Ba","3 Ngày 2 Đêm","1.200.000 đ","Miền Trung"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_dalat.jpg?alt=media&token=f2348f25-972e-48f1-b4b8-4bf90407f1da","05","TP.HCM - Vĩnh Long","7 Ngày 6 Đêm","1.700.000 đ","Miền Nam"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_4.jpg?alt=media&token=821952da-ba43-40f9-9e0c-0b221c4d289f","06","TP.HCM - Châu Đốc","3 Ngày 2 Đêm","1.200.000 đ","Miền Nam"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_4.jpg?alt=media&token=821952da-ba43-40f9-9e0c-0b221c4d289f","07","Hà Nội - Bình Định","3 Ngày 2 Đêm","1.200.000 đ","Miền Bắc"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_5.jpg?alt=media&token=c773de58-1020-4f73-aafe-514d5cfb5249","08","Hà Nội - Hải Phòng","3 Ngày 2 Đêm","1.200.000 đ","Miền Bắc"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_4.jpg?alt=media&token=821952da-ba43-40f9-9e0c-0b221c4d289f","09","Nha Trang - Cổ Thạch","3 Ngày 2 Đêm","1.200.000 đ","Miền Trung"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_5.jpg?alt=media&token=c773de58-1020-4f73-aafe-514d5cfb5249","10","Nha Trang - Lagi","3 Ngày 2 Đêm","1.200.000 đ","Miền Trung"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_5.jpg?alt=media&token=c773de58-1020-4f73-aafe-514d5cfb5249","11","TP.HCM - Hà Tiên","3 Ngày 2 Đêm","1.200.000 đ","Miền Nam"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/nha.jpg?alt=media&token=6b05d90d-df3e-4a44-96c2-e384bf05b7cb","12","TP.HCM - Vũng Tàu","3 Ngày 2 Đêm","250.000 đ","Miền Nam"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_5.jpg?alt=media&token=c773de58-1020-4f73-aafe-514d5cfb5249","13","Nha Trang - Lagi","3 Ngày 2 Đêm","1.200.000 đ","Miền Trung"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_5.jpg?alt=media&token=c773de58-1020-4f73-aafe-514d5cfb5249","14","TP.HCM - Hà Tiên","3 Ngày 2 Đêm","1.200.000 đ","Miền Nam"));
+        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/nha.jpg?alt=media&token=6b05d90d-df3e-4a44-96c2-e384bf05b7cb","15","TP.HCM - Vũng Tàu","3 Ngày 2 Đêm","250.000 đ","Miền Nam"));
 
         mData.child("Tour").setValue(arrTour);
         mData.child("Hello");
