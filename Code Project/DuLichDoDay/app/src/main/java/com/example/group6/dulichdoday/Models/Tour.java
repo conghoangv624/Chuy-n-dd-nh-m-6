@@ -11,17 +11,19 @@ public class Tour {
     private String discripTour;
     private String priceTour;
     private String tenmien;
+    private String noidung;
 
-    public Tour() {
-    }
-
-    public Tour(String imgProduct, String codeTour, String addTour, String discripTour, String priceTour, String tenmien) {
+    public Tour(String imgProduct, String codeTour, String addTour, String discripTour, String priceTour, String tenmien, String noidung) {
         this.imgProduct = imgProduct;
         this.codeTour = codeTour;
         this.addTour = addTour;
         this.discripTour = discripTour;
         this.priceTour = priceTour;
         this.tenmien = tenmien;
+        this.noidung = noidung;
+    }
+
+    public Tour() {
     }
 
     public String getImgProduct() {
@@ -70,6 +72,14 @@ public class Tour {
 
     public void setTenmien(String tenmien) {
         this.tenmien = tenmien;
+    }
+
+    public String getNoidung() {
+        return noidung;
+    }
+
+    public void setNoidung(String noidung) {
+        this.noidung = noidung;
     }
 }
 
