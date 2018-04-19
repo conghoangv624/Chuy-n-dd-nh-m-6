@@ -23,13 +23,13 @@
                 android:id="@+id/tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
                 android:layout_weight="10"
                 android:drawableLeft="@drawable/ic_chat"
-                android:text="Bình luận"
-                android:gravity="center|left"
                 android:drawablePadding="10dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginLeft="5dp"/>
+                android:gravity="center|left"
+                android:text="Bình luận" />
 
             <ImageView
                 android:id="@+id/exit_dialog"
@@ -49,6 +49,26 @@
             android:layout_marginTop="10dp"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+
+            <ImageButton
+                android:id="@+id/choose"
+                android:scaleType="fitXY"
+                android:background="@drawable/ic_chat"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                >
+            </ImageButton>
+
+
             <EditText
                 android:id="@+id/edt_comment"
                 android:layout_width="match_parent"
@@ -61,6 +81,7 @@
                 android:drawablePadding="20dp"
                 android:drawableRight="@drawable/send"
                 android:background="@drawable/custom_edt"/>
+            </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerComment"
@@ -69,6 +90,8 @@
                 android:orientation="vertical" />
 
         </LinearLayout>
+
+
     </LinearLayout>
 
 
