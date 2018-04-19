@@ -1,5 +1,6 @@
 package com.example.group6.dulichdoday;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -45,27 +46,30 @@ public class MainLayoutActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_users:
 
-                        /*UserFragment userFragment = new UserFragment();
+                        UserFragment userFragment = new UserFragment();
                         android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
                         fragmentTransaction4.replace(R.id.content, userFragment, "Fragment");
-                        fragmentTransaction4.commit();*/
+                        fragmentTransaction4.commit();
 
-                        UserBusinessFragment userBusinessFragment = new UserBusinessFragment();
-                        android.support.v4.app.FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction();
-                        fragmentTransaction5.replace(R.id.content, userBusinessFragment, "Fragment");
-                        fragmentTransaction5.commit();
+//                        UserBusinessFragment userBusinessFragment = new UserBusinessFragment();
+//                        android.support.v4.app.FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction();
+//                        fragmentTransaction5.replace(R.id.content, userBusinessFragment, "Fragment");
+//                        fragmentTransaction5.commit();
 
                     return true;
             }
             return false;
         }
     };
-
+    public static Context contextOfApplication;
+    public static Context getContextOfApplication(){
+        return contextOfApplication;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
-
+        contextOfApplication = getApplicationContext();
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
