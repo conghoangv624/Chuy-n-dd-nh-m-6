@@ -1,17 +1,12 @@
 package com.example.group6.dulichdoday;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.SupportActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
-
-import java.security.Key;
 
 public class MainLayoutActivity extends AppCompatActivity {
 
@@ -61,15 +56,12 @@ public class MainLayoutActivity extends AppCompatActivity {
             return false;
         }
     };
-    public static Context contextOfApplication;
-    public static Context getContextOfApplication(){
-        return contextOfApplication;
-    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
-        contextOfApplication = getApplicationContext();
+
         mTextMessage = (TextView) findViewById(R.id.message);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);

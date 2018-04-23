@@ -2,9 +2,8 @@ package com.example.group6.dulichdoday;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
@@ -18,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
+
 public class DetailTourActivity extends AppCompatActivity {
 
     Intent intent;
@@ -27,6 +28,7 @@ public class DetailTourActivity extends AppCompatActivity {
     private ImageView img;
 
     private DatabaseReference mData;
+    private ArrayList<Tour> arrTour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +37,16 @@ public class DetailTourActivity extends AppCompatActivity {
         mData = FirebaseDatabase.getInstance().getReference();
 
         tvDatTour = (TextView) findViewById(R.id.tvDatTour);
+
+
         tvCode = (TextView) findViewById(R.id.tvCodeDetail);
         tvAdd = (TextView) findViewById(R.id.tvAddDetail);
         tvDescip = (TextView) findViewById(R.id.tvDesciption);
         tvNoidung = (TextView) findViewById(R.id.tvNoiDungTour);
         tvPrice = (TextView) findViewById(R.id.tvPriceDetail);
         img = (ImageView) findViewById(R.id.imgDetail);
+
+        arrTour = new ArrayList<Tour>();
 
         final Dialog dialog = new Dialog(DetailTourActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
@@ -49,6 +55,14 @@ public class DetailTourActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 dialog.show();
+                TextView tvDat = dialog.findViewById(R.id.tvDat);
+                tvDat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        mData.child("TourDat").push().setValue(new Tour("",tvCode.getText().toString(),tvAdd.getText().toString(),tvDescip.getText().toString(),tvPrice.getText().toString(),"",tvNoidung.getText().toString()));
+                        dialog.dismiss();
+                    }
+                });
             }
         });
         //
@@ -96,6 +110,4 @@ public class DetailTourActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }

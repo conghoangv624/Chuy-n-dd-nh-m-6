@@ -12,7 +12,6 @@
         <LinearLayout
             style="@style/linear">
             <TextView
-                android:id="@+id/btnCamera"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_camera"
@@ -27,7 +26,6 @@
             style="@style/linear">
 
             <TextView
-                android:id="@+id/btnGallery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawableLeft="@drawable/ic_library"
@@ -42,16 +40,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/color_main">
-
             <TextView
-                android:id="@+id/btnCancel"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:textSize="20dp"
                 android:padding="5dp"
-                android:text="Đóng"
                 android:textColor="@android:color/white"
-                android:textSize="20dp" />
+                android:text="Đóng"/>
         </LinearLayout>
 
     </LinearLayout>

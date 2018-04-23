@@ -1,7 +1,5 @@
 package com.example.group6.dulichdoday;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,12 +8,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.example.group6.dulichdoday.Adapter.AdapterSpinner;
-import com.example.group6.dulichdoday.Models.Tour;
 import com.example.group6.dulichdoday.Adapter.AdapterTour;
+import com.example.group6.dulichdoday.Models.Tour;
 import com.example.group6.dulichdoday.Models.mdSpinner;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;

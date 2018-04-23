@@ -1,15 +1,12 @@
 package com.example.group6.dulichdoday;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Spinner;
 
 import com.example.group6.dulichdoday.Adapter.AdapterTour;
+import com.example.group6.dulichdoday.Adapter.AdapterTourList;
 import com.example.group6.dulichdoday.Models.Tour;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -85,6 +82,5 @@ public class TourListActivity extends AppCompatActivity {
             }
         });
     }
-
 }
 

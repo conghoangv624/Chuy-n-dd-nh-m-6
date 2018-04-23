@@ -39,7 +39,7 @@ public class UserFragment extends Fragment {
         manager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent inManager = new Intent(getContext(),BookTour.class);
+                Intent inManager = new Intent(getContext(),TourListActivity.class);
                 startActivity(inManager);
             }
         });
