@@ -44,9 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntentLogin = new Intent(getApplication(), MainLayoutActivity.class);
-                startActivity(myIntentLogin);
-                /*mProgress = new ProgressDialog(LoginActivity.this);
+
+                mProgress = new ProgressDialog(LoginActivity.this);
                 mProgress.setTitle("Đang kết nối");
                 mProgress.setMessage("Vui lòng chờ");
                 final String email = edtMail.getText().toString();
@@ -79,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(myIntentLogin);
                         }
                     }
-                });*/
+                });
 
             }
         });
@@ -92,4 +91,5 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-    }}
+    }
+}

@@ -37,7 +37,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressDialog mProgress;
     /// FIREBASE
     private FirebaseAuth mAuth;
-    private DatabaseReference mData;
+    private DatabaseReference root;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +56,10 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Get FireBasae
         mAuth = FirebaseAuth.getInstance();
-       mData = FirebaseDatabase.getInstance().getReference();
 
-        mData.child("Users");
+        root = FirebaseDatabase.getInstance().getReference().child("Users");;
+
+
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,28 +97,26 @@ public class RegisterActivity extends AppCompatActivity {
                                 Toast.makeText(RegisterActivity.this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
                                 mProgress.dismiss();
                                 String userID = mAuth.getCurrentUser().getUid();
-                                DatabaseReference current_user_id = mData.child(userID);
-                                current_user_id.child("User").child("name").setValue(email);
-                                current_user_id.child("User").child("password").setValue(pass);
+                                DatabaseReference current_user_id = root.child(userID);
+                                current_user_id.child("name").setValue(email);
+                                current_user_id.child("password").setValue(pass);
                                 if (rb1.isSelected())
                                 {
                                     rb1.getText().toString().trim();
-                                    current_user_id.child("User").child("type").setValue(rb1);
+                                    current_user_id.child("type").setValue(rb1);
                                 }else {
                                     rb2.getText().toString().trim();
-                                    current_user_id.child("User").child("type").setValue(rb2);
+                                    current_user_id.child("type").setValue(rb2);
                                 }
 
                             }
                         }
                     });
                 }
-                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
-
                 edtMail.setText("");
                 edtPass.setText("");
                 edtPASS.setText("");
-
+                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
             }
         });
 

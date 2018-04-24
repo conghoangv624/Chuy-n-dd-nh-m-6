@@ -15,13 +15,13 @@ public class DetailPersonalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_personal_layout);
 
-//        tvUpdate = (TextView) findViewById(R.id.btn_update);
-//        tvUpdate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intentUpdate = new Intent(DetailPersonalActivity.this,UpdateInforActivity.class);
-//                startActivity(intentUpdate);
-//            }
-//        });
+        tvUpdate = (TextView) findViewById(R.id.btn_update);
+        tvUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentUpdate = new Intent(DetailPersonalActivity.this,UpdateInforActivity.class);
+                startActivity(intentUpdate);
+            }
+        });
     }
 }

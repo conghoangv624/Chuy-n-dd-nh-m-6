@@ -26,7 +26,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lê Minh Trí"
+                    android:text="Group 6"
                     android:textStyle="bold"
                     android:textColor="@android:color/black"
                     android:textSize="17dp"/>
@@ -44,7 +44,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="0908668620"
+                        android:text="0908113113"
                         android:textStyle="bold"
                         android:layout_marginLeft="10dp"
                         android:textColor="@android:color/black"
