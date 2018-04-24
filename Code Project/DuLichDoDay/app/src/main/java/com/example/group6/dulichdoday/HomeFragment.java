@@ -1,7 +1,6 @@
 package com.example.group6.dulichdoday;
 
 
-import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
@@ -13,7 +12,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,20 +40,19 @@ import com.google.android.gms.tasks.Task;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.content.ContentValues.TAG;
-
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment implements OnMapReadyCallback , GoogleApiClient.OnConnectionFailedListener{
+public class HomeFragment extends Fragment  implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener{
 
     private ImageView imgSetGPSLocation;
     // EDT search map
     private EditText edtSearchMap;
     // MAP : Add Manifest
     private static final String FINE_LOCATION = android.Manifest.permission.ACCESS_FINE_LOCATION;
-    private static final String COUASE_LOCATION = Manifest.permission.ACCESS_COARSE_LOCATION;
+
+    private static final String COUASE_LOCATION = android.Manifest.permission.ACCESS_COARSE_LOCATION;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
     // Camera zoom 15f
     private static final float DEFAULT_ZOOM = 15f;
@@ -80,7 +77,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback , Googl
     }
 
 
-  /*  @Override
+/*    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -91,7 +88,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback , Googl
         initMap();
         return view;
     }*/
-    // Get location device , Show where we are
+     // Get location device , Show where we are
     private void getDeviceLocation() {
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
         try {
@@ -101,18 +98,15 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback , Googl
                     @Override
                     public void onComplete(@NonNull Task task) {
                         if (task.isSuccessful()) {
-                            Log.e(TAG, "onComplete : found location !");
                             Location currentLocation = (Location) task.getResult();
-                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFAULT_ZOOM, "Điện thoại trí ở đây nhé");
+                            moveCamera(new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude()), DEFAULT_ZOOM, "MyLocation");
                         } else {
-                            Log.e(TAG, "onComplete : no found location !");
                             Toast.makeText(getContext(), "unable to get current location", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
             }
         } catch (SecurityException e) {
-            Log.e(TAG, "getLocation Device : SecurityException" + e.getMessage());
         }
     }
 
@@ -120,7 +114,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback , Googl
     private void moveCamera(LatLng latLng, float zoom, String title) {
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
         // Other location
-        if (!title.equals("Điện thoại Phuc ở đây nhé")) {
+        if (!title.equals("MyLocation")) {
             // Display marker in map
             MarkerOptions markerOptions = new MarkerOptions().position(latLng).title(title);
             mMap.addMarker(markerOptions);
@@ -131,15 +125,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback , Googl
     }
 
     private void init() {
-//        mGoogleApiClient = new GoogleApiClient
-//                .Builder(getContext())
-//                .addApi(Places.GEO_DATA_API)
-//                .addApi(Places.PLACE_DETECTION_API)
-//                .enableAutoManage(getActivity(),this)
-//                .build();
-//        // Adapter autocomplete search location
-//        placeAutocompleteAdapter = new PlaceAutocompleteAdapter(getContext(),mGoogleApiClient,LAT_LNG_BOUNDS,null);
-        // Edit search map , return location
         edtSearchMap.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int actionId, KeyEvent keyEvent) {
@@ -173,12 +158,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback , Googl
         try {
             list = geocoder.getFromLocationName(searchString, 1);
         } catch (Exception e) {
-            Log.e(TAG,"Not found location" + e.getMessage());
         }
         // List >0 character
         if (list.size() > 0) {
             Address address = list.get(0);
-            Log.e(TAG,"Found a location : " + address.toString());
             // After search succesful , return location
             moveCamera(new LatLng(address.getLatitude(), address.getLongitude()), DEFAULT_ZOOM, address.getAddressLine(0));
         }

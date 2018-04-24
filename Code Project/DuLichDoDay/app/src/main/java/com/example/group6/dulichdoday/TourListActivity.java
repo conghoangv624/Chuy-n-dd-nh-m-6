@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.example.group6.dulichdoday.Adapter.AdapterTour;
 import com.example.group6.dulichdoday.Adapter.AdapterTourList;
 import com.example.group6.dulichdoday.Models.Tour;
 import com.google.firebase.database.ChildEventListener;
@@ -17,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class TourListActivity extends AppCompatActivity {
-    private AdapterTour adapterTour;
+    private AdapterTourList adapterTourList;
     private ArrayList<Tour> arrTour;
     private RecyclerView recyclerViewTour;
     private DatabaseReference mData;
@@ -27,38 +26,30 @@ public class TourListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tour_list_layout);
         mData = FirebaseDatabase.getInstance().getReference();
-        recyclerViewTour = (RecyclerView) findViewById(R.id.recyclerViewTour);
+        recyclerViewTour = (RecyclerView) findViewById(R.id.recyclerViewTourDat);
+
         // Xử lý hiển thị recycler
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false);
         recyclerViewTour.setHasFixedSize(true);
         recyclerViewTour.setLayoutManager(layoutManager);
 
-        arrTour = new ArrayList<Tour>();
-        /*arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_dalat.jpg?alt=media&token=f2348f25-972e-48f1-b4b8-4bf90407f1da","01","TP.HCM - Đà Lạt","7 Ngày 6 Đêm","1.200.000 đ","Miền Nam"));
-        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_nhatrang.jpg?alt=media&token=a3943d59-2ff7-4ea4-8e85-6385b289708b","02","TP.HCM - Nha Trang","3 Ngày 2 Đêm","1.200.000 đ","Miền Bắc"));
-        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_vhl.jpg?alt=media&token=eff78159-b024-4a8e-b7c9-d8001c044702","03","TP.HCM - Vịnh Hạ Long","3 Ngày 2 Đêm","1.200.000 đ","Miền Bắc"));
-        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/nha.jpg?alt=media&token=6b05d90d-df3e-4a44-96c2-e384bf05b7cb","04","TP.HCM - Vũng Tàu","3 Ngày 2 Đêm","1.200.000 đ","Miền Nam"));
-        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_4.jpg?alt=media&token=821952da-ba43-40f9-9e0c-0b221c4d289f","05","TP.HCM - Phan Thiết","3 Ngày 2 Đêm","1.200.000 đ","Miền Trung"));
-        arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/mydemo-c9766.appspot.com/o/img_5.jpg?alt=media&token=c773de58-1020-4f73-aafe-514d5cfb5249","06","TP.HCM - Lagi","3 Ngày 2 Đêm","1.200.000 đ","Miền Trung"));
-        */
-
-        mData.child("Tour").setValue(arrTour);
-        mData.child("Hello");
+        //arrTour = new ArrayList<Tour>();
+        //mData.child("TourDat").setValue(arrTour);
 
         loadData();
     }
     private void loadData() {
         arrTour = new ArrayList<Tour>();
         // Set adapter
-        adapterTour = new AdapterTour(arrTour,this);
-        recyclerViewTour.setAdapter(adapterTour);
+        adapterTourList = new AdapterTourList(arrTour,this);
+        recyclerViewTour.setAdapter(adapterTourList);
         recyclerViewTour.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener());
-        mData.child("Tour").addChildEventListener(new ChildEventListener() {
+        mData.child("TourDat").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 final Tour tour = dataSnapshot.getValue(Tour.class);
-                //arrTour.add(new Tour(tour.getImgProduct(),tour.getCodeTour(),tour.getAddTour(),tour.getDiscripTour(),tour.getPriceTour(),tour.getTenmien()));
-                adapterTour.notifyDataSetChanged();
+                arrTour.add(new Tour(tour.getImgProduct(),tour.getCodeTour(),tour.getAddTour(),tour.getDiscripTour(),tour.getPriceTour(),tour.getTenmien(),tour.getNoidung()));
+                adapterTourList.notifyDataSetChanged();
             }
 
             @Override
@@ -82,5 +73,6 @@ public class TourListActivity extends AppCompatActivity {
             }
         });
     }
+
 }
 

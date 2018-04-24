@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.group6.dulichdoday.Models.Tour;
 import com.google.firebase.database.ChildEventListener;
@@ -38,7 +39,6 @@ public class DetailTourActivity extends AppCompatActivity {
 
         tvDatTour = (TextView) findViewById(R.id.tvDatTour);
 
-
         tvCode = (TextView) findViewById(R.id.tvCodeDetail);
         tvAdd = (TextView) findViewById(R.id.tvAddDetail);
         tvDescip = (TextView) findViewById(R.id.tvDesciption);
@@ -46,11 +46,10 @@ public class DetailTourActivity extends AppCompatActivity {
         tvPrice = (TextView) findViewById(R.id.tvPriceDetail);
         img = (ImageView) findViewById(R.id.imgDetail);
 
-        arrTour = new ArrayList<Tour>();
-
         final Dialog dialog = new Dialog(DetailTourActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
         dialog.setContentView(R.layout.dialog_accept);
+
         tvDatTour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -61,6 +60,7 @@ public class DetailTourActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         mData.child("TourDat").push().setValue(new Tour("",tvCode.getText().toString(),tvAdd.getText().toString(),tvDescip.getText().toString(),tvPrice.getText().toString(),"",tvNoidung.getText().toString()));
                         dialog.dismiss();
+                        Toast.makeText(DetailTourActivity.this, "Đặt thành công", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
