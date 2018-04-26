@@ -76,6 +76,7 @@
                         style="@style/img_user"
                         android:src="@drawable/ic_pass"/>
                     <TextView
+                        android:id="@+id/btn_change_pass"
                         style="@style/text_user"
                         android:text="Đổi mật khẩu"/>
                 </LinearLayout>

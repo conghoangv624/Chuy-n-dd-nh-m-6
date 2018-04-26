@@ -61,6 +61,9 @@ public class DetailTourActivity extends AppCompatActivity {
                         mData.child("TourDat").push().setValue(new Tour("",tvCode.getText().toString(),tvAdd.getText().toString(),tvDescip.getText().toString(),tvPrice.getText().toString(),"",tvNoidung.getText().toString()));
                         dialog.dismiss();
                         Toast.makeText(DetailTourActivity.this, "Đặt thành công", Toast.LENGTH_SHORT).show();
+                        finish();
+                        // Intent intent = new Intent(DetailTourActivity.this,MainLayoutActivity.class);
+                        //startActivity(intent);
                     }
                 });
             }

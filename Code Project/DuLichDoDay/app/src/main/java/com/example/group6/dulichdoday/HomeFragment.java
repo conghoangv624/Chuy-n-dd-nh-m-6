@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.group6.dulichdoday.Models.mdLocation;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -31,11 +32,19 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +53,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment  implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener{
+public class HomeFragment extends Fragment  implements OnMapReadyCallback, GoogleApiClient.OnConnectionFailedListener, GoogleMap.OnMarkerClickListener {
 
     private ImageView imgSetGPSLocation;
     // EDT search map
@@ -64,7 +73,11 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
     private FusedLocationProviderClient mFusedLocationProviderClient;
     // ADAPTER autocomplete search location
     //
-
+    // DISPLAY LOCATION
+    private ChildEventListener mChildEventListener;
+    private DatabaseReference mLocations;
+    Marker marker;
+    List<mdLocation> venueList;
 
     private GoogleApiClient mGoogleApiClient;
     private static final LatLngBounds LAT_LNG_BOUNDS = new LatLngBounds(
@@ -77,7 +90,7 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
     }
 
 
-/*    @Override
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -86,8 +99,17 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
         imgSetGPSLocation = (ImageView) view.findViewById(R.id.img_set_gps);
         getLocationPermisssion();
         initMap();
+        mLocations = FirebaseDatabase.getInstance().getReference();
+        mLocations.push().setValue(marker);
+//        ArrayList<mdLocation> arrayList = new ArrayList<>();
+//        arrayList.add(new mdLocation("PHUC", 10.8522445, 106.7585893));
+//        arrayList.add(new mdLocation("NHAN", 10.85140154, 106.75779537));
+//        arrayList.add(new mdLocation("HOANG", 10.85468907, 106.75760225));
+//        arrayList.add(new mdLocation("TRI", 10.85355108, 106.76069215));
+//        arrayList.add(new mdLocation("SON", 10.85186517, 106.76075652));
+//        mLocations.child("Locations").setValue(arrayList);
         return view;
-    }*/
+    }
      // Get location device , Show where we are
     private void getDeviceLocation() {
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
@@ -189,6 +211,30 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
             // Function edtSearch return location search
             init();
+            googleMap.setOnMarkerClickListener(this);
+            mLocations.child("Locations").addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                    for (DataSnapshot s : dataSnapshot.getChildren()){
+                        final mdLocation venue = s.getValue(mdLocation.class);
+                        venueList  = new ArrayList<>();
+                        venueList.add(venue);
+                        for (int i = 0; i < venueList.size(); i++)
+                        {
+                            LatLng latLng = new LatLng(venue.getLatitude(),venue.getLongitude());
+                            if (mMap != null) {
+                                marker = mMap.addMarker(new MarkerOptions().position(latLng).title(venue.getStrNameAđ()));
+                            }
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
         }
     }
 
@@ -235,5 +281,11 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        Toast.makeText(getContext(), "Return", Toast.LENGTH_SHORT).show();
+        return false;
     }
 }

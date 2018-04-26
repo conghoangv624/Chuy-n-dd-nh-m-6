@@ -67,7 +67,7 @@ public class TourFragment extends Fragment {
         recyclerViewTour.setHasFixedSize(true);
         recyclerViewTour.setLayoutManager(layoutManager);
 
-     /*   arrTour = new ArrayList<Tour>();
+       /* arrTour = new ArrayList<Tour>();
         arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/dulichdoday-7d0dd.appspot.com/o/cao%20nguy%C3%AAn.jpg?alt=media&token=87f511c2-8c39-45b4-8758-d236d3493fd3","01","Hà Nội- Cao Nguyên","3 Ngày 2 Đêm","1.900.000 đ","Miền Bắc",""));
         arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/dulichdoday-7d0dd.appspot.com/o/haiem.jpg?alt=media&token=410d56a8-068d-4d61-8ba4-5f8f4562f430    ","02","Hà Nội - Mộc Châu","3 Ngày 2 Đêm","200.000 đ","Miền Bắc", ""));
         arrTour.add(new Tour("https://firebasestorage.googleapis.com/v0/b/dulichdoday-7d0dd.appspot.com/o/Hoa%20anh%20%C4%91%C3%A0o.jpg?alt=media&token=5173fc2f-c6e3-48de-9e75-be5b559ca4ab","03","Hà Nội - Sơn La","3 Ngày 2 Đêm","1.000.000 đ","Miền Bắc", ""));
