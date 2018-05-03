@@ -13,11 +13,14 @@ public class Tours {
     private String tourDescription;
     private String imgTour;
     private String tenMien;
+    private boolean ischecked;
+
+
 
     public Tours() {
     }
 
-    public Tours(String tour_ID, String account_ID, String tourName, String tourTime, String tourPrice, String tourDescription, String imgTour, String tenMien) {
+    public Tours(String tour_ID, String account_ID, String tourName, String tourTime, String tourPrice, String tourDescription, String imgTour, String tenMien, boolean ischecked) {
         this.tour_ID = tour_ID;
         this.account_ID = account_ID;
         this.tourName = tourName;
@@ -26,6 +29,7 @@ public class Tours {
         this.tourDescription = tourDescription;
         this.imgTour = imgTour;
         this.tenMien = tenMien;
+        this.ischecked = ischecked;
     }
 
     public String getTour_ID() {
@@ -90,5 +94,12 @@ public class Tours {
 
     public void setTenMien(String tenMien) {
         this.tenMien = tenMien;
+    }
+    public boolean isIschecked() {
+        return ischecked;
+    }
+
+    public void setIschecked(boolean ischecked) {
+        this.ischecked = ischecked;
     }
 }

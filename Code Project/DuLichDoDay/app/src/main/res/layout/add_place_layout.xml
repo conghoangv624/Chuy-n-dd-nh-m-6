@@ -46,7 +46,7 @@
                     android:textSize="17sp"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
-                    android:layout_marginLeft="130dp"
+                    android:layout_marginLeft="110dp"
                     android:text="Trở về"/>
 
             </LinearLayout>
@@ -64,8 +64,8 @@
 
             <ImageView
                 android:id="@+id/img_choosen"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
                 android:src="@drawable/image"/>
 
             <RadioGroup
@@ -78,6 +78,7 @@
                 android:orientation="horizontal">
 
                 <RadioButton
+                    android:id="@+id/rabMienNam"
                     android:button="@drawable/cbx_mien"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -85,12 +86,23 @@
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
                     android:text="Miền Nam"/>
-
                 <RadioButton
+                    android:id="@+id/rabMienTrung"
                     android:button="@drawable/cbx_mien"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@android:color/white"
+                    android:textStyle="bold"
+                    android:text="Miền Trung"/>
+
+                <RadioButton
+                    android:id="@+id/rabMienBac"
+                    android:button="@drawable/cbx_mien"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:paddingLeft="10dp"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
@@ -99,30 +111,40 @@
             </RadioGroup>
 
             <EditText
+                android:id="@+id/tourID"
                 style="@style/Edittext"
                 android:drawableLeft="@drawable/code_add"
                 android:drawablePadding="20dp"
                 android:hint="Mã tour"/>
 
             <EditText
+                android:id="@+id/tourTitle"
                 style="@style/Edittext"
                 android:drawableLeft="@drawable/name_add"
                 android:drawablePadding="20dp"
                 android:hint="Tên tour"/>
-
             <EditText
+                android:id="@+id/tourTime"
+                style="@style/Edittext"
+                android:drawableLeft="@drawable/price_add"
+                android:drawablePadding="20dp"
+                android:hint="Thời gian"/>
+            <EditText
+                android:id="@+id/tourDescript"
                 style="@style/Edittext"
                 android:drawableLeft="@drawable/descio_add"
                 android:drawablePadding="20dp"
-                android:hint="Trạng thái tour"/>
+                android:hint="Mô tả chi tiết tour tour"/>
 
             <EditText
+                android:id="@+id/tourPrice"
                 style="@style/Edittext"
                 android:drawableLeft="@drawable/price_add"
                 android:drawablePadding="20dp"
                 android:hint="Giá tiền"/>
 
             <TextView
+                android:id="@+id/btnAdd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
