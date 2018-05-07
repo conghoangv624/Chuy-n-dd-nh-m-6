@@ -90,11 +90,11 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
     }
 
 
-    @Override
+   /* @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        *//*View view = inflater.inflate(R.layout.fragment_home, container, false);
         edtSearchMap = (EditText) view.findViewById(R.id.edt_search_map);
         imgSetGPSLocation = (ImageView) view.findViewById(R.id.img_set_gps);
         getLocationPermisssion();
@@ -108,8 +108,8 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
 //        arrayList.add(new mdLocation("TRI", 10.85355108, 106.76069215));
 //        arrayList.add(new mdLocation("SON", 10.85186517, 106.76075652));
 //        mLocations.child("Locations").setValue(arrayList);
-        return view;
-    }
+        return view;*//*
+    }*/
      // Get location device , Show where we are
     private void getDeviceLocation() {
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());

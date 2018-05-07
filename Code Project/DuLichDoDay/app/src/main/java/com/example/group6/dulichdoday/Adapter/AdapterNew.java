@@ -2,8 +2,11 @@ package com.example.group6.dulichdoday.Adapter;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +19,8 @@ import android.widget.Toast;
 import com.example.group6.dulichdoday.R;
 import com.example.group6.dulichdoday.Models.Comment;
 import com.example.group6.dulichdoday.Models.New;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -27,11 +32,15 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
 
     ArrayList<New> arrNew;
     Context context;
+    String name;
 
     private RecyclerView recyclerComment;
     private ArrayList<Comment> arrayListComment;
     private AdapterComment adapterComment;
     private TextView tv;
+
+    FirebaseDatabase database;
+    DatabaseReference refer;
 
 
     public AdapterNew(ArrayList<New> arrNew, Context context) {
@@ -51,12 +60,22 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
     @Override
     public void onBindViewHolder(final AdapterNew.ViewHolder holder, final int position) {
 
-        holder.imgTile.setImageResource(arrNew.get(position).getImgProduct());
+        //khoi tao
+        database = FirebaseDatabase.getInstance();
+        refer = database.getReference();
+
+
+
+        holder.imgTile.setImageBitmap(Base64ToImage(arrNew.get(position).getImgProduct()));
+
+        //
+        holder.name.setText(arrNew.get(position).getName());
         holder.tvTitle.setText(arrNew.get(position).getDescription());
 
         holder.tvNumberLike.setText(arrNew.get(position).getnNumberLike());
         holder.tvNumberUnlike.setText(arrNew.get(position).getnNumberUnlike());
         holder.tvNumberCommment.setText(arrNew.get(position).getnNumberComment());
+
 
         holder.cbxHomeLike.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,11 +164,22 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
         return arrNew.size();
     }
 
+    public Bitmap Base64ToImage(String base64String) {
+
+        byte[] decodeString = Base64.decode(base64String, Base64.DEFAULT);
+        Bitmap decoded = BitmapFactory.decodeByteArray(decodeString,0, decodeString.length);
+
+        return decoded;
+
+
+    };
+
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tvTitle;
         TextView tvNumberLike;
         TextView tvNumberUnlike;
         TextView tvNumberCommment;
+        TextView name;
         ImageView imgTile;
         CheckBox cbxHomeLike;
         CheckBox cbxHomeUnlike;
@@ -159,6 +189,7 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
             super(itemView);
             imgTile = (ImageView) itemView.findViewById(R.id.img_title);
             tvTitle = (TextView) itemView.findViewById(R.id.tv_title);
+            name = (TextView) itemView.findViewById(R.id.name);
 
             tvNumberLike = (TextView) itemView.findViewById(R.id.tv_number_like);
             tvNumberUnlike = (TextView) itemView.findViewById(R.id.tv_number_unlike);
@@ -170,5 +201,4 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
 
         }
     }
-
 }

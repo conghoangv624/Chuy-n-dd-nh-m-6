@@ -15,10 +15,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.group6.dulichdoday.Models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -26,8 +30,6 @@ import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private Spinner spinner;
-    private ArrayList<String> arrSpinner;
     private TextView tvCancelRegister;
     private Intent myIntent;
     private EditText edtMail,edtPass,edtPASS;
@@ -37,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
     private ProgressDialog mProgress;
     /// FIREBASE
     private FirebaseAuth mAuth;
-    private DatabaseReference root;
+    private DatabaseReference mData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +47,10 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.register_layout);
 
         tvCancelRegister = (TextView) findViewById(R.id.cancel_Register);
+
         edtMail = (EditText) findViewById(R.id.edtMail);
         edtPass = (EditText) findViewById(R.id.edtPass);
+
         edtPASS = (EditText) findViewById(R.id.edtPassAg);
         radioGroup = (RadioGroup) findViewById(R.id.rdg);
         rb1 = (RadioButton) findViewById(R.id.rdb1);
@@ -56,69 +60,63 @@ public class RegisterActivity extends AppCompatActivity {
 
         //Get FireBasae
         mAuth = FirebaseAuth.getInstance();
-
-        root = FirebaseDatabase.getInstance().getReference().child("Users");;
-
+        mData = FirebaseDatabase.getInstance().getReference().child("Users");
+        //Progressbar
+        mProgress = new ProgressDialog(this);
+        mProgress.setTitle("Đang tạo tài khoản");
+        mProgress.setMessage("Xin vui lòng chờ");
 
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Progressbar
-                mProgress = new ProgressDialog(RegisterActivity.this);
-                mProgress.setTitle("Đang tạo tài khoản");
-                mProgress.setMessage("Xin vui lòng chờ");
-
                 final String email = edtMail.getText().toString().trim();
-                final String pass = edtPass.getText().toString().trim();
-
+                final String password = edtPass.getText().toString().trim();
+                final String type1 = rb1.getText().toString().trim();
+                final String type2 = rb2.getText().toString().trim();
 
                 if (TextUtils.isEmpty(email)) {
-                    edtMail.setError("Không bỏ trống");
+                    Toast.makeText(getApplicationContext(), "Nhập email", Toast.LENGTH_SHORT).show();
                     return;
-                } else if (TextUtils.isEmpty(pass)) {
-                    edtPass.setError("Không bỏ trống");
+                } else if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getApplicationContext(), "Nhập password", Toast.LENGTH_SHORT).show();
                     return;
-                } else if (pass.length() < 10 || pass.length() > 30) {
-                    edtPass.setError("Số kí tự không hợp lệ");
+                } else if (password.length() < 10 || password.length() > 30) {
+                    Toast.makeText(getApplicationContext(), "Nhập lại password", Toast.LENGTH_SHORT).show();
                     return;
-                }
-                else  {
+                } else  {
                     mProgress.show();
-                    //Create user
-                    mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-
-                            if (!task.isSuccessful()) {
-                                mProgress.dismiss();
-                                Toast.makeText(RegisterActivity.this, "Tạo tài khoản thất bại",
-                                        Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(RegisterActivity.this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
-                                mProgress.dismiss();
-                                String userID = mAuth.getCurrentUser().getUid();
-                                DatabaseReference current_user_id = root.child(userID);
-                                current_user_id.child("name").setValue(email);
-                                current_user_id.child("password").setValue(pass);
-                                if (rb1.isSelected())
-                                {
-                                    rb1.getText().toString().trim();
-                                    current_user_id.child("type").setValue(rb1);
-                                }else {
-                                    rb2.getText().toString().trim();
-                                    current_user_id.child("type").setValue(rb2);
-                                }
-
-                            }
-                        }
-                    });
                 }
-                edtMail.setText("");
-                edtPass.setText("");
-                edtPASS.setText("");
-                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+
+                //Create user
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+
+                        if (!task.isSuccessful()) {
+                            mProgress.dismiss();
+                            Toast.makeText(RegisterActivity.this, "Tạo tài khoản thất bại",
+                                    Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
+
+
+                            String userID = mAuth.getCurrentUser().getUid();
+                            if (rb1.isChecked()) {
+                                mData.child(userID).setValue(new User(email+"",password +"","Thành viên"));
+                            }else if (rb2.isChecked()) {
+                                mData.child(userID).setValue(new User(email+"",password +"","Quản lý"));
+                            }
+
+
+
+                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                        }
+                    }
+                });
             }
         });
+
+
 
 
         tvCancelRegister.setOnClickListener(new View.OnClickListener() {
@@ -130,5 +128,4 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
-
 }

@@ -20,44 +20,19 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"
-                android:gravity="center|left">
+                android:gravity="center">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Group 6"
-                    android:textStyle="bold"
-                    android:textColor="@android:color/black"
-                    android:textSize="17dp"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:src="@drawable/ic_phone"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0908113113"
-                        android:textStyle="bold"
-                        android:layout_marginLeft="10dp"
-                        android:textColor="@android:color/black"
-                        android:textSize="15dp"/>
-
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/img_tour"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"/>
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.5"
+                android:layout_weight="2"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
                 android:orientation="vertical">

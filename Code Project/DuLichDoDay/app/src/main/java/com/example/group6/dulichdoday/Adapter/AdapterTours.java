@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.group6.dulichdoday.BookTour;
 import com.example.group6.dulichdoday.EditPlaceActivity;
 import com.example.group6.dulichdoday.Models.Tours;
 import com.example.group6.dulichdoday.R;

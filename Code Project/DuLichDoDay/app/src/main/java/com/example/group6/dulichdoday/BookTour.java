@@ -51,6 +51,7 @@ public class BookTour extends AppCompatActivity {
 
         loadData();
     }
+
     private void loadData() {
         arrTour = new ArrayList<Tour>();
         // Set adapter
@@ -85,7 +86,6 @@ public class BookTour extends AppCompatActivity {
 
             }
         });
+
     }
-
-
 }

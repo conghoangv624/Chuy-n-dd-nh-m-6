@@ -16,12 +16,6 @@ import java.util.ArrayList;
 
 
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link NewFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link NewFragment#newInstance} factory method to
- * create an instance of this fragment.
  */
 public class NewFragment extends Fragment {
 
@@ -52,11 +46,11 @@ public class NewFragment extends Fragment {
 
         // Array
         arrayListSP = new ArrayList<New>();
-        arrayListSP.add(new New("Hãy đi đến Đà Lạt",R.mipmap.img1,"11","22","33"));
+        /*arrayListSP.add(new New("Hãy đi đến Đà Lạt",R.mipmap.img1,"11","22","33"));
         arrayListSP.add(new New("Hãy đi đến Nha Trang",R.mipmap.img_2,"11","22","33"));
         arrayListSP.add(new New("Hãy đi đến Vũng Tàu",R.mipmap.img_3,"11","22","33"));
         arrayListSP.add(new New("Hãy đi đến Sài Gòn",R.mipmap.img_4,"11","22","33"));
-        arrayListSP.add(new New("Hãy đi đến Phú Quốc   ",R.mipmap.img_5,"11","22","33"));
+        arrayListSP.add(new New("Hãy đi đến Phú Quốc   ",R.mipmap.img_5,"11","22","33"));*/
 
 
         // Set adapter

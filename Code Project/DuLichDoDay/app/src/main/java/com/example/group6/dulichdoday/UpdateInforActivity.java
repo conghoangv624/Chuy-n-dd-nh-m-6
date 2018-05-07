@@ -1,6 +1,7 @@
 package com.example.group6.dulichdoday;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -13,8 +14,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.group6.dulichdoday.Models.Tours;
+import com.example.group6.dulichdoday.Models.UserInfor;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -23,6 +30,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
+import java.util.AbstractSequentialList;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -34,6 +43,17 @@ public class UpdateInforActivity extends AppCompatActivity {
     TextView btnCancel;
     TextView btnCamera;
     TextView btnGallery;
+    TextView btnUpdate;
+    EditText edtName;
+    EditText edtDate;
+    EditText edtSet;
+    EditText edtPhone;
+    EditText edtAddress;
+    TextView  tvUpdate;
+
+    ArrayList<UserInfor> arrNew;
+    Context context;
+    private DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
 
 
     int PICK_IMAGE_CAMERA = 1;
@@ -93,6 +113,7 @@ public class UpdateInforActivity extends AppCompatActivity {
 
         //huy bo cap nhap thong tin
         tvCancle_update = (TextView) findViewById(R.id.cancel_update);
+        final Intent intentCancel = new Intent(UpdateInforActivity.this,DetailPersonalActivity.class);
         tvCancle_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,6 +122,58 @@ public class UpdateInforActivity extends AppCompatActivity {
             }
         });
 
+        /*tvUpdate = (TextView) findViewById(R.id.btn_update);
+        tvUpdate.setOnClickListener(new View.OnClickListener() {
+            private Object adapterPosition;
+
+            public Object getAdapterPosition() {
+                return adapterPosition;
+            }
+
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, DetailPersonalActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("userInfo", arrNew.get((Integer) getAdapterPosition()).getName());
+                intent.putExtra("bundle", bundle);
+                //intent.putExtra("position",getAdapterPosition());
+                context.startActivity(intent);
+
+            }
+        });
+*/
+
+        //cap nhap thong tin
+       /* edtName = (EditText) findViewById(R.id.edtName);
+        edtDate = (EditText) findViewById(R.id.edtDate);
+        edtSet = (EditText) findViewById(R.id.edtSet);
+        edtPhone = (EditText) findViewById(R.id.edtPhone);
+        edtAddress = (EditText) findViewById(R.id.edtAddress);
+        btnUpdate = (TextView) findViewById(R.id.btnUpdate);
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (edtName.getText().toString() == "" || edtDate.getText().toString() == "" || edtSet.getText().toString() == "" || edtPhone.getText().toString() == "" || edtAddress.getText().toString() == "")
+                {
+                    Toast.makeText(UpdateInforActivity.this, "Điền đầy đủ", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                   *//* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    //user.updateProfile(edtPhone.getText().toString())).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                startActivity(intentCancel);
+                                Toast.makeText(UpdateInforActivity.this, "Thay đổi thành công", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(UpdateInforActivity.this, "Thay đổi thất bại", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });*//*
+                }
+            }
+        });*/
     }
     // Select image from camera and gallery
 

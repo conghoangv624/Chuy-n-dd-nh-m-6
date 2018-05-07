@@ -5,27 +5,17 @@ package com.example.group6.dulichdoday.Models;
  */
 
 public class Account {
-    private String account_ID;
     private String password;
     private String userName;
-    private int type;
+    private String type;
 
     public Account() {
     }
 
-    public Account(String account_ID, String password, String userName, int type) {
-        this.account_ID = account_ID;
+    public Account(String password, String userName, String type) {
         this.password = password;
         this.userName = userName;
         this.type = type;
-    }
-
-    public String getAccount_ID() {
-        return account_ID;
-    }
-
-    public void setAccount_ID(String account_ID) {
-        this.account_ID = account_ID;
     }
 
     public String getPassword() {
@@ -44,11 +34,11 @@ public class Account {
         this.userName = userName;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
     }
 }

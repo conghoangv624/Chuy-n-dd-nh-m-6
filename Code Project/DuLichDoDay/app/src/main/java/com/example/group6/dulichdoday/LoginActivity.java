@@ -44,7 +44,8 @@ public class LoginActivity extends AppCompatActivity {
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                /*Intent myIntentLogin = new Intent(getApplication(), MainLayoutActivity.class);
+                startActivity(myIntentLogin);*/
                 mProgress = new ProgressDialog(LoginActivity.this);
                 mProgress.setTitle("Đang kết nối");
                 mProgress.setMessage("Vui lòng chờ");

@@ -15,6 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,6 +32,9 @@ public class UserFragment extends Fragment {
     private LinearLayout manager;
     private LinearLayout password;
     private LinearLayout logout;
+    private FirebaseAuth mAuth;
+    private GoogleApiClient mGoogleApiClient;
+
     public UserFragment() {
         // Required empty public constructor
     }
@@ -72,12 +77,17 @@ public class UserFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent inpersonal1 = new Intent(getContext(),LoginActivity.class);
-                startActivity(inpersonal1);
+                if (mGoogleApiClient.isConnected()) {
+                    Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                    mGoogleApiClient.disconnect();
+                } else {
+                    mAuth.signOut();
+                    Toast.makeText(getActivity(), "Đăng xuất tài khoản thành công", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                }
 
             }
         });
-
         return view;
     }
 

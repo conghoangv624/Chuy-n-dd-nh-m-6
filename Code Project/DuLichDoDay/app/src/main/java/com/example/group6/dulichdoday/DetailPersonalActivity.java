@@ -9,6 +9,7 @@ import android.widget.TextView;
 public class DetailPersonalActivity extends AppCompatActivity {
 
     private TextView tvUpdate;
+    private TextView btnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +22,15 @@ public class DetailPersonalActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentUpdate = new Intent(DetailPersonalActivity.this,UpdateInforActivity.class);
                 startActivity(intentUpdate);
+            }
+        });
+
+        btnCancel = (TextView) findViewById(R.id.btnCancel);
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DetailPersonalActivity.this, MainLayoutActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -5,8 +5,9 @@ package com.example.group6.dulichdoday.Models;
  */
 
 public class New {
+    private String name;
     private String description;
-    private int imgProduct;
+    private String imgProduct;
     private String nNumberLike;
     private String nNumberUnlike;
     private String nNumberComment;
@@ -18,8 +19,9 @@ public class New {
 
     }
 
-    public New(String description, int imgProduct, String nNumberLike, String nNumberUnlike, String nNumberComment) {
+    public New(String description, String name, String imgProduct, String nNumberLike, String nNumberUnlike, String nNumberComment) {
         this.description = description;
+        this.name = name;
         this.imgProduct = imgProduct;
         this.nNumberLike = nNumberLike;
         this.nNumberUnlike = nNumberUnlike;
@@ -27,7 +29,13 @@ public class New {
         this.isCheckLike = isCheckLike;
         this.isCheckUnLike = isCheckUnLike;
     }
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
     public String getDescription() {
         return description;
     }
@@ -36,11 +44,11 @@ public class New {
         this.description = description;
     }
 
-    public int getImgProduct() {
+    public String getImgProduct() {
         return imgProduct;
     }
 
-    public void setImgProduct(int imgProduct) {
+    public void setImgProduct(String imgProduct) {
         this.imgProduct = imgProduct;
     }
 
