@@ -41,7 +41,7 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
 
     private DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
     DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-    Query applesQuery = ref.child("Tour").orderByChild("title").equalTo("Apple");
+    Query applesQuery = ref.child("TourDat").orderByChild("title");
 
 
     public AdapterTourList(ArrayList<Tour> arrNew, Context context) {
@@ -117,7 +117,7 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
                 switch (menuItem.getItemId()){
                     case 1:
                         arrNew.remove(getAdapterPosition());
-                        mData.child("BookTour").setValue(arrNew);
+                        mData.child("TourDat").setValue(arrNew);
                         notifyDataSetChanged();
                         break;
                     case 2:
@@ -126,6 +126,7 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
                 return true;
             }
         };
+
     }
 }
 

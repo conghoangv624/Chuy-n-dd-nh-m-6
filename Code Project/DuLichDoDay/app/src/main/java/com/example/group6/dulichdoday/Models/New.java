@@ -8,21 +8,23 @@ public class New {
     private String name;
     private String description;
     private String imgProduct;
-    private String nNumberLike;
-    private String nNumberUnlike;
-    private String nNumberComment;
+    private Long nNumberLike;
+    private Long nNumberUnlike;
+    private Long nNumberComment;
     private boolean isCheckLike;
     private boolean isCheckUnLike;
+    private String Key;
 
 
     public New() {
 
     }
 
-    public New(String description, String name, String imgProduct, String nNumberLike, String nNumberUnlike, String nNumberComment) {
+    public New(String description, String name, String imgProduct, String Key,Long nNumberLike, Long nNumberUnlike, Long nNumberComment) {
         this.description = description;
         this.name = name;
         this.imgProduct = imgProduct;
+        this.Key = Key;
         this.nNumberLike = nNumberLike;
         this.nNumberUnlike = nNumberUnlike;
         this.nNumberComment = nNumberComment;
@@ -52,27 +54,35 @@ public class New {
         this.imgProduct = imgProduct;
     }
 
-    public String getnNumberLike() {
+    public String getKey() {
+        return Key;
+    }
+
+    public void setKey(String key) {
+        Key = key;
+    }
+
+    public Long getnNumberLike() {
         return nNumberLike;
     }
 
-    public void setnNumberLike(String nNumberLike) {
+    public void setnNumberLike(Long nNumberLike) {
         this.nNumberLike = nNumberLike;
     }
 
-    public String getnNumberUnlike() {
+    public Long getnNumberUnlike() {
         return nNumberUnlike;
     }
 
-    public void setnNumberUnlike(String nNumberUnlike) {
+    public void setnNumberUnlike(Long nNumberUnlike) {
         this.nNumberUnlike = nNumberUnlike;
     }
 
-    public String getnNumberComment() {
+    public Long getnNumberComment() {
         return nNumberComment;
     }
 
-    public void setnNumberComment(String nNumberComment) {
+    public void setnNumberComment(Long nNumberComment) {
         this.nNumberComment = nNumberComment;
     }
 

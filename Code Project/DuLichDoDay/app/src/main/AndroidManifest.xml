@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.group6.dulichdoday">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -18,12 +18,9 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/key_map" />
 
-
-
         <activity
             android:name=".MainLayoutActivity"
-            android:label="@string/app_name" >
-        </activity>
+            android:label="@string/app_name"></activity>
         <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,9 +39,10 @@
         <activity android:name=".AddPlaceActivity" />
         <activity android:name=".EditPlaceActivity" />
         <activity android:name=".TourListActivity" />
+        <activity android:name=".UpdateInforActivity"></activity>
         <activity android:name=".ManagerBookingTourActivity" />
-        <activity android:name=".BookTour"/>
-        <activity android:name=".UpdateInforActivity"/>
+        <activity android:name=".BookTour" />
+        <activity android:name=".Dialog_Change"></activity>
     </application>
 
 </manifest>

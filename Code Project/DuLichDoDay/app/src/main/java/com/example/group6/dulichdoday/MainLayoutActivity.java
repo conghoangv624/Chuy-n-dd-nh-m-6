@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import com.example.group6.dulichdoday.Models.UserInfor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -19,9 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class MainLayoutActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
-    private RadioButton rb1;
-    private RadioButton rb2;
-    private TextView User;
+    private TextView UserInfo;
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private DatabaseReference mDataUser = FirebaseDatabase.getInstance().getReference();
     //
@@ -55,14 +54,15 @@ public class MainLayoutActivity extends AppCompatActivity {
                     mData.child("Users").addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                            com.example.group6.dulichdoday.Models.User user = dataSnapshot.getValue(com.example.group6.dulichdoday.Models.User.class);
-                            if (user.getUserMail().equalsIgnoreCase(mAuth.getCurrentUser().getEmail())) {
-                                if (user.getUserType().equalsIgnoreCase("Thành viên")) {
+
+                            UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);
+                            if (userInfor.getEmail().equalsIgnoreCase(mAuth.getCurrentUser().getEmail())) {
+                                if (userInfor.getUserType().equalsIgnoreCase("Thành viên")) {
                                     UserFragment fragmentUser = new UserFragment();
                                     android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
                                     fragmentTransaction4.replace(R.id.content,fragmentUser,"Fragment");
                                     fragmentTransaction4.commit();
-                                } else if (user.getUserType().equalsIgnoreCase("Quản lý")) {
+                                } else if (userInfor.getUserType().equalsIgnoreCase("Quản lý")) {
                                     UserBusinessFragment fragmentUserBusiness = new UserBusinessFragment();
                                     android.support.v4.app.FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction();
                                     fragmentTransaction5.replace(R.id.content,fragmentUserBusiness,"Fragment");

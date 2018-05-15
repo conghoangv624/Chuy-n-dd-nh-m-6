@@ -85,9 +85,10 @@
                                 android:layout_marginBottom="20dp">
 
                                 <ImageView
+                                    android:id="@+id/imagePresonal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:src="@mipmap/phuc"/>
+                                    android:src="@mipmap/phuc" />
 
                             </LinearLayout>
 
@@ -116,6 +117,7 @@
                                         android:src="@drawable/detail_user" />
 
                                     <TextView
+                                        android:id="@+id/edtPresonalName"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingLeft="20dp"
@@ -142,6 +144,7 @@
                                         android:layout_height="25dp"
                                         android:src="@drawable/ic_birthday"/>
                                     <TextView
+                                        android:id="@+id/edtPresonalDate"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingLeft="20dp"
@@ -168,6 +171,7 @@
                                         android:layout_height="25dp"
                                         android:src="@drawable/detail_sex"/>
                                     <TextView
+                                        android:id="@+id/edtPresonalSex"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingLeft="20dp"
@@ -194,6 +198,7 @@
                                         android:layout_height="25dp"
                                         android:src="@drawable/detail_phone"/>
                                     <TextView
+                                        android:id="@+id/edtPresonalPhone"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingLeft="20dp"
@@ -221,6 +226,7 @@
                                         android:src="@drawable/detail_address"/>
 
                                     <TextView
+                                        android:id="@+id/edtPresonalAddress"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingLeft="20dp"

@@ -69,24 +69,28 @@
                 android:src="@drawable/image"/>
 
             <EditText
+                android:id="@+id/edtName"
                 style="@style/Edittext"
                 android:drawableLeft="@drawable/detail_user"
                 android:drawablePadding="20dp"
                 android:hint="Họ và tên"/>
 
             <EditText
+                android:id="@+id/edtDate"
                 style="@style/Edittext"
                 android:drawableLeft="@drawable/ic_birthday"
                 android:drawablePadding="20dp"
                 android:hint="Ngày sinh"/>
 
             <EditText
+                android:id="@+id/edtSex"
                 style="@style/Edittext"
                 android:drawableLeft="@drawable/ic_sex"
                 android:drawablePadding="20dp"
                 android:hint="Giới tính"/>
 
             <EditText
+                android:id="@+id/edtPhone"
                 style="@style/Edittext"
                 android:inputType="number"
                 android:drawableLeft="@drawable/ic_phone"
@@ -94,12 +98,14 @@
                 android:hint="Số điện thoại"/>
 
             <EditText
+                android:id="@+id/edtAddress"
                 style="@style/Edittext"
                 android:drawableLeft="@drawable/detail_address"
                 android:drawablePadding="20dp"
                 android:hint="Địa chỉ"/>
 
             <TextView
+                android:id="@+id/btnUpdateUser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

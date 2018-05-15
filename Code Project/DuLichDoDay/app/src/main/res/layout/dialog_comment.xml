@@ -53,14 +53,14 @@
                 android:id="@+id/edt_comment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Viết bình luận"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:paddingTop="5dp"
-                android:paddingBottom="5dp"
+                android:background="@drawable/custom_edt"
                 android:drawablePadding="20dp"
                 android:drawableRight="@drawable/send"
-                android:background="@drawable/custom_edt"/>
+                android:hint="Viết bình luận"
+                android:paddingBottom="5dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:paddingTop="5dp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerComment"

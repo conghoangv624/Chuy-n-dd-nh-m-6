@@ -5,7 +5,7 @@ package com.example.group6.dulichdoday.Models;
  */
 
 public class User {
-    private String userMail;
+    /*private String userMail;
     private String userPass;
     private String userType;
 
@@ -41,5 +41,5 @@ public class User {
 
     public void setUserType(String userType) {
         this.userType = userType;
-    }
+    }*/
 }

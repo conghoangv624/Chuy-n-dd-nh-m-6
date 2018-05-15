@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.group6.dulichdoday.Models.User;
+import com.example.group6.dulichdoday.Models.UserInfor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -40,6 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
     /// FIREBASE
     private FirebaseAuth mAuth;
     private DatabaseReference mData;
+    private DatabaseReference mData1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +60,10 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister = (Button) findViewById(R.id.btnRegister);
 
 
+
         //Get FireBasae
         mAuth = FirebaseAuth.getInstance();
+        mData1 = FirebaseDatabase.getInstance().getReference();
         mData = FirebaseDatabase.getInstance().getReference().child("Users");
         //Progressbar
         mProgress = new ProgressDialog(this);
@@ -101,14 +105,16 @@ public class RegisterActivity extends AppCompatActivity {
 
 
                             String userID = mAuth.getCurrentUser().getUid();
+                            String key = mData1.child("Users").push().getKey();
                             if (rb1.isChecked()) {
-                                mData.child(userID).setValue(new User(email+"",password +"","Thành viên"));
+
+                                mData1.child("Users").child(key).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),"","","Thành Viên",key,""));
+                               // mData.child(userID).setValue(new User(email+"",password +"","Thành viên"));
                             }else if (rb2.isChecked()) {
-                                mData.child(userID).setValue(new User(email+"",password +"","Quản lý"));
+
+                                mData1.child("Users").child(key).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),"","","Quản lý",key,""));
+                                //mData.child(userID).setValue(new User(email+"",password +"","Quản lý"));
                             }
-
-
-
                             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         }
                     }

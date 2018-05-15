@@ -66,6 +66,7 @@
                 android:gravity="center|left">
 
                 <ImageView
+                    android:id="@+id/chon"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginLeft="10dp"
@@ -79,8 +80,10 @@
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:layout_marginLeft="10dp"
-                    android:background="@drawable/custom_edt"/>
+                    android:background="@drawable/custom_edt"
+                    android:id="@+id/newfeed"/>
                 <ImageView
+                    android:id="@+id/gui"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="5dp"

@@ -17,9 +17,16 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.group6.dulichdoday.Models.Tours;
+import com.example.group6.dulichdoday.Models.User;
 import com.example.group6.dulichdoday.Models.UserInfor;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -40,21 +47,27 @@ public class UpdateInforActivity extends AppCompatActivity {
     private static final int CAM_REQUEST = 1747;
     private TextView tvCancle_update;
     private ImageView img_Choosen;
-    TextView btnCancel;
-    TextView btnCamera;
-    TextView btnGallery;
-    TextView btnUpdate;
-    EditText edtName;
-    EditText edtDate;
-    EditText edtSet;
-    EditText edtPhone;
-    EditText edtAddress;
-    TextView  tvUpdate;
+    private TextView btnCancel;
+    private TextView btnCamera;
+    private TextView btnGallery;
+    private TextView btnUpdate;
+    private EditText edtName;
+    private EditText edtDate;
+    private EditText edtSet;
+    private EditText edtPhone;
+    private EditText edtAddress;
+    private TextView  tvUpdate;
+    private EditText edtUpdateName;
+    private EditText edtUpdateDate;
+    private EditText edtUpdateSex;
+    private EditText edtUpdatePhone;
+    private EditText edtUpdateAddress;
+    private TextView btnUpdateUser;
+    DatabaseReference mData;
+    FirebaseAuth mAuth;
 
     ArrayList<UserInfor> arrNew;
     Context context;
-    private DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
-
 
     int PICK_IMAGE_CAMERA = 1;
     int PICK_IMAGE_GALLERY = 2;
@@ -70,6 +83,8 @@ public class UpdateInforActivity extends AppCompatActivity {
 
         //hien thi dialog chuc nang hinh anh
         init();
+        mData = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
         final Dialog dialog = new Dialog(UpdateInforActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
         dialog.setContentView(R.layout.dialog_choosen);
@@ -122,61 +137,49 @@ public class UpdateInforActivity extends AppCompatActivity {
             }
         });
 
-        /*tvUpdate = (TextView) findViewById(R.id.btn_update);
-        tvUpdate.setOnClickListener(new View.OnClickListener() {
-            private Object adapterPosition;
+     /*  mData.child("Users").addChildEventListener(new ChildEventListener() {
+           @Override
+           public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+               final UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);
+               if (mAuth.getCurrentUser().getEmail().equalsIgnoreCase(userInfor.getEmail()))
+               {
+                   btnUpdateUser.setOnClickListener(new View.OnClickListener() {
+                       @Override
+                       public void onClick(View view) {
+                           mData.child("Users").child(userInfor.getUserID()).child("name").setValue(edtUpdateName.getText().toString());
+                           mData.child("Users").child(userInfor.getUserID()).child("Date").setValue(edtUpdateDate.getText().toString());
+                           mData.child("Users").child(userInfor.getUserID()).child("Sex").setValue(edtUpdateSex.getText().toString());
+                           mData.child("Users").child(userInfor.getUserID()).child("phoneNumber").setValue(edtUpdatePhone.getText().toString());
+                           mData.child("Users").child(userInfor.getUserID()).child("address").setValue(edtUpdateAddress.getText().toString());
 
-            public Object getAdapterPosition() {
-                return adapterPosition;
-            }
+                       }
+                   });
+               }
+           }
 
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(context, DetailPersonalActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putString("userInfo", arrNew.get((Integer) getAdapterPosition()).getName());
-                intent.putExtra("bundle", bundle);
-                //intent.putExtra("position",getAdapterPosition());
-                context.startActivity(intent);
+           @Override
+           public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-            }
-        });
-*/
+           }
 
-        //cap nhap thong tin
-       /* edtName = (EditText) findViewById(R.id.edtName);
-        edtDate = (EditText) findViewById(R.id.edtDate);
-        edtSet = (EditText) findViewById(R.id.edtSet);
-        edtPhone = (EditText) findViewById(R.id.edtPhone);
-        edtAddress = (EditText) findViewById(R.id.edtAddress);
-        btnUpdate = (TextView) findViewById(R.id.btnUpdate);
+           @Override
+           public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-        btnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (edtName.getText().toString() == "" || edtDate.getText().toString() == "" || edtSet.getText().toString() == "" || edtPhone.getText().toString() == "" || edtAddress.getText().toString() == "")
-                {
-                    Toast.makeText(UpdateInforActivity.this, "Điền đầy đủ", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                   *//* FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                    //user.updateProfile(edtPhone.getText().toString())).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                startActivity(intentCancel);
-                                Toast.makeText(UpdateInforActivity.this, "Thay đổi thành công", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(UpdateInforActivity.this, "Thay đổi thất bại", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });*//*
-                }
-            }
-        });*/
+           }
+
+           @Override
+           public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+           }
+
+           @Override
+           public void onCancelled(DatabaseError databaseError) {
+
+           }
+       });*/
     }
-    // Select image from camera and gallery
 
+    // Select image from camera and gallery
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -224,21 +227,6 @@ public class UpdateInforActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-            /*try {
-                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
-                ByteArrayOutputStream bytes = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 50, bytes);
-                Log.e("Activity", "Pick from Gallery::>>> ");
-
-                imgPath = getRealPathFromURI(selectedImage);
-                destination = new File(imgPath.toString());
-                img_choosen.setImageBitmap(loadSampleResource(selectedImage,150,150));
-               // img_choosen.setImageBitmap(bitmap);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-            }*/
         }
     }
 
@@ -268,7 +256,12 @@ public class UpdateInforActivity extends AppCompatActivity {
     }
 
     private void init() {
-
         img_Choosen = (ImageView) findViewById(R.id.img_choosen);
+        edtUpdateName = (EditText) findViewById(R.id.edtName);
+        edtUpdateDate = (EditText) findViewById(R.id.edtDate);
+        edtUpdateSex = (EditText) findViewById(R.id.edtSex);
+        edtUpdatePhone = (EditText) findViewById(R.id.edtPhone);
+        edtUpdateAddress = (EditText) findViewById(R.id.edtAddress);
+        btnUpdateUser = (TextView) findViewById(R.id.btnUpdateUser);
     }
 }

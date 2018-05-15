@@ -74,7 +74,7 @@ public class PasswordActivity extends AppCompatActivity {
 
                 final Dialog dialog = new Dialog(PasswordActivity.this);
                 dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
-                dialog.setContentView(R.layout.dialog_user);
+                dialog.setContentView(R.layout.dialog__change);
                 dialog.setTitle("Do you want to remain logged on?");
                 Button btnOK = (Button) dialog.findViewById(R.id.dialog_ok);
                 dialog.show();
@@ -98,7 +98,7 @@ public class PasswordActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
-                                        startActivity(intent);
+                                        //startActivity(intent);
                                         Toast.makeText(PasswordActivity.this, "Thay đổi thành công", Toast.LENGTH_SHORT).show();
 
                                     } else {
@@ -107,6 +107,14 @@ public class PasswordActivity extends AppCompatActivity {
                                 }
                             });
                         }
+                    }
+                });
+
+                Button txtThoat = (Button) dialog.findViewById(R.id.dialog_cancel);
+                txtThoat.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
                     }
                 });
             }

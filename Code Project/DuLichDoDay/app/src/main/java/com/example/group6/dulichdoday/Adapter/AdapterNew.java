@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +17,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.group6.dulichdoday.R;
 import com.example.group6.dulichdoday.Models.Comment;
 import com.example.group6.dulichdoday.Models.New;
+import com.example.group6.dulichdoday.Models.User;
+import com.example.group6.dulichdoday.Models.like;
+import com.example.group6.dulichdoday.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by Nhan IT on 4/9/2018.
@@ -33,6 +42,8 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
     ArrayList<New> arrNew;
     Context context;
     String name;
+    DatabaseReference  dat = FirebaseDatabase.getInstance().getReference();
+    FirebaseAuth auth = FirebaseAuth.getInstance();
 
     private RecyclerView recyclerComment;
     private ArrayList<Comment> arrayListComment;
@@ -72,35 +83,105 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
         holder.name.setText(arrNew.get(position).getName());
         holder.tvTitle.setText(arrNew.get(position).getDescription());
 
-        holder.tvNumberLike.setText(arrNew.get(position).getnNumberLike());
-        holder.tvNumberUnlike.setText(arrNew.get(position).getnNumberUnlike());
-        holder.tvNumberCommment.setText(arrNew.get(position).getnNumberComment());
+        holder.tvNumberLike.setText(arrNew.get(position).getnNumberLike()+ "");
+        holder.tvNumberUnlike.setText(arrNew.get(position).getnNumberUnlike()+ "");
+        holder.tvNumberCommment.setText(arrNew.get(position).getnNumberComment()+"");
+        String key = arrNew.get(position).getKey();
+
+        //
+        dat.child("like").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                like a =  dataSnapshot.getValue(like.class);
+                try {
+                    if((a.getKey()).equals(auth.getCurrentUser().getUid())) {
+                        holder.cbxHomeLike.setChecked(true);
+                        holder.cbxHomeUnlike.setEnabled(false);
+                    }
+
+                }catch (Exception e){
+
+                }
+
+            }
+
+            //
 
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        //
+        dat.child("unlike").child(key).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                like a =  dataSnapshot.getValue(like.class);
+                try {
+                    if((a.getKey()).equals(auth.getCurrentUser().getUid())) {
+                        holder.cbxHomeUnlike.setChecked(true);
+                        holder.cbxHomeLike.setEnabled(false);
+                    }
+
+                }catch (Exception e){
+
+                }
+
+            }
+
+            //
+
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        //like
         holder.cbxHomeLike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if ( holder.cbxHomeLike.isChecked())
                 {
+                    String key = arrNew.get(position).getKey();
                     arrNew.get(position).setCheckLike(true);
+                    dat.child("baiviet").child(key).child("nNumberLike").setValue(arrNew.get(position).getnNumberLike()+1 );
+
+                    dat.child("like").child(key).setValue(new like(auth.getCurrentUser().getUid()));
                 }
                 else
                 {
+                    String key = arrNew.get(position).getKey();
                     arrNew.get(position).setCheckLike(false);
+                    dat.child("baiviet").child(key).child("nNumberLike").setValue(arrNew.get(position).getnNumberLike()-1 );
+                    dat.child("like").child(key).orderByChild("key").equalTo(auth.getCurrentUser().getUid()).getRef().setValue(null);
+                    holder.cbxHomeUnlike.setEnabled(true);
                 }
+
             }
         });
 
+        //unlike
         holder.cbxHomeUnlike.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if ( holder.cbxHomeUnlike.isChecked())
                 {
+                    String key = arrNew.get(position).getKey();
                     arrNew.get(position).setCheckUnLike(true);
+                    dat.child("baiviet").child(key).child("nNumberUnlike").setValue(arrNew.get(position).getnNumberUnlike()+1 );
+                    dat.child("unlike").child(key).setValue(new like(auth.getCurrentUser().getUid()));
                 }
                 else
                 {
+                    String key = arrNew.get(position).getKey();
                     arrNew.get(position).setCheckUnLike(false);
+                    dat.child("baiviet").child(key).child("nNumberUnlike").setValue(arrNew.get(position).getnNumberUnlike()-1 );
+                    dat.child("unlike").child(key).orderByChild("key").equalTo(auth.getCurrentUser().getUid()).getRef().setValue(null);
+                    holder.cbxHomeLike.setEnabled(true);
                 }
             }
         });
@@ -201,4 +282,5 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
 
         }
     }
+
 }

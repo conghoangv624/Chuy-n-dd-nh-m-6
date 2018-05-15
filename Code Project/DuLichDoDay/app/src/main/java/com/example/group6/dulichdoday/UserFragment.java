@@ -2,6 +2,7 @@ package com.example.group6.dulichdoday;
 
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,11 +37,11 @@ public class UserFragment extends Fragment {
     private LinearLayout logout;
     private FirebaseAuth mAuth;
     private GoogleApiClient mGoogleApiClient;
+    private Context applicationContext;
 
     public UserFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,11 +53,10 @@ public class UserFragment extends Fragment {
         password = (LinearLayout) view.findViewById(R.id.linear_pass);
         logout = (LinearLayout) view.findViewById(R.id.linear_logout);
 
-
         manager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent inManager = new Intent(getContext(),TourListActivity.class);
+                Intent inManager = new Intent(getContext(), TourListActivity.class);
                 startActivity(inManager);
             }
         });
@@ -62,7 +64,7 @@ public class UserFragment extends Fragment {
         password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent inpersonal = new Intent(getContext(),PasswordActivity.class);
+                Intent inpersonal = new Intent(getContext(), PasswordActivity.class);
                 startActivity(inpersonal);
             }
         });
@@ -70,25 +72,28 @@ public class UserFragment extends Fragment {
         personal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent inpersonal1 = new Intent(getContext(),DetailPersonalActivity.class);
+                Intent inpersonal1 = new Intent(getContext(), DetailPersonalActivity.class);
                 startActivity(inpersonal1);
             }
         });
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mGoogleApiClient.isConnected()) {
-                    Auth.GoogleSignInApi.signOut(mGoogleApiClient);
-                    mGoogleApiClient.disconnect();
+                if (mAuth.getCurrentUser() != null) {
+                    Toast.makeText(getActivity(), "Ban phai dang nhap", Toast.LENGTH_SHORT).show();
                 } else {
-                    mAuth.signOut();
-                    Toast.makeText(getActivity(), "Đăng xuất tài khoản thành công", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(getActivity(), LoginActivity.class));
+                    if (mGoogleApiClient.isConnected()) {
+                        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+                        mGoogleApiClient.disconnect();
+                    } else {
+                        mAuth.signOut();
+                        Toast.makeText(getActivity(), "Đăng xuất tài khoản thành công", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getActivity(), LoginActivity.class));
+                    }
                 }
-
             }
         });
+
         return view;
     }
-
 }
