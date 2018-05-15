@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.example.group6.dulichdoday.TourFragment">
 
     <LinearLayout
@@ -44,12 +45,12 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center|right">
-
+<!--
                 <ImageView
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/ic_sort"/>
+                    android:src="@drawable/ic_sort"/>-->
 
             </LinearLayout>
 
@@ -64,7 +65,9 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:gravity="center|right">
+                android:background="@android:color/white"
+                android:gravity="center|right"
+                >
 
                 <Spinner
                     android:id="@+id/spinnerTour"
