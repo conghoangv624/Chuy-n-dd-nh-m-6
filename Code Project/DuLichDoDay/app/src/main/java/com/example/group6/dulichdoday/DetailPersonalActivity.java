@@ -51,48 +51,42 @@ public class DetailPersonalActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intentUpdate = new Intent(DetailPersonalActivity.this,UpdateInforActivity.class);
                 startActivity(intentUpdate);
-
-                mData.child("Users").addChildEventListener(new ChildEventListener() {
-                    @Override
-                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        final UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);
-                        if (mAuth.getCurrentUser().getEmail().equalsIgnoreCase(userInfor.getEmail())) {
-                            tvUpdate.setOnClickListener(new View.OnClickListener() {
-                                @Override
-                                public void onClick(View view) {
-                                    mData.child("Users").child(userInfor.getUserID()).child("Name").setValue(txtPresonalName.getText().toString());
-                                    mData.child("Users").child(userInfor.getUserID()).child("Date").setValue(txtPresonalDate.getText().toString());
-                                    mData.child("Users").child(userInfor.getUserID()).child("Sex").setValue(txtPresonalSex.getText().toString());
-                                    mData.child("Users").child(userInfor.getUserID()).child("Phone").setValue(txtPresonalPhone.getText().toString());
-                                    mData.child("Users").child(userInfor.getUserID()).child("address").setValue(txtPresonalAddress.getText().toString());
-                                }
-                            });
-                        }
-                    }
-
-                    @Override
-                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-                    }
-
-                    @Override
-                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
             }
         });
 
+        mData.child("Users").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);
+                String useID = mAuth.getCurrentUser().getEmail();
+                if (useID.equalsIgnoreCase(userInfor.getEmail())) {
+                    txtPresonalName.setText(userInfor.getName());
+                    txtPresonalDate.setText(userInfor.getDate());
+                    txtPresonalSex.setText(userInfor.getSex());
+                    txtPresonalPhone.setText(userInfor.getPhoneNumber());
+                    txtPresonalAddress.setText(userInfor.getAddress());
+                }
+            }
 
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 }

@@ -104,15 +104,15 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this, "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
 
 
-                            String userID = mAuth.getCurrentUser().getUid();
-                            String key = mData1.child("Users").push().getKey();
+                            final String userID = mAuth.getCurrentUser().getUid();
+                            //String key = mData1.child("Users").push().getKey();
                             if (rb1.isChecked()) {
 
-                                mData1.child("Users").child(key).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),"","","Thành Viên",key,""));
+                                mData1.child("Users").child(userID).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),"","","","","Thành Viên","",""));
                                // mData.child(userID).setValue(new User(email+"",password +"","Thành viên"));
                             }else if (rb2.isChecked()) {
 
-                                mData1.child("Users").child(key).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),"","","Quản lý",key,""));
+                                mData1.child("Users").child(userID).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),"","","","","Quản lý","",""));
                                 //mData.child(userID).setValue(new User(email+"",password +"","Quản lý"));
                             }
                             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));

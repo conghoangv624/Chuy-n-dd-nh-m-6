@@ -143,14 +143,15 @@
                                         android:layout_width="25dp"
                                         android:layout_height="25dp"
                                         android:src="@drawable/ic_birthday"/>
+
                                     <TextView
                                         android:id="@+id/edtPresonalDate"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingLeft="20dp"
-                                        android:textSize="17dp"
                                         android:text="20/11/1997"
-                                        android:textStyle="bold"/>
+                                        android:textSize="17dp"
+                                        android:textStyle="bold" />
 
                                 </LinearLayout>
 

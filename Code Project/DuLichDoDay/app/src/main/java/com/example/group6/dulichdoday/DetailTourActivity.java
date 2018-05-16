@@ -49,7 +49,7 @@ public class DetailTourActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(DetailTourActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
         dialog.setContentView(R.layout.dialog_accept);
-
+        loadData();
         tvDatTour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,7 +70,7 @@ public class DetailTourActivity extends AppCompatActivity {
         });
         //
 
-        loadData();
+
     }
 
     private void loadData() {
