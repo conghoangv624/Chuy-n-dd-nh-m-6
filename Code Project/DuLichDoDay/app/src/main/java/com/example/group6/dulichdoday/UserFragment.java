@@ -48,6 +48,8 @@ public class UserFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_user, container, false);
+
+        mAuth = FirebaseAuth.getInstance();
         personal = (LinearLayout) view.findViewById(R.id.linear_personal);
         manager = (LinearLayout) view.findViewById(R.id.linear_product_manager);
         password = (LinearLayout) view.findViewById(R.id.linear_pass);
@@ -79,18 +81,9 @@ public class UserFragment extends Fragment {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (mAuth.getCurrentUser() != null) {
-                    Toast.makeText(getActivity(), "Ban phai dang nhap", Toast.LENGTH_SHORT).show();
-                } else {
-                    if (mGoogleApiClient.isConnected()) {
-                        Auth.GoogleSignInApi.signOut(mGoogleApiClient);
-                        mGoogleApiClient.disconnect();
-                    } else {
-                        mAuth.signOut();
-                        Toast.makeText(getActivity(), "Đăng xuất tài khoản thành công", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getActivity(), LoginActivity.class));
-                    }
-                }
+                mAuth.signOut();
+                Toast.makeText(getContext(), "Đăng xuất tài khoản thành công", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), LoginActivity.class));
             }
         });
 

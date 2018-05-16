@@ -29,6 +29,8 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -63,8 +65,16 @@ public class UpdateInforActivity extends AppCompatActivity {
     private EditText edtUpdatePhone;
     private EditText edtUpdateAddress;
     private TextView btnUpdateUser;
+    private ImageView imgPost;
+
     DatabaseReference mData;
     FirebaseAuth mAuth;
+
+    //firebaseImage
+    FirebaseStorage firebaseStorage;
+    StorageReference storageReference;
+    int REQUEST_CODE_IMAGE = 1;
+    Uri uri;
 
     ArrayList<UserInfor> arrNew;
     Context context;
@@ -137,7 +147,9 @@ public class UpdateInforActivity extends AppCompatActivity {
             }
         });
 
-     /*  mData.child("Users").addChildEventListener(new ChildEventListener() {
+
+
+       mData.child("Users").addChildEventListener(new ChildEventListener() {
            @Override
            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                final UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);
@@ -146,11 +158,44 @@ public class UpdateInforActivity extends AppCompatActivity {
                    btnUpdateUser.setOnClickListener(new View.OnClickListener() {
                        @Override
                        public void onClick(View view) {
-                           mData.child("Users").child(userInfor.getUserID()).child("name").setValue(edtUpdateName.getText().toString());
-                           mData.child("Users").child(userInfor.getUserID()).child("Date").setValue(edtUpdateDate.getText().toString());
-                           mData.child("Users").child(userInfor.getUserID()).child("Sex").setValue(edtUpdateSex.getText().toString());
-                           mData.child("Users").child(userInfor.getUserID()).child("phoneNumber").setValue(edtUpdatePhone.getText().toString());
-                           mData.child("Users").child(userInfor.getUserID()).child("address").setValue(edtUpdateAddress.getText().toString());
+                           mData.child("Users").addChildEventListener(new ChildEventListener() {
+                               @Override
+                               public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                   UserInfor users = dataSnapshot.getValue(UserInfor.class);
+                                   if (users.getEmail().equalsIgnoreCase(mAuth.getCurrentUser().getEmail())) {
+                                       final String userID = mAuth.getCurrentUser().getUid();
+                                       mData.child("Users").child(userID).child("name").setValue(edtUpdateName.getText().toString());
+                                       mData.child("Users").child(userID).child("date").setValue(edtUpdateDate.getText().toString());
+                                       mData.child("Users").child(userID).child("Sex").setValue(edtUpdateSex.getText().toString());
+                                       mData.child("Users").child(userID).child("phoneNumber").setValue(edtUpdatePhone.getText().toString());
+                                       mData.child("Users").child(userID).child("address").setValue(edtUpdateAddress.getText().toString());
+                                       Toast.makeText(UpdateInforActivity.this, "Cap nhap tài khoản thành công", Toast.LENGTH_SHORT).show();
+                                       Intent intent = new Intent(UpdateInforActivity.this,DetailPersonalActivity.class);
+                                       startActivity(intent);
+                                   }
+
+                               }
+
+                               @Override
+                               public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                               }
+
+                               @Override
+                               public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                               }
+
+                               @Override
+                               public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                               }
+
+                               @Override
+                               public void onCancelled(DatabaseError databaseError) {
+
+                               }
+                           });
 
                        }
                    });
@@ -176,7 +221,7 @@ public class UpdateInforActivity extends AppCompatActivity {
            public void onCancelled(DatabaseError databaseError) {
 
            }
-       });*/
+       });
     }
 
     // Select image from camera and gallery

@@ -8,6 +8,6 @@ public class Dialog_Change extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog__change);
+        setContentView(R.layout.dialog_change_passwork);
     }
 }

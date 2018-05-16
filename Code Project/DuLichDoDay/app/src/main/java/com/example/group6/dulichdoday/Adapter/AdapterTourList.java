@@ -1,5 +1,6 @@
 package com.example.group6.dulichdoday.Adapter;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -12,6 +13,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.group6.dulichdoday.EditPlaceActivity;
@@ -73,10 +76,42 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
 
     @Override
     public void onBindViewHolder(AdapterTourList.ViewHolder holder, final int position) {
+
+        /*Picasso.with(context).load(arrNew.get(position).getImgProduct()).into(holder.img);*/
         holder.tvCode.setText(arrNew.get(position).getCodeTour());
         holder.tvAdd.setText(arrNew.get(position).getAddTour());
         holder.tvDesciption.setText(arrNew.get(position).getDiscripTour());
         holder.tvPrice.setText(arrNew.get(position).getPriceTour());
+        final Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_listtour_reque);
+        dialog.setCanceledOnTouchOutside(false);
+
+
+        holder.img.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                dialog.show();
+                TextView tvDelete = (TextView) dialog.findViewById(R.id.deleteTourList);
+                TextView tvCancel = (TextView) dialog.findViewById(R.id.cancelTourList);
+                tvDelete.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        arrNew.remove(arrNew.get(position));
+                        mData.child("TourDat").setValue(arrNew);
+                        notifyDataSetChanged();
+                        dialog.dismiss();
+                    }
+                });
+                tvCancel.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
+                    }
+                });
+                return false;
+            }
+        });
     }
 
     @Override
@@ -88,11 +123,12 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
         return applicationContext;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnCreateContextMenuListener {
+    public class ViewHolder extends RecyclerView.ViewHolder  {
         TextView tvCode;
         TextView tvAdd;
         TextView tvDesciption;
         TextView tvPrice;
+        ImageView img;
         @RequiresApi(api = Build.VERSION_CODES.M)
         public ViewHolder(View itemView) {
             super(itemView);
@@ -100,104 +136,33 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
             tvAdd = (TextView) itemView.findViewById(R.id.tv_add_tour);
             tvDesciption = (TextView) itemView.findViewById(R.id.tv_discip_tour);
             tvPrice = (TextView) itemView.findViewById(R.id.tv_price_tour);
-            itemView.setOnCreateContextMenuListener(this);
+            img = (ImageView) itemView.findViewById(R.id.img_tour);
+            //itemView.setOnCreateContextMenuListener(this);
         }
 
-        @Override
-        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-            MenuItem delete = contextMenu.add(Menu.NONE,1,1,"Delete");
-            MenuItem cancel = contextMenu.add(Menu.NONE,2,2,"Cancel");
-            delete.setOnMenuItemClickListener(onEditMenu);
-            cancel.setOnMenuItemClickListener(onEditMenu);
-        }
+//        @Override
+//        public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
+//            MenuItem delete = contextMenu.add(Menu.NONE,1,1,"Delete");
+//            MenuItem cancel = contextMenu.add(Menu.NONE,2,2,"Cancel");
+//            delete.setOnMenuItemClickListener(onEditMenu);
+//            cancel.setOnMenuItemClickListener(onEditMenu);
+//        }
 
-        private final MenuItem.OnMenuItemClickListener onEditMenu = new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem menuItem) {
-                switch (menuItem.getItemId()){
-                    case 1:
-                        arrNew.remove(getAdapterPosition());
-                        mData.child("TourDat").setValue(arrNew);
-                        notifyDataSetChanged();
-                        break;
-                    case 2:
-                        break;
-                }
-                return true;
-            }
-        };
+//        private final MenuItem.OnMenuItemClickListener onEditMenu = new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem menuItem) {
+//                switch (menuItem.getItemId()){
+//                    case 1:
+////                        arrNew.remove(getAdapterPosition());
+////                        mData.child("TourDat").setValue(arrNew);
+////                        notifyDataSetChanged();
+//                        break;
+//                    case 2:
+//                        break;
+//                }
+//                return true;
+//            }
+//        };
 
     }
 }
-
-    /*ArrayList<Tour> arrNew;
-    Context context;
-
-    private DatabaseReference mData = FirebaseDatabase.getInstance().getReference();
-
-    public AdapterTourList(ArrayList<Tour> arrNew, Context context) {
-        this.arrNew = arrNew;
-        this.context = context;
-    }
-
-    @Override
-    public AdapterTourList.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View itemView = layoutInflater.inflate(R.layout.custom_tour_list,parent,false);
-        return new ViewHolder(itemView);
-    }
-
-    @Override
-    public void onBindViewHolder(AdapterTourList.ViewHolder holder, final int position) {
-        holder.tvCode.setText(arrNew.get(position).getCodeTour());
-        holder.tvAdd.setText(arrNew.get(position).getAddTour());
-        holder.tvDesciption.setText(arrNew.get(position).getDiscripTour());
-        holder.tvPrice.setText(arrNew.get(position).getPriceTour());
-    }
-
-    @Override
-    public int getItemCount() {
-        return arrNew.size();
-    }
-
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvCode;
-        TextView tvAdd;
-        TextView tvDesciption;
-        TextView tvPrice;
-        public ViewHolder(View itemView) {
-            super(itemView);
-            tvCode = (TextView) itemView.findViewById(R.id.tv_code_tour);
-            tvAdd = (TextView) itemView.findViewById(R.id.tv_add_tour);
-            tvDesciption = (TextView) itemView.findViewById(R.id.tv_discip_tour);
-            tvPrice = (TextView) itemView.findViewById(R.id.tv_price_tour);
-        }
-    }
-
-    public void onCreateContextMenu(ContextMenu contextMenu, View view, ContextMenu.ContextMenuInfo contextMenuInfo) {
-        MenuItem edit = contextMenu.add(Menu.NONE,1,1,"Edit");
-        MenuItem delete = contextMenu.add(Menu.NONE,2,2,"Delete");
-        edit.setOnMenuItemClickListener(onEditMenu);
-        delete.setOnMenuItemClickListener(onEditMenu);
-    }
-    private final MenuItem.OnMenuItemClickListener onEditMenu = new MenuItem.OnMenuItemClickListener() {
-        @Override
-        public boolean onMenuItemClick(MenuItem menuItem) {
-            switch (menuItem.getItemId()){
-                case 1:
-                    Intent intent = new Intent(context, EditPlaceActivity.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putString("tours",arrNew.get(getItemCount()).getAddTour());
-                    intent.putExtra("bundle",bundle);
-                    //intent.putExtra("position",getAdapterPosition());
-                    context.startActivity(intent);
-                    break;
-                case 2:
-                    arrNew.remove(getItemCount());
-                    mData.child("Tours").setValue(arrNew);
-                    notifyDataSetChanged();
-                    break;
-            }
-            return true;
-        }
-    };*/

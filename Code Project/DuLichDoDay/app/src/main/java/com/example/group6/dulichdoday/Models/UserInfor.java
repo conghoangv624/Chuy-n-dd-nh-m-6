@@ -7,46 +7,30 @@ package com.example.group6.dulichdoday.Models;
 public class UserInfor {
     private String address;
     private String email;
+    private String pass;
     private String userID;
     private String name;
     private String phoneNumber;
     private String imageUrl;
     private String userType;
-
-
-
-    public String getUserID() {
-        return userID;
-    }
-
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
-
-    public String getUserPass() {
-        return userPass;
-    }
-
-    public void setUserPass(String userPass) {
-        this.userPass = userPass;
-    }
-
-    private String userPass;
+    private String Date;
+    private String Sex;
 
     public UserInfor() {
     }
 
-    public UserInfor(String address, String email, String name, String phoneNumber, String imageUrl, String userType, String userPass, String userID) {
+    public UserInfor(String address, String email, String pass, String userID, String name, String phoneNumber, String imageUrl, String userType, String date, String sex) {
         this.address = address;
         this.email = email;
+        this.pass = pass;
+        this.userID = userID;
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.imageUrl = imageUrl;
         this.userType = userType;
-        this.userPass = userPass;
-        this.userID = userID;
+        Date = date;
+        Sex = sex;
     }
-
 
     public String getAddress() {
         return address;
@@ -62,6 +46,22 @@ public class UserInfor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
     public String getName() {
@@ -94,5 +94,21 @@ public class UserInfor {
 
     public void setUserType(String userType) {
         this.userType = userType;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public String getSex() {
+        return Sex;
+    }
+
+    public void setSex(String sex) {
+        Sex = sex;
     }
 }
