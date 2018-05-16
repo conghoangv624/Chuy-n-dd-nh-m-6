@@ -1,71 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:id="@+id/frameLogin"
     style="@style/LoginPage"
     tools:context="com.example.group6.dulichdoday.LoginActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:gravity="center"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/travel"/>
-
-        <EditText
-            android:id="@+id/edtMailLogin"
-            android:drawableLeft="@drawable/ic_text_email"
-            android:hint="@string/edt_mail"
-            style="@style/Edittext"/>
-
-        <EditText
-            android:id="@+id/edtPassLogin"
-            android:drawableLeft="@drawable/ic_text_pass"
-            android:hint="@string/edt_pass"
-            android:inputType="textPassword"
-            style="@style/Edittext"/>
-
-        <Button
-            android:id="@+id/btn_Login"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_btn_login"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:text="Đăng nhập"
-            android:textColor="@android:color/white"
-            android:textAllCaps="false"
-            android:layout_marginTop="20dp"/>
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/travel"/>
+
+            <EditText
+                android:id="@+id/edtMailLogin"
+                android:drawableLeft="@drawable/ic_text_email"
+                android:hint="@string/edt_mail"
+                style="@style/Edittext"/>
+
+            <EditText
+                android:id="@+id/edtPassLogin"
+                android:drawableLeft="@drawable/ic_text_pass"
+                android:hint="@string/edt_pass"
+                android:inputType="textPassword"
+                style="@style/Edittext"/>
+
+            <Button
+                android:id="@+id/btn_Login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_btn_login"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:text="Đăng nhập"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:layout_marginTop="20dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chưa có tài khoản?"
+                android:textColor="@android:color/white"/>
+
+            <TextView
+                android:id="@+id/tv_Register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15px"
+                android:text="Đăng ký"
+                android:textColor="@android:color/holo_blue_light"/>
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chưa có tài khoản?"
-            android:textColor="@android:color/white"/>
-
-        <TextView
-            android:id="@+id/tv_Register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15px"
-            android:text="Đăng ký"
-            android:textColor="@android:color/holo_blue_light"/>
-
-    </LinearLayout>
-</LinearLayout>
+</FrameLayout>

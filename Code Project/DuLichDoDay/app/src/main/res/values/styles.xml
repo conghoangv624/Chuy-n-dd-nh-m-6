@@ -10,7 +10,7 @@
 
     <style name="LoginPage">
         <!-- Customize your theme here. -->
-        <item name="android:background">@mipmap/bg1</item>
+        <item name="android:background">@drawable/animation_background</item>
         <item name="android:windowActionBar">false</item>
     </style>
 

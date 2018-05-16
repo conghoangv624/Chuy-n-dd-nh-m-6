@@ -1,7 +1,9 @@
 package com.example.group6.dulichdoday;
 
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -37,7 +40,11 @@ public class RegisterActivity extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton rb1,rb2;
     private Button btnRegister;
-    private ProgressDialog mProgress;
+
+    FrameLayout frameLayout;
+    AnimationDrawable animationDrawable;
+
+     private ProgressDialog mProgress;
     /// FIREBASE
     private FirebaseAuth mAuth;
     private DatabaseReference mData;
@@ -58,6 +65,12 @@ public class RegisterActivity extends AppCompatActivity {
         rb1 = (RadioButton) findViewById(R.id.rdb1);
         rb2 = (RadioButton) findViewById(R.id.rdb2);
         btnRegister = (Button) findViewById(R.id.btnRegister);
+
+        frameLayout = (FrameLayout) findViewById(R.id.frameRegister);
+        animationDrawable = (AnimationDrawable)frameLayout.getBackground();
+        animationDrawable.setEnterFadeDuration(5200);
+        animationDrawable.setExitFadeDuration(4200);
+        animationDrawable.start();
 
 
 

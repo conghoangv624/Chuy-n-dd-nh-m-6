@@ -1,92 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
+    android:id="@+id/frameRegister"
     style="@style/LoginPage"
     tools:context="com.example.group6.dulichdoday.RegisterActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="5"
-        android:gravity="center"
+        android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/travel"/>
-
-        <EditText
-            android:id="@+id/edtMail"
-            android:drawableLeft="@drawable/ic_text_email"
-            android:hint="@string/edt_mail"
-            style="@style/Edittext"/>
-
-        <EditText
-            android:id="@+id/edtPass"
-            android:drawableLeft="@drawable/ic_text_pass"
-            android:hint="@string/edt_pass"
-            android:inputType="textPassword"
-            style="@style/Edittext"/>
-
-        <EditText
-            android:id="@+id/edtPassAg"
-            android:drawableLeft="@drawable/ic_text_pass"
-            android:hint="@string/edt_pass2"
-            android:inputType="textPassword"
-            style="@style/Edittext"/>
-
-        <RadioGroup
-            android:id="@+id/rdg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-            <RadioButton
-                android:id="@+id/rdb1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="Khách hàng"/>
-            <RadioButton
-                android:id="@+id/rdb2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:textStyle="bold"
-                android:text="Quản lý"/>
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/btnRegister"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/custom_btn_login"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:text="Đăng kí"
-            android:textColor="@android:color/white"
-            android:textAllCaps="false"
-            android:layout_marginTop="20dp"/>
+            android:layout_height="0dp"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:src="@drawable/travel"/>
+
+            <EditText
+                android:id="@+id/edtMail"
+                android:drawableLeft="@drawable/ic_text_email"
+                android:hint="@string/edt_mail"
+                style="@style/Edittext"/>
+
+            <EditText
+                android:id="@+id/edtPass"
+                android:drawableLeft="@drawable/ic_text_pass"
+                android:hint="@string/edt_pass"
+                android:inputType="textPassword"
+                style="@style/Edittext"/>
+
+            <EditText
+                android:id="@+id/edtPassAg"
+                android:drawableLeft="@drawable/ic_text_pass"
+                android:hint="@string/edt_pass2"
+                android:inputType="textPassword"
+                style="@style/Edittext"/>
+
+            <RadioGroup
+                android:id="@+id/rdg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+                <RadioButton
+                    android:id="@+id/rdb1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="Khách hàng"/>
+                <RadioButton
+                    android:id="@+id/rdb2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:textStyle="bold"
+                    android:text="Quản lý"/>
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/custom_btn_login"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:text="Đăng kí"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:layout_marginTop="20dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/cancel_Register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bỏ đăng kí"
+                android:textColor="@android:color/white"/>
+
+        </LinearLayout>
 
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center">
 
-        <TextView
-            android:id="@+id/cancel_Register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Bỏ đăng kí"
-            android:textColor="@android:color/white"/>
-
-    </LinearLayout>
-</LinearLayout>
+</FrameLayout>
