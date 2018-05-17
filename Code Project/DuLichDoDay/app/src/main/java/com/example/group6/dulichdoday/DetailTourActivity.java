@@ -29,7 +29,7 @@ public class DetailTourActivity extends AppCompatActivity {
     private ImageView img;
 
     private DatabaseReference mData;
-    private ArrayList<Tours> arrTour;
+    //private ArrayList<Tours> arrTour;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

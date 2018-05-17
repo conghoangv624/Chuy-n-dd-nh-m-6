@@ -88,6 +88,7 @@ public class LoginActivity extends AppCompatActivity {
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                             Intent myIntentLogin = new Intent(getApplication(), MainLayoutActivity.class);
                             startActivity(myIntentLogin);
+                            finish();
                         }
                     }
                 });
@@ -97,10 +98,8 @@ public class LoginActivity extends AppCompatActivity {
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 myIntent = new Intent(getApplication(), RegisterActivity.class);
                 startActivity(myIntent);
-
             }
         });
     }

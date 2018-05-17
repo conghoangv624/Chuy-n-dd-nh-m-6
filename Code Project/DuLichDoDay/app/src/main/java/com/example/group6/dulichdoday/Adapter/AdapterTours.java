@@ -135,7 +135,7 @@ public class AdapterTours extends RecyclerView.Adapter<AdapterTours.ViewHolder> 
 
                                 arrTours = new ArrayList<Tours>();
 
-                                //load du lieu ve
+                                //load dữ liệu đổ lên các trường
                                 mData.child(Tours.CHILD_TOURS).addChildEventListener(new ChildEventListener() {
                                     @Override
                                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {

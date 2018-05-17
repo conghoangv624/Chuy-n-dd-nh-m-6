@@ -2,17 +2,14 @@ package com.example.group6.dulichdoday;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -38,7 +35,6 @@ import com.google.firebase.storage.UploadTask;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
@@ -166,7 +162,7 @@ public class AddPlaceActivity extends AppCompatActivity {
         });
 
         //Lay user
-        /*mData.child("Users").addChildEventListener(new ChildEventListener() {
+        mData.child("Users").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 UserInfor user = dataSnapshot.getValue(UserInfor.class);
@@ -195,7 +191,7 @@ public class AddPlaceActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });*/
+        });
         //them tour moi
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override

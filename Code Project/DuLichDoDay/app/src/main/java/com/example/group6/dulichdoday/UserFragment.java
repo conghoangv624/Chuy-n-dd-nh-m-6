@@ -55,6 +55,7 @@ public class UserFragment extends Fragment {
         password = (LinearLayout) view.findViewById(R.id.linear_pass);
         logout = (LinearLayout) view.findViewById(R.id.linear_logout);
 
+        //Danh sách tour đặt
         manager.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,6 +64,7 @@ public class UserFragment extends Fragment {
             }
         });
 
+        //Đổi mật khẩu
         password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -71,6 +73,7 @@ public class UserFragment extends Fragment {
             }
         });
 
+        //Trang cá nhân
         personal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,11 +81,14 @@ public class UserFragment extends Fragment {
                 startActivity(inpersonal1);
             }
         });
+
+        //Đăng xuất
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mAuth.signOut();
                 Toast.makeText(getContext(), "Đăng xuất tài khoản thành công", Toast.LENGTH_SHORT).show();
+                getActivity().finish();
                 startActivity(new Intent(getContext(), LoginActivity.class));
             }
         });

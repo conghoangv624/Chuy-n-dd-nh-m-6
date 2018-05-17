@@ -5,6 +5,10 @@ package com.example.group6.dulichdoday.Models;
  */
 
 public class UserInfor {
+    public static String CHILD_USER = "Users";
+    public static String KHACH_HANG = "Guest";
+    public static String DOANH_NGHIEP = "Business";
+
     private String address;
     private String email;
     private String pass;

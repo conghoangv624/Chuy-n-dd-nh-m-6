@@ -18,7 +18,7 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -26,10 +26,14 @@
                 android:gravity="center|left">
 
                 <ImageView
+                    android:id="@+id/imgLogo"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/travel" />
                 <TextView
+                    android:layout_toRightOf="@id/imgLogo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Cập nhật thông tin"
@@ -40,15 +44,16 @@
 
                 <TextView
                     android:id="@+id/cancel_update"
+                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="17sp"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
-                    android:layout_marginLeft="100dp"
+                    android:layout_marginRight="15dp"
                     android:text="Hủy bỏ"/>
 
-            </LinearLayout>
+            </RelativeLayout>
 
         </LinearLayout>
 
@@ -70,12 +75,14 @@
                 style="@style/Edittext"
                 android:drawableLeft="@drawable/detail_user"
                 android:drawablePadding="20dp"
+                android:singleLine="true"
                 android:hint="Tên doanh nghiệp"/>
 
             <EditText
                 style="@style/Edittext"
                 android:drawableLeft="@drawable/gmail"
                 android:drawablePadding="20dp"
+                android:singleLine="true"
                 android:hint="Địa chỉ mail"/>
 
             <EditText
@@ -83,12 +90,14 @@
                 android:inputType="number"
                 android:drawableLeft="@drawable/ic_phone"
                 android:drawablePadding="20dp"
+                android:singleLine="true"
                 android:hint="Số điện thoại"/>
 
             <EditText
                 style="@style/Edittext"
                 android:drawableLeft="@drawable/detail_address"
                 android:drawablePadding="20dp"
+                android:singleLine="true"
                 android:hint="Địa chỉ"/>
 
             <TextView

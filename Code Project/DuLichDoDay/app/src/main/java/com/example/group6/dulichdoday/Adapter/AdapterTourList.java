@@ -49,7 +49,7 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
     @Override
     public AdapterTourList.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View itemView = layoutInflater.inflate(R.layout.custom_tour_list,parent,false);
+        View itemView = layoutInflater.inflate(R.layout.custom_tour,parent,false);
         return new ViewHolder(itemView);
     }
 
@@ -72,8 +72,8 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
 
         /*Picasso.with(context).load(arrNew.get(position).getImgProduct()).into(holder.img);*/
         holder.tvCode.setText(arrNew.get(position).getTour_ID());
-        holder.tvAdd.setText(arrNew.get(position).getTourName());
-        holder.tvDesciption.setText(arrNew.get(position).getTourDescription());
+        holder.tvName.setText(arrNew.get(position).getTourName());
+        holder.tvTime.setText(arrNew.get(position).getTourTime());
         holder.tvPrice.setText(arrNew.get(position).getTourPrice());
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -118,16 +118,16 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder  {
         TextView tvCode;
-        TextView tvAdd;
-        TextView tvDesciption;
+        TextView tvName;
+        TextView tvTime;
         TextView tvPrice;
         ImageView img;
         @RequiresApi(api = Build.VERSION_CODES.M)
         public ViewHolder(View itemView) {
             super(itemView);
             tvCode = (TextView) itemView.findViewById(R.id.tv_code_tour);
-            tvAdd = (TextView) itemView.findViewById(R.id.tv_add_tour);
-            tvDesciption = (TextView) itemView.findViewById(R.id.tv_discip_tour);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name_tour);
+            tvTime = (TextView) itemView.findViewById(R.id.tv_time_tour);
             tvPrice = (TextView) itemView.findViewById(R.id.tv_price_tour);
             img = (ImageView) itemView.findViewById(R.id.img_tour);
             //itemView.setOnCreateContextMenuListener(this);
