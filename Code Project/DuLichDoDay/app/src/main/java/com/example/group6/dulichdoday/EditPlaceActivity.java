@@ -85,15 +85,15 @@ public class EditPlaceActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (rabMienNam.isChecked()) {
                     //tenMien = "Miền Nam";
-                    arrTours.get(position).setTenMien("Miền Nam");
+                    arrTours.get(position).setTenMien(Tours.MIEN_NAM);
                 }
                 if (rabMienTrung.isChecked()) {
                     //tenMien = "Miền Trung";
-                    arrTours.get(position).setTenMien("Miền Trung");
+                    arrTours.get(position).setTenMien(Tours.MIEN_TRUNG);
                 }
                 if (rabMienBac.isChecked()) {
                     //tenMien = "Miền Bắc";
-                    arrTours.get(position).setTenMien("Miền Bắc");
+                    arrTours.get(position).setTenMien(Tours.MIEN_BAC);
                 }
                 arrTours.get(position).setTourName(edtToutName.getText().toString());
                 arrTours.get(position).setTourTime(edtTourTime.getText().toString());
@@ -125,23 +125,23 @@ public class EditPlaceActivity extends AppCompatActivity {
         bundle = intent.getBundleExtra("bundle");
         bundle.getString("tours");
 
-        mData.child("Tours").addChildEventListener(new ChildEventListener() {
+        mData.child(Tours.CHILD_TOURS).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Tours tours = dataSnapshot.getValue(Tours.class);
-                arrTours.add(new Tours(tours.getTour_ID(), tours.getAccount_ID(), tours.getTourName(), tours.getTourTime(), tours.getTourPrice(), tours.getTourDescription(), tours.getImgTour(), tours.getTenMien(),tours.isIschecked()));
+                arrTours.add(new Tours(tours.getTour_ID(), tours.getAccount_ID(), tours.getTourName(), tours.getTourTime(), tours.getTourPrice(), tours.getTourDescription(), tours.getImgTour(), tours.getTenMien()));
                 for (int i = 0;i< arrTours.size();i++) {
                     if (arrTours.get(i).getTour_ID().equalsIgnoreCase(bundle.getString("tours"))) {
                         position = i;
-                        if (arrTours.get(i).getTenMien().equalsIgnoreCase("Miền Nam")) {
+                        if (arrTours.get(i).getTenMien().equalsIgnoreCase(Tours.MIEN_NAM)) {
                             //tenMien = "Miền Nam";
                             rabMienNam.setChecked(true);
                         }
-                        if (arrTours.get(i).getTenMien().equalsIgnoreCase("Miền Trung")) {
+                        if (arrTours.get(i).getTenMien().equalsIgnoreCase(Tours.MIEN_TRUNG)) {
                             //tenMien = "Miền Trung";
                             rabMienTrung.setChecked(true);
                         }
-                        if (arrTours.get(i).getTenMien().equalsIgnoreCase("Miền Bắc")) {
+                        if (arrTours.get(i).getTenMien().equalsIgnoreCase(Tours.MIEN_BAC)) {
                             //tenMien = "Miền Bắc";
                             rabMienBac.setChecked(true);
                         }

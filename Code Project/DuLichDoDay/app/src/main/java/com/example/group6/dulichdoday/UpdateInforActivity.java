@@ -20,7 +20,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.group6.dulichdoday.Models.Tours;
-import com.example.group6.dulichdoday.Models.User;
 import com.example.group6.dulichdoday.Models.UserInfor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

@@ -24,7 +24,6 @@ import android.widget.Toast;
 
 import com.example.group6.dulichdoday.Adapter.AdapterNew;
 import com.example.group6.dulichdoday.Models.New;
-import com.example.group6.dulichdoday.Models.User;
 import com.example.group6.dulichdoday.Models.UserInfor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;

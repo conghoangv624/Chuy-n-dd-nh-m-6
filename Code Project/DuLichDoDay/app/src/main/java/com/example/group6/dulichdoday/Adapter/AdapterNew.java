@@ -19,7 +19,6 @@ import android.widget.Toast;
 
 import com.example.group6.dulichdoday.Models.Comment;
 import com.example.group6.dulichdoday.Models.New;
-import com.example.group6.dulichdoday.Models.User;
 import com.example.group6.dulichdoday.Models.like;
 import com.example.group6.dulichdoday.R;
 import com.google.firebase.auth.FirebaseAuth;

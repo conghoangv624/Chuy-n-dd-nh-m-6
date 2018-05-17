@@ -5,11 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.ContextMenu;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 import com.example.group6.dulichdoday.Adapter.AdapterTours;
@@ -29,6 +27,7 @@ public class ManagerTourActivity extends AppCompatActivity {
     private AdapterTours adapterTour;
     private RecyclerView recyclerViewTour;
     private ImageView addTour;
+    private TextView btnBack;
     private DatabaseReference mData;
 
     @Override
@@ -39,6 +38,7 @@ public class ManagerTourActivity extends AppCompatActivity {
         mData = FirebaseDatabase.getInstance().getReference();
         recyclerViewTour = (RecyclerView) findViewById(R.id.recyclerViewManager);
         addTour = (ImageView) findViewById(R.id.img_Add);
+        btnBack = (TextView) findViewById(R.id.cancel_manager_tour);
 
         // Xử lý hiển thị recycler
         LinearLayoutManager layoutManager = new LinearLayoutManager(ManagerTourActivity.this, LinearLayoutManager.VERTICAL, false);
@@ -53,11 +53,11 @@ public class ManagerTourActivity extends AppCompatActivity {
         recyclerViewTour.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener());
 
 //load tour
-        mData.child("Tours").addChildEventListener(new ChildEventListener() {
+        mData.child(Tours.CHILD_TOURS).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 Tours tours = dataSnapshot.getValue(Tours.class);
-                arrayList.add(new Tours(tours.getTour_ID(),"1",tours.getTourName(),tours.getTourTime(),tours.getTourPrice(),tours.getTourDescription(),tours.getImgTour(),tours.getTenMien(),tours.isIschecked()));
+                arrayList.add(new Tours(tours.getTour_ID(),tours.getAccount_ID(),tours.getTourName(),tours.getTourTime(),tours.getTourPrice(),tours.getTourDescription(),tours.getImgTour(),tours.getTenMien()));
                 adapterTour.notifyDataSetChanged();
             }
 
@@ -89,13 +89,19 @@ public class ManagerTourActivity extends AppCompatActivity {
                 startActivity(inAddTour);
             }
         });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         // registerForContextMenu(recyclerViewTour);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        adapterTour.notifyDataSetChanged();
+        //adapterTour.notifyDataSetChanged();
     }
 
     /*    @Override

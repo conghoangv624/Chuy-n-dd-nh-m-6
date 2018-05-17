@@ -26,4 +26,7 @@
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
     <string name="title_activity_book_tour">BookTour</string>
+
+    <string name="menu_tour_delete">Delete</string>
+    <string name="menu_tour_edit">Edit</string>
 </resources>
