@@ -2,6 +2,7 @@ package com.example.group6.dulichdoday;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private Intent myIntent;
     private Button btn_Login;
     private EditText edtMail, edtPass;
+    //SharedPreferences sp;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -43,6 +45,8 @@ public class LoginActivity extends AppCompatActivity {
         edtMail = (EditText) findViewById(R.id.edtMailLogin);
         edtPass = (EditText) findViewById(R.id.edtPassLogin);
 
+        //sp = getSharedPreferences("login",MODE_PRIVATE);
+
         frameLayout = (FrameLayout) findViewById(R.id.frameLogin);
         animationDrawable = (AnimationDrawable)frameLayout.getBackground();
         animationDrawable.setEnterFadeDuration(3000);
@@ -51,6 +55,10 @@ public class LoginActivity extends AppCompatActivity {
         //Get Firebase
         mAuth = FirebaseAuth.getInstance();
 
+
+    /*    if(sp.getBoolean("logged",false)){
+            goToMainActivity();
+        }*/
 
         btn_Login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,8 +94,10 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         } else {
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                            Intent myIntentLogin = new Intent(getApplication(), MainLayoutActivity.class);
-                            startActivity(myIntentLogin);
+                            //Intent myIntentLogin = new Intent(getApplication(), MainLayoutActivity.class);
+                            //startActivity(myIntentLogin);
+                            goToMainActivity();
+                            //sp.edit().putBoolean("logged",true).apply();
                             finish();
                         }
                     }
@@ -102,5 +112,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
+    }
+    public void goToMainActivity(){
+        Intent myIntentLogin = new Intent(getApplication(), MainLayoutActivity.class);
+        startActivity(myIntentLogin);
     }
 }

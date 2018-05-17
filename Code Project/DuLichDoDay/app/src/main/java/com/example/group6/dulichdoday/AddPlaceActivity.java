@@ -162,7 +162,7 @@ public class AddPlaceActivity extends AppCompatActivity {
         });
 
         //Lay user
-        mData.child("Users").addChildEventListener(new ChildEventListener() {
+        mData.child(UserInfor.CHILD_USER).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 UserInfor user = dataSnapshot.getValue(UserInfor.class);
