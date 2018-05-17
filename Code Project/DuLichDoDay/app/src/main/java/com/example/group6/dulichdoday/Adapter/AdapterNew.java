@@ -205,13 +205,13 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
         recyclerComment.setLayoutManager(layoutManager);
 
         // Thêm bình luận luận vào recylerView
-        arrayListComment = new ArrayList<Comment>();
-        arrayListComment.add(new Comment(R.drawable.img_user,"Đây là nới chúng tôi muốn tới nhất"));
-        arrayListComment.add(new Comment(R.drawable.img_user,"Tôi cũng muốn tới lắm nhưng chưa có tiền"));
-        arrayListComment.add(new Comment(R.drawable.img_user,"Wow , quá tuyệt vời luôn"));
-        arrayListComment.add(new Comment(R.drawable.img_user,"Đây là vẻ đẹp của việt nam chăng"));
-        arrayListComment.add(new Comment(R.drawable.img_user,"=)))))))))) , Bình thường thôi"));
-        arrayListComment.add(new Comment(R.drawable.img_user,"Đây là nới chúng tôi muốn tới nhất"));
+//        arrayListComment = new ArrayList<Comment>();
+//        arrayListComment.add(new Comment(R.drawable.img_user,"Đây là nới chúng tôi muốn tới nhất"));
+//        arrayListComment.add(new Comment(R.drawable.img_user,"Tôi cũng muốn tới lắm nhưng chưa có tiền"));
+//        arrayListComment.add(new Comment(R.drawable.img_user,"Wow , quá tuyệt vời luôn"));
+//        arrayListComment.add(new Comment(R.drawable.img_user,"Đây là vẻ đẹp của việt nam chăng"));
+//        arrayListComment.add(new Comment(R.drawable.img_user,"=)))))))))) , Bình thường thôi"));
+//        arrayListComment.add(new Comment(R.drawable.img_user,"Đây là nới chúng tôi muốn tới nhất"));
 
         // Xử lý hiển  thị adapter
         adapterComment = new AdapterComment(arrayListComment,context);

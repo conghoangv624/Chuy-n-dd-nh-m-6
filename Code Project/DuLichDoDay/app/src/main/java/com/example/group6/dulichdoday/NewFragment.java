@@ -24,7 +24,6 @@ import android.widget.Toast;
 
 import com.example.group6.dulichdoday.Adapter.AdapterNew;
 import com.example.group6.dulichdoday.Models.New;
-import com.example.group6.dulichdoday.Models.UserInfor;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -271,7 +270,7 @@ public class NewFragment extends Fragment {
             //  textTargetUri.setText(targetUri.toString());
 
             try {
-                Context applicationContext = MainLayoutActivity.getContextOfApplication();
+                Context applicationContext = getActivity();
                 thumbnail = BitmapFactory.decodeStream(applicationContext.getContentResolver().openInputStream(picUri));
                 hinhanh= convertToBase64(thumbnail);
                 chon.setImageBitmap(thumbnail);
