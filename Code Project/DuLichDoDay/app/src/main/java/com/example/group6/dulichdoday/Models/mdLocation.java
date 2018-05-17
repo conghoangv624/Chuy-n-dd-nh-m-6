@@ -6,17 +6,18 @@ package com.example.group6.dulichdoday.Models;
 
 public class mdLocation {
     private String strNameAđ;
+    private String strAdress;
     private double latitude;
     private double longitude;
 
-    public mdLocation(String strNameAđ, double latitude, double longitude) {
+    public mdLocation(String strNameAđ, String strAdress, double latitude, double longitude) {
         this.strNameAđ = strNameAđ;
+        this.strAdress = strAdress;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
     public mdLocation() {
-        //
     }
 
     public String getStrNameAđ() {
@@ -25,6 +26,14 @@ public class mdLocation {
 
     public void setStrNameAđ(String strNameAđ) {
         this.strNameAđ = strNameAđ;
+    }
+
+    public String getStrAdress() {
+        return strAdress;
+    }
+
+    public void setStrAdress(String strAdress) {
+        this.strAdress = strAdress;
     }
 
     public double getLatitude() {
