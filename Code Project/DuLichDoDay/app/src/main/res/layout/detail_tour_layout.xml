@@ -19,7 +19,7 @@
             android:orientation="horizontal"
             android:gravity="center">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -27,34 +27,29 @@
                 android:gravity="center|left">
 
                 <ImageView
-                    android:id="@+id/imgLogo"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignParentLeft="true"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:src="@drawable/travel" />
                 <TextView
-                    android:layout_toRightOf="@id/imgLogo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Chi tiết tour"
+                    android:text="chi tiết tour "
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
                     android:textColor="@android:color/white"
                     android:textSize="20sp"/>
 
                 <TextView
-                    android:id="@+id/tv_Back_Detail"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="15dp"
+                    android:id="@+id/cancel_update"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="17sp"
                     android:textColor="@android:color/white"
                     android:textStyle="bold"
+                    android:layout_marginLeft="110dp"
                     android:text="Trở về"/>
 
-            </RelativeLayout>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -113,7 +108,7 @@
                                 android:text="01"/>
 
                             <TextView
-                                android:id="@+id/tvNameDetail"
+                                android:id="@+id/tvAddDetail"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/white"
@@ -121,11 +116,11 @@
                                 android:text="sdasdas"/>
 
                             <TextView
-                                android:id="@+id/tvTimeDetail"
+                                android:id="@+id/tvDesciption"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/white"
-                                android:textSize="15dp"
+                                android:textSize="13dp"
                                 android:text="sdasdas"/>
 
                             <TextView
@@ -133,7 +128,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:textColor="@android:color/white"
-                                android:textSize="18dp"
+                                android:textSize="17dp"
                                 android:text="dasdas"/>
 
                         </LinearLayout>
@@ -157,7 +152,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tvDescriptionTour"
+                            android:id="@+id/tvNoiDungTour"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"

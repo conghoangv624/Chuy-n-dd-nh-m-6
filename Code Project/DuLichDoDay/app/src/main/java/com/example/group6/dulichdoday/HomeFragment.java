@@ -150,18 +150,6 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
        arrayList.add(new mdLocation("Hồ Xuân Hương","", 11.942639,  108.447039));
        arrayList.add(new mdLocation("Bảo tàng Lâm Đồng","", 11.940488, 108.459889));
 
-       arrayList.add(new mdLocation("Vinpearl Land","", 12.219676, 109.241382));
-       arrayList.add(new mdLocation("Vũng Ninh Vân","", 12.356162, 109.276460));
-       arrayList.add(new mdLocation("Vinh Bảo Đại","", 12.211041, 109.216539));
-       arrayList.add(new mdLocation("Dream Beach Pool","", 12.228303, 109.200123));
-       arrayList.add(new mdLocation("Đảo Hòn Mun","", 12.168616, 109.302473));
-       arrayList.add(new mdLocation("Tháp Bà Ponagar Nha Trang","", 12.265417, 109.195407));
-       arrayList.add(new mdLocation("Vịnh Vân Phong","", 12.669856, 109.294378));
-       arrayList.add(new mdLocation("Khu du lịch Đại Lãnh","", 12.826941, 109.358489));
-       arrayList.add(new mdLocation("Nhà thờ Chánh Tòa Kitô Vua","", 12.246887, 109.188075));
-       arrayList.add(new mdLocation("Quảng trường Ave Maria","", 12.247076, 109.188473));
-       arrayList.add(new mdLocation("Đài thiên văn Nha Trang","", 12.271556, 109.205232));
-
        arrayList.add(new mdLocation("Chợ Đồng Xuân","", 21.038361, 105.849449));
        arrayList.add(new mdLocation("Hồ Tây","", 21.055148, 105.825882));
        arrayList.add(new mdLocation("Dairy Queen Royal City ","", 21.003324, 105.815167));
@@ -173,18 +161,15 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
        arrayList.add(new mdLocation("Nhà Hát Lớn Hà Nội","", 21.024315, 105.857438));
        arrayList.add(new mdLocation("Lăng Chủ Tịch Hồ Chí Minh","", 21.036891, 105.834642));
        arrayList.add(new mdLocation("Văn Miếu Môn","", 21.027674, 105.835510));
-
-       arrayList.add(new mdLocation("Cầu Rồng","", 16.061271, 108.228130));
-       arrayList.add(new mdLocation("Cầu sông Hàn","", 16.072196, 108.226874));
-       arrayList.add(new mdLocation("Tượng 'Đất lành Chim đậu'","", 16.082369, 108.223173));
-       arrayList.add(new mdLocation("Công viên Châu Á","", 16.039302, 108.228525));
-       arrayList.add(new mdLocation("Fantasy Park","", 15.997230, 107.988758));
-       arrayList.add(new mdLocation("Bà Nà Hills","", 16.026447, 108.032908));
-       arrayList.add(new mdLocation("Bãi tắm Mỹ Khê","", 16.063915, 108.246742));
-       arrayList.add(new mdLocation("Cầu tình yêu","", 16.063525, 108.229522));
-       arrayList.add(new mdLocation("Cù lao Đà Nẵng","", 15.962294, 108.507434));
-       arrayList.add(new mdLocation("Nhà thờ tộc Ngô Tấn","", 15.984759, 108.192047));
-       arrayList.add(new mdLocation("Đỉnh Bàn Cờ","", 16.119045, 108.271944));
+       arrayList.add(new mdLocation("Hoàng Thành Thăng Long","", 21.037136, 105.839871));
+       arrayList.add(new mdLocation("Quảng trường Ba Đình","", 21.037672, 105.836031));
+       arrayList.add(new mdLocation("Chùa Một Cột","", 21.035990, 105.833570));
+       arrayList.add(new mdLocation("Bảo tàng Hồ Chí Minh","", 21.035370, 105.832837));
+       arrayList.add(new mdLocation("Tượng Đài Lê Nin","", 21.031771, 105.839494));
+       arrayList.add(new mdLocation("Bảo Tàng Mỹ Thuật Việt Nam","", 21.030933, 105.837050));
+       arrayList.add(new mdLocation("Cung thể thao Quần Ngựa","", 21.040289, 105.814361));
+       arrayList.add(new mdLocation("Bảo tàng Pháo binh","", 21.038528, 105.808519));
+       arrayList.add(new mdLocation("Đền quán Thanh","", 21.043059, 105.836378));
 
        arrayList.add(new mdLocation("Vườn Quốc Gia U Minh Thượng","", 9.599171, 105.090772));
        arrayList.add(new mdLocation("Núi đá dựng","", 10.427932, 104.476295));
@@ -197,7 +182,6 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
        arrayList.add(new mdLocation("Công viên Bãi Dương","", 9.992073, 105.083809));
        arrayList.add(new mdLocation("Khu du lịch Mũi Nai","", 10.383137, 104.448182));
        arrayList.add(new mdLocation("Khu du lịch Đồi Nai Vàng","", 10.383599, 104.444384));
-
 
        mLocations.child("Locations").setValue(arrayList);
        mTravel = FirebaseDatabase.getInstance().getReference();
@@ -318,7 +302,7 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
                         {
                             LatLng latLng = new LatLng(venue.getLatitude(),venue.getLongitude());
                             if (mMap != null) {
-                                marker = mMap.addMarker(new MarkerOptions().position(latLng).title(venue.getStrNameAđ()));
+                                marker = mMap.addMarker(new MarkerOptions().position(latLng).title(venue.getStrNameAđ()).icon(BitmapDescriptorFactory.fromResource(R.drawable.flag)));
                             }
                         }
                     }
