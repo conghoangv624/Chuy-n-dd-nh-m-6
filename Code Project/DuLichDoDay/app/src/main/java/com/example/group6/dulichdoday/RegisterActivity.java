@@ -127,7 +127,12 @@ public class RegisterActivity extends AppCompatActivity {
                                 mData1.child("Users").child(userID).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),"","","","","Quản lý","",""));
                                 //mData.child(userID).setValue(new User(email+"",password +"","Quản lý"));
                             }
+<<<<<<< HEAD
                             startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+=======
+                            //startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            finish();
+>>>>>>> parent of a4ec761... UP Màn hình
                         }
                     }
                 });
