@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class BookTour extends AppCompatActivity {
     private static final String TAG = null;
-    private AdapterTours adapterTour;
+    //private AdapterTours adapterTour;
     private ArrayList<Tours> arrTour;
     private RecyclerView recyclerViewTour;
     private DatabaseReference mData;
@@ -38,7 +38,7 @@ public class BookTour extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.book_tour);
         mData = FirebaseDatabase.getInstance().getReference();
-        recyclerViewTour = (RecyclerView) findViewById(R.id.recyclerViewTourDat);
+        recyclerViewTour = (RecyclerView) findViewById(R.id.recyclerViewTourBook);
 
         // Xử lý hiển thị recycler
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
