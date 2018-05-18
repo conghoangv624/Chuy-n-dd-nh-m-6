@@ -80,7 +80,7 @@
                        android:id="@+id/img_choosen"
                        android:layout_width="180dp"
                        android:layout_height="180dp"
-                       android:src="@drawable/image"/>
+                       android:src="@drawable/man"/>
 
                    <EditText
                        android:id="@+id/edtName"

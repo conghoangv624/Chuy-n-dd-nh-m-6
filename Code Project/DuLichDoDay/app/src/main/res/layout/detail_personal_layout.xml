@@ -95,7 +95,7 @@
                                     android:id="@+id/imagePresonal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:src="@mipmap/phuc" />
+                                    android:src="@drawable/man" />
 
                             </LinearLayout>
 
@@ -265,7 +265,7 @@
                     android:layout_weight="0.8">
 
                     <TextView
-                        android:id="@+id/btn_update"
+                        android:id="@+id/btnUpdateInfo"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"

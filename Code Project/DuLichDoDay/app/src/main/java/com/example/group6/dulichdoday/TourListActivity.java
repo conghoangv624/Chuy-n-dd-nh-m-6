@@ -7,7 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
 import com.example.group6.dulichdoday.Adapter.AdapterTourList;
-import com.example.group6.dulichdoday.Models.Tours;
+import com.example.group6.dulichdoday.Models.Tour;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class TourListActivity extends AppCompatActivity {
     private static final String TAG = null;
     private AdapterTourList adapterTourList;
-    private ArrayList<Tours> arrTour;
+    private ArrayList<Tour> arrTour;
     private RecyclerView recyclerViewTour;
     private DatabaseReference mData;
 
@@ -49,7 +49,7 @@ public class TourListActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-        arrTour = new ArrayList<Tours>();
+        arrTour = new ArrayList<Tour>();
         // Set adapter
         adapterTourList = new AdapterTourList(arrTour, this);
         recyclerViewTour.setAdapter(adapterTourList);
@@ -57,8 +57,8 @@ public class TourListActivity extends AppCompatActivity {
         mData.child("TourDat").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                final Tours tours = dataSnapshot.getValue(Tours.class);
-                arrTour.add(new Tours(tours.getTour_ID(), tours.getAccount_ID(), tours.getTourName(), tours.getTourTime(), tours.getTourPrice(), tours.getTourDescription(), tours.getImgTour(), tours.getTenMien()));
+                final Tour tour = dataSnapshot.getValue(Tour.class);
+                arrTour.add(new Tour(tour.getImgProduct(), tour.getCodeTour(), tour.getAddTour(), tour.getDiscripTour(), tour.getPriceTour(), tour.getTenmien(), tour.getNoidung()));
                 adapterTourList.notifyDataSetChanged();
             }
 

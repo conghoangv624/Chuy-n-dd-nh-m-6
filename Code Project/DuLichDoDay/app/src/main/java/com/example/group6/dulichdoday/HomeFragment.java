@@ -93,102 +93,102 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
     }
 
 
-   @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-        edtSearchMap = (EditText) view.findViewById(R.id.edt_search_map);
-        imgSetGPSLocation = (ImageView) view.findViewById(R.id.img_set_gps);
-        getLocationPermisssion();
-        initMap();
-        mLocations = FirebaseDatabase.getInstance().getReference();
-        mLocations.push().setValue(marker);
-        ArrayList<mdLocation> arrayList = new ArrayList<>();
+  /* @Override
+     public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                              Bundle savedInstanceState) {
+         // Inflate the layout for this fragment
+         View view = inflater.inflate(R.layout.fragment_home, container, false);
+         edtSearchMap = (EditText) view.findViewById(R.id.edt_search_map);
+         imgSetGPSLocation = (ImageView) view.findViewById(R.id.img_set_gps);
+         getLocationPermisssion();
+         initMap();
+         mLocations = FirebaseDatabase.getInstance().getReference();
+         mLocations.push().setValue(marker);
+         ArrayList<mdLocation> arrayList = new ArrayList<>();
 
 
-       arrayList.add(new mdLocation("KDL Suối Tiên","", 10.861760, 106.802324));
-       arrayList.add(new mdLocation("Đầm sen tam đa ","", 10.794751, 106.842922));
-       arrayList.add(new mdLocation("Đền thờ tổ nghiệp nghệ sỹ hoài linh ","", 10.824624, 106.864849));
-       arrayList.add(new mdLocation("Khu du lịch BCR","", 10.807047, 106.842622));
-       arrayList.add(new mdLocation("Nhà thờ Đức Bà","", 48.853018, 2.349891));
-       arrayList.add(new mdLocation("Nhà thờ tân định ","", 10.789194, 106.690383));
-       arrayList.add(new mdLocation("Bảo tàng lịch sử  ","", 10.788027, 106.704750));
-       arrayList.add(new mdLocation("Bảo tàng thành phố","", 10.776052, 106.699646));
-       arrayList.add(new mdLocation("Bảo tàng chiến tranh ","", 10.779502, 106.692138));
-       arrayList.add(new mdLocation("Chợ bến thành","", 10.772689, 106.698041));
-       arrayList.add(new mdLocation("Thảo cầm viên ","", 10.787305, 106.705039));
-       arrayList.add(new mdLocation("Đầm sen ","", 10.766115, 106.638833));
-       arrayList.add(new mdLocation("Công viên nước Đại Thế giới ","", 10.751450, 106.668768));
-       arrayList.add(new mdLocation("Công viên thỏ trắng ","", 10.785525, 106.665884));
-       arrayList.add(new mdLocation("Dinh Độc lập ","", 10.777265, 106.695482));
-       arrayList.add(new mdLocation("Địa dạo củ chi ","", 11.143755, 106.464463));
-       arrayList.add(new mdLocation("Phố đi bộ Nguyễn Huệ","", 10.774419, 106.703439));
-       arrayList.add(new mdLocation("Bến bạch đằng","", 10.773465, 106.706341));
+         arrayList.add(new mdLocation("KDL Suối Tiên","", 10.861760, 106.802324));
+         arrayList.add(new mdLocation("Đầm sen tam đa ","", 10.794751, 106.842922));
+         arrayList.add(new mdLocation("Đền thờ tổ nghiệp nghệ sỹ hoài linh ","", 10.824624, 106.864849));
+         arrayList.add(new mdLocation("Khu du lịch BCR","", 10.807047, 106.842622));
+         arrayList.add(new mdLocation("Nhà thờ Đức Bà","", 48.853018, 2.349891));
+         arrayList.add(new mdLocation("Nhà thờ tân định ","", 10.789194, 106.690383));
+         arrayList.add(new mdLocation("Bảo tàng lịch sử  ","", 10.788027, 106.704750));
+         arrayList.add(new mdLocation("Bảo tàng thành phố","", 10.776052, 106.699646));
+         arrayList.add(new mdLocation("Bảo tàng chiến tranh ","", 10.779502, 106.692138));
+         arrayList.add(new mdLocation("Chợ bến thành","", 10.772689, 106.698041));
+         arrayList.add(new mdLocation("Thảo cầm viên ","", 10.787305, 106.705039));
+         arrayList.add(new mdLocation("Đầm sen ","", 10.766115, 106.638833));
+         arrayList.add(new mdLocation("Công viên nước Đại Thế giới ","", 10.751450, 106.668768));
+         arrayList.add(new mdLocation("Công viên thỏ trắng ","", 10.785525, 106.665884));
+         arrayList.add(new mdLocation("Dinh Độc lập ","", 10.777265, 106.695482));
+         arrayList.add(new mdLocation("Địa dạo củ chi ","", 11.143755, 106.464463));
+         arrayList.add(new mdLocation("Phố đi bộ Nguyễn Huệ","", 10.774419, 106.703439));
+         arrayList.add(new mdLocation("Bến bạch đằng","", 10.773465, 106.706341));
 
-       arrayList.add(new mdLocation("Chùa Thích Ca Phật Đài","", 10.374101, 107.071320));
-       arrayList.add(new mdLocation("Đồi Con Heo","", 10.327739, 107.086692));
-       arrayList.add(new mdLocation("Tượng Chúa GiêSu Kitô Vua","", 10.326542, 107.084538));
-       arrayList.add(new mdLocation("Công viên Thỏ Trắng","", 10.345777, 107.096436));
-       arrayList.add(new mdLocation("Ngọn Hải Đăng ","", 10.334521, 107.077638));
-       arrayList.add(new mdLocation("Khu du lịch Hồ Mây ","", 10.359687, 107.068083));
-       arrayList.add(new mdLocation("Bạch Dinh","", 10.350697, 107.067833));
-       arrayList.add(new mdLocation("Du lịch Cáp treo Vũng Tàu","", 10.351110, 107.066579));
-       arrayList.add(new mdLocation("Bảo tàng tỉnh Bà Rịa - Vũng Tàu","", 10.350428, 107.069581));
-       arrayList.add(new mdLocation("Công Viên Bãi Trước","", 10.342035, 107.074336));
-       arrayList.add(new mdLocation("Mũi Nghinh Phong","", 10.320748, 107.083605));
+         arrayList.add(new mdLocation("Chùa Thích Ca Phật Đài","", 10.374101, 107.071320));
+         arrayList.add(new mdLocation("Đồi Con Heo","", 10.327739, 107.086692));
+         arrayList.add(new mdLocation("Tượng Chúa GiêSu Kitô Vua","", 10.326542, 107.084538));
+         arrayList.add(new mdLocation("Công viên Thỏ Trắng","", 10.345777, 107.096436));
+         arrayList.add(new mdLocation("Ngọn Hải Đăng ","", 10.334521, 107.077638));
+         arrayList.add(new mdLocation("Khu du lịch Hồ Mây ","", 10.359687, 107.068083));
+         arrayList.add(new mdLocation("Bạch Dinh","", 10.350697, 107.067833));
+         arrayList.add(new mdLocation("Du lịch Cáp treo Vũng Tàu","", 10.351110, 107.066579));
+         arrayList.add(new mdLocation("Bảo tàng tỉnh Bà Rịa - Vũng Tàu","", 10.350428, 107.069581));
+         arrayList.add(new mdLocation("Công Viên Bãi Trước","", 10.342035, 107.074336));
+         arrayList.add(new mdLocation("Mũi Nghinh Phong","", 10.320748, 107.083605));
 
-       arrayList.add(new mdLocation("Trường Cao đẳng sư phạm Đà Lạt","", 11.945346, 108.451742));
-       arrayList.add(new mdLocation("Ga Đà Lạt","", 11.941746, 108.454432));
-       arrayList.add(new mdLocation("TKhu Du Lịch Thung Lũng Vàng","", 12.007104, 108.382981));
-       arrayList.add(new mdLocation("Du Lịch Đất Sét","", 11.882604, 108.411265));
-       arrayList.add(new mdLocation("Dinh I ","", 11.944470, 108.469786));
-       arrayList.add(new mdLocation("Ma Rừng Lữ Quán","", 12.011113, 108.347432));
-       arrayList.add(new mdLocation("Thác Voi","", 11.823320, 108.334795));
-       arrayList.add(new mdLocation("Chợ đêm Đà Lạt","", 11.943073, 108.436806));
-       arrayList.add(new mdLocation("Làng hoa Đà Lạt","", 11.945864, 108.412400));
-       arrayList.add(new mdLocation("Hồ Xuân Hương","", 11.942639,  108.447039));
-       arrayList.add(new mdLocation("Bảo tàng Lâm Đồng","", 11.940488, 108.459889));
+         arrayList.add(new mdLocation("Trường Cao đẳng sư phạm Đà Lạt","", 11.945346, 108.451742));
+         arrayList.add(new mdLocation("Ga Đà Lạt","", 11.941746, 108.454432));
+         arrayList.add(new mdLocation("TKhu Du Lịch Thung Lũng Vàng","", 12.007104, 108.382981));
+         arrayList.add(new mdLocation("Du Lịch Đất Sét","", 11.882604, 108.411265));
+         arrayList.add(new mdLocation("Dinh I ","", 11.944470, 108.469786));
+         arrayList.add(new mdLocation("Ma Rừng Lữ Quán","", 12.011113, 108.347432));
+         arrayList.add(new mdLocation("Thác Voi","", 11.823320, 108.334795));
+         arrayList.add(new mdLocation("Chợ đêm Đà Lạt","", 11.943073, 108.436806));
+         arrayList.add(new mdLocation("Làng hoa Đà Lạt","", 11.945864, 108.412400));
+         arrayList.add(new mdLocation("Hồ Xuân Hương","", 11.942639,  108.447039));
+         arrayList.add(new mdLocation("Bảo tàng Lâm Đồng","", 11.940488, 108.459889));
 
-       arrayList.add(new mdLocation("Chợ Đồng Xuân","", 21.038361, 105.849449));
-       arrayList.add(new mdLocation("Hồ Tây","", 21.055148, 105.825882));
-       arrayList.add(new mdLocation("Dairy Queen Royal City ","", 21.003324, 105.815167));
-       arrayList.add(new mdLocation("Sân vận động Mỹ Đình","", 21.043761, 105.919538));
-       arrayList.add(new mdLocation("Chợ Đêm Phố Cổ Hà Nội","", 21.033420, 105.850940));
-       arrayList.add(new mdLocation("Thủy cung Modernlife","", 20.994874, 105.867513));
-       arrayList.add(new mdLocation("Hồ Hoàn Kiếm","", 21.028905, 105.852150));
-       arrayList.add(new mdLocation("Tượng đài Vladimir Lenin","", 21.031774, 105.839494));
-       arrayList.add(new mdLocation("Nhà Hát Lớn Hà Nội","", 21.024315, 105.857438));
-       arrayList.add(new mdLocation("Lăng Chủ Tịch Hồ Chí Minh","", 21.036891, 105.834642));
-       arrayList.add(new mdLocation("Văn Miếu Môn","", 21.027674, 105.835510));
-       arrayList.add(new mdLocation("Hoàng Thành Thăng Long","", 21.037136, 105.839871));
-       arrayList.add(new mdLocation("Quảng trường Ba Đình","", 21.037672, 105.836031));
-       arrayList.add(new mdLocation("Chùa Một Cột","", 21.035990, 105.833570));
-       arrayList.add(new mdLocation("Bảo tàng Hồ Chí Minh","", 21.035370, 105.832837));
-       arrayList.add(new mdLocation("Tượng Đài Lê Nin","", 21.031771, 105.839494));
-       arrayList.add(new mdLocation("Bảo Tàng Mỹ Thuật Việt Nam","", 21.030933, 105.837050));
-       arrayList.add(new mdLocation("Cung thể thao Quần Ngựa","", 21.040289, 105.814361));
-       arrayList.add(new mdLocation("Bảo tàng Pháo binh","", 21.038528, 105.808519));
-       arrayList.add(new mdLocation("Đền quán Thanh","", 21.043059, 105.836378));
+         arrayList.add(new mdLocation("Chợ Đồng Xuân","", 21.038361, 105.849449));
+         arrayList.add(new mdLocation("Hồ Tây","", 21.055148, 105.825882));
+         arrayList.add(new mdLocation("Dairy Queen Royal City ","", 21.003324, 105.815167));
+         arrayList.add(new mdLocation("Sân vận động Mỹ Đình","", 21.043761, 105.919538));
+         arrayList.add(new mdLocation("Chợ Đêm Phố Cổ Hà Nội","", 21.033420, 105.850940));
+         arrayList.add(new mdLocation("Thủy cung Modernlife","", 20.994874, 105.867513));
+         arrayList.add(new mdLocation("Hồ Hoàn Kiếm","", 21.028905, 105.852150));
+         arrayList.add(new mdLocation("Tượng đài Vladimir Lenin","", 21.031774, 105.839494));
+         arrayList.add(new mdLocation("Nhà Hát Lớn Hà Nội","", 21.024315, 105.857438));
+         arrayList.add(new mdLocation("Lăng Chủ Tịch Hồ Chí Minh","", 21.036891, 105.834642));
+         arrayList.add(new mdLocation("Văn Miếu Môn","", 21.027674, 105.835510));
+         arrayList.add(new mdLocation("Hoàng Thành Thăng Long","", 21.037136, 105.839871));
+         arrayList.add(new mdLocation("Quảng trường Ba Đình","", 21.037672, 105.836031));
+         arrayList.add(new mdLocation("Chùa Một Cột","", 21.035990, 105.833570));
+         arrayList.add(new mdLocation("Bảo tàng Hồ Chí Minh","", 21.035370, 105.832837));
+         arrayList.add(new mdLocation("Tượng Đài Lê Nin","", 21.031771, 105.839494));
+         arrayList.add(new mdLocation("Bảo Tàng Mỹ Thuật Việt Nam","", 21.030933, 105.837050));
+         arrayList.add(new mdLocation("Cung thể thao Quần Ngựa","", 21.040289, 105.814361));
+         arrayList.add(new mdLocation("Bảo tàng Pháo binh","", 21.038528, 105.808519));
+         arrayList.add(new mdLocation("Đền quán Thanh","", 21.043059, 105.836378));
 
-       arrayList.add(new mdLocation("Vườn Quốc Gia U Minh Thượng","", 9.599171, 105.090772));
-       arrayList.add(new mdLocation("Núi đá dựng","", 10.427932, 104.476295));
-       arrayList.add(new mdLocation("Quần Đảo Nam Du","", 9.684241, 104.352650));
-       arrayList.add(new mdLocation("Hòm Trẹm","", 10.143618, 104.628087));
-       arrayList.add(new mdLocation("Vịnh Hòn Chông","", 10.147085, 104.599714));
-       arrayList.add(new mdLocation("Đảo Phú Quốc","", 10.292328, 103.983762));
-       arrayList.add(new mdLocation("Vườn Quốc Gia Phú  Quốc","", 10.292328, 103.983762));
-       arrayList.add(new mdLocation("Chùa Ratanaransĩ (Chùa Láng Cát)","", 9.999504, 105.094487));
-       arrayList.add(new mdLocation("Công viên Bãi Dương","", 9.992073, 105.083809));
-       arrayList.add(new mdLocation("Khu du lịch Mũi Nai","", 10.383137, 104.448182));
-       arrayList.add(new mdLocation("Khu du lịch Đồi Nai Vàng","", 10.383599, 104.444384));
+         arrayList.add(new mdLocation("Vườn Quốc Gia U Minh Thượng","", 9.599171, 105.090772));
+         arrayList.add(new mdLocation("Núi đá dựng","", 10.427932, 104.476295));
+         arrayList.add(new mdLocation("Quần Đảo Nam Du","", 9.684241, 104.352650));
+         arrayList.add(new mdLocation("Hòm Trẹm","", 10.143618, 104.628087));
+         arrayList.add(new mdLocation("Vịnh Hòn Chông","", 10.147085, 104.599714));
+         arrayList.add(new mdLocation("Đảo Phú Quốc","", 10.292328, 103.983762));
+         arrayList.add(new mdLocation("Vườn Quốc Gia Phú  Quốc","", 10.292328, 103.983762));
+         arrayList.add(new mdLocation("Chùa Ratanaransĩ (Chùa Láng Cát)","", 9.999504, 105.094487));
+         arrayList.add(new mdLocation("Công viên Bãi Dương","", 9.992073, 105.083809));
+         arrayList.add(new mdLocation("Khu du lịch Mũi Nai","", 10.383137, 104.448182));
+         arrayList.add(new mdLocation("Khu du lịch Đồi Nai Vàng","", 10.383599, 104.444384));
 
-       mLocations.child("Locations").setValue(arrayList);
-       mTravel = FirebaseDatabase.getInstance().getReference();
+         mLocations.child("Locations").setValue(arrayList);
+         mTravel = FirebaseDatabase.getInstance().getReference();
 
-        return view;
-    }
-     // Get location device , Show where we are
+         return view;
+     }*/
+    // Get location device , Show where we are
     private void getDeviceLocation() {
         mFusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
         try {

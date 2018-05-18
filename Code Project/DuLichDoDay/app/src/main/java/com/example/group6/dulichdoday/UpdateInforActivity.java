@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -19,10 +20,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.group6.dulichdoday.Models.Tours;
 import com.example.group6.dulichdoday.Models.UserInfor;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,6 +31,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -38,8 +40,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.AbstractSequentialList;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -64,7 +66,7 @@ public class UpdateInforActivity extends AppCompatActivity {
     private EditText edtUpdatePhone;
     private EditText edtUpdateAddress;
     private TextView btnUpdateUser;
-    private ImageView imgPost;
+    private ImageView img;
 
     DatabaseReference mData;
     FirebaseAuth mAuth;
@@ -90,6 +92,9 @@ public class UpdateInforActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.update_infor_layout);
 
+        firebaseStorage = FirebaseStorage.getInstance();
+        storageReference = firebaseStorage.getReferenceFromUrl("gs://dulichdoday-7d0dd.appspot.com");
+
         //hien thi dialog chuc nang hinh anh
         init();
         mData = FirebaseDatabase.getInstance().getReference();
@@ -98,6 +103,7 @@ public class UpdateInforActivity extends AppCompatActivity {
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
         dialog.setContentView(R.layout.dialog_choosen);
         dialog.setTitle("Choose Avatar Image");
+        img = (ImageView) dialog.findViewById(R.id.img_choosen);
         img_Choosen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -117,19 +123,27 @@ public class UpdateInforActivity extends AppCompatActivity {
                 btnCamera.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent taPicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivityForResult(taPicture,1);
+                        dialog.dismiss();
+                        Intent takePicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(takePicture, PICK_IMAGE_CAMERA);
+
+                        /*Intent taPicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(taPicture,REQUEST_CODE_IMAGE);*/
                     }
                 });
 
                 //chon hinh anh tu thu vien
                 btnGallery = (TextView) dialog.findViewById(R.id.btnGallery);
-                ;
                 btnGallery.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Intent picPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(picPhoto,1);
+                        dialog.dismiss();
+                        Intent pickPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(pickPhoto, PICK_IMAGE_GALLERY);
+                        /*Intent picPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(picPhoto,REQUEST_CODE_IMAGE);*/
+                        /*Intent taPicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(taPicture,REQUEST_CODE_IMAGE);*/
                     }
                 });
             }
@@ -146,81 +160,105 @@ public class UpdateInforActivity extends AppCompatActivity {
             }
         });
 
+        mData.child("Users").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                final UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);
+                if (mAuth.getCurrentUser().getEmail().equalsIgnoreCase(userInfor.getEmail()))
+                {
+                    btnUpdateUser.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            mData.child("Users").addChildEventListener(new ChildEventListener() {
+                                @Override
+                                public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                                    UserInfor users = dataSnapshot.getValue(UserInfor.class);
+                                    if (users.getEmail().equalsIgnoreCase(mAuth.getCurrentUser().getEmail())) {
+                                        final String userID = mAuth.getCurrentUser().getUid();
+                                        mData.child("Users").child(userID).child("name").setValue(edtUpdateName.getText().toString());
+                                        mData.child("Users").child(userID).child("date").setValue(edtUpdateDate.getText().toString());
+                                        mData.child("Users").child(userID).child("sex").setValue(edtUpdateSex.getText().toString());
+                                        mData.child("Users").child(userID).child("phoneNumber").setValue(edtUpdatePhone.getText().toString());
+                                        mData.child("Users").child(userID).child("address").setValue(edtUpdateAddress.getText().toString());
+                                        Toast.makeText(UpdateInforActivity.this, "Cap nhap tài khoản thành công", Toast.LENGTH_SHORT).show();
+                                        Intent intent = new Intent(UpdateInforActivity.this,DetailPersonalActivity.class);
+                                        startActivity(intent);
+                                    }
 
+                                    Calendar calendar = Calendar.getInstance();
+                                    StorageReference mountainsRef = storageReference.child("image" + calendar.getTimeInMillis()+ ".png");
+                                    img_Choosen.setDrawingCacheEnabled(true);
+                                    img_Choosen.buildDrawingCache();
+                                    Bitmap bitmap = img_Choosen.getDrawingCache();
+                                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                                    byte[] data = baos.toByteArray();
 
-       mData.child("Users").addChildEventListener(new ChildEventListener() {
-           @Override
-           public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-               final UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);
-               if (mAuth.getCurrentUser().getEmail().equalsIgnoreCase(userInfor.getEmail()))
-               {
-                   btnUpdateUser.setOnClickListener(new View.OnClickListener() {
-                       @Override
-                       public void onClick(View view) {
-                           mData.child("Users").addChildEventListener(new ChildEventListener() {
-                               @Override
-                               public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                                   UserInfor users = dataSnapshot.getValue(UserInfor.class);
-                                   if (users.getEmail().equalsIgnoreCase(mAuth.getCurrentUser().getEmail())) {
-                                       final String userID = mAuth.getCurrentUser().getUid();
-                                       mData.child("Users").child(userID).child("name").setValue(edtUpdateName.getText().toString());
-                                       mData.child("Users").child(userID).child("date").setValue(edtUpdateDate.getText().toString());
-                                       mData.child("Users").child(userID).child("Sex").setValue(edtUpdateSex.getText().toString());
-                                       mData.child("Users").child(userID).child("phoneNumber").setValue(edtUpdatePhone.getText().toString());
-                                       mData.child("Users").child(userID).child("address").setValue(edtUpdateAddress.getText().toString());
-                                       Toast.makeText(UpdateInforActivity.this, "Cap nhap tài khoản thành công", Toast.LENGTH_SHORT).show();
-                                       Intent intent = new Intent(UpdateInforActivity.this,DetailPersonalActivity.class);
-                                       startActivity(intent);
-                                   }
+                                    UploadTask uploadTask = mountainsRef.putBytes(data);
+                                    uploadTask.addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception exception) {
+                                            // Handle unsuccessful uploads
+                                            Toast.makeText(UpdateInforActivity.this, "Lỗi", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                        @Override
+                                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                            // taskSnapshot.getMetadata() contains file metadata such as size, content-type, etc.
+                                            // ...
+                                            Uri downloadURL = taskSnapshot.getDownloadUrl();
+                                            Toast.makeText(UpdateInforActivity.this, "Thành Công", Toast.LENGTH_SHORT).show();
+                                            Log.d("AAAA", downloadURL + "");
+                                        }
+                                    });
 
-                               }
+                                }
 
-                               @Override
-                               public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+                                @Override
+                                public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-                               }
+                                }
 
-                               @Override
-                               public void onChildRemoved(DataSnapshot dataSnapshot) {
+                                @Override
+                                public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-                               }
+                                }
 
-                               @Override
-                               public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+                                @Override
+                                public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-                               }
+                                }
 
-                               @Override
-                               public void onCancelled(DatabaseError databaseError) {
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
 
-                               }
-                           });
+                                }
+                            });
+                        }
+                    });
+                }
+            }
 
-                       }
-                   });
-               }
-           }
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
 
-           @Override
-           public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+            }
 
-           }
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
 
-           @Override
-           public void onChildRemoved(DataSnapshot dataSnapshot) {
+            }
 
-           }
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
 
-           @Override
-           public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+            }
 
-           }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-           @Override
-           public void onCancelled(DatabaseError databaseError) {
-
-           }
-       });
+            }
+        });
     }
 
     // Select image from camera and gallery

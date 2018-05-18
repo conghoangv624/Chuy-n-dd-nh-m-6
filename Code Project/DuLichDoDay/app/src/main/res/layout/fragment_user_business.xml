@@ -107,7 +107,7 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/linear_logout"
+                    android:id="@+id/linear_logout_Business"
                     style="@style/choosen_user">
 
                     <ImageView

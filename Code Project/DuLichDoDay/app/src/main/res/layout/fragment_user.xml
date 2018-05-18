@@ -7,7 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/tourdat">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -35,6 +36,7 @@
                     android:textSize="20dp"/>
             </LinearLayout>
         </LinearLayout>
+        <!--Linear frament User-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -45,22 +47,23 @@
                 android:layout_height="wrap_content"
                 android:background="@color/bg_main_x"
                 android:orientation="vertical">
-
+        <!--Trang ca Nhan-->
                 <LinearLayout
                     android:id="@+id/linear_personal"
-                    style="@style/choosen_user">
+                    style="@style/choosen_user"
+                    android:layout_margin="2dp">
                     <ImageView
                         style="@style/img_user"
                         android:src="@drawable/user"/>
-                    <TextView
-                        style="@style/text_user"
-                        android:text="Trang cá nhân"/>
+                        <TextView
+                            style="@style/text_user"
+                            android:text="Trang cá nhân"/>
                 </LinearLayout>
-
-
+        <!--Danh Sach tour dat-->
                 <LinearLayout
                     android:id="@+id/linear_product_manager"
-                    style="@style/choosen_user">
+                    style="@style/choosen_user"
+                    android:layout_margin="2dp">
                     <ImageView
                         style="@style/img_user"
                         android:src="@drawable/ic_list"/>
@@ -68,10 +71,11 @@
                         style="@style/text_user"
                         android:text="Danh sách tour đặt"/>
                 </LinearLayout>
+        <!--Doi Mat Khau-->
                 <LinearLayout
                     android:id="@+id/linear_pass"
                     style="@style/choosen_user"
-                    android:layout_marginBottom="8dp">
+                    android:layout_margin="2dp">
                     <ImageView
                         style="@style/img_user"
                         android:src="@drawable/ic_pass"/>
@@ -80,9 +84,11 @@
                         style="@style/text_user"
                         android:text="Đổi mật khẩu"/>
                 </LinearLayout>
+        <!--Dang Xuat-->
                 <LinearLayout
                     android:id="@+id/linear_logout"
-                    style="@style/choosen_user">
+                    style="@style/choosen_user"
+                    android:layout_margin="2dp">
                     <ImageView
                         style="@style/img_user"
                         android:src="@drawable/ic_logout"/>

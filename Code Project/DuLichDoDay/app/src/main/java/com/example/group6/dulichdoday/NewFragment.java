@@ -13,6 +13,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
+import android.support.v7.widget.AppCompatTextView;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.group6.dulichdoday.Adapter.AdapterNew;
@@ -46,6 +49,7 @@ public class NewFragment extends Fragment {
     private AdapterNew adapterNew;
     private ImageView chon,gui;
     private Dialog dialog;
+    private TextView btnCancelAvatar;
     private EditText newfeed;
     FirebaseDatabase database;
     DatabaseReference refer;
@@ -78,6 +82,7 @@ public class NewFragment extends Fragment {
         chon = (ImageView) view.findViewById(R.id.chon);
         gui = (ImageView) view.findViewById(R.id.gui);
         newfeed = (EditText) view.findViewById(R.id.newfeed);
+
         firebaseAuth = FirebaseAuth.getInstance();
         final String a;
 
@@ -89,8 +94,17 @@ public class NewFragment extends Fragment {
         dialog.setContentView(R.layout.dialog_getavatar);
         dialog.setTitle("Choose Avatar Image");
 
-        Button btn_chooseImg = (Button) dialog.findViewById(R.id.btn_choosenGallery);
-        Button btn_takeaphoto = (Button) dialog.findViewById(R.id.btn_choosenTakephoto);
+        btnCancelAvatar = (TextView) dialog.findViewById(R.id.btnCancelAvatar);
+        btnCancelAvatar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        TextView btn_chooseImg;
+        TextView btn_takeaphoto;
+        btn_chooseImg = (TextView) dialog.findViewById(R.id.btnCameraAvatar);
+        btn_takeaphoto = (TextView) dialog.findViewById(R.id.btnGalleryAvatar);
 
         chon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -207,6 +221,7 @@ public class NewFragment extends Fragment {
                 refer.child("baiviet").child(key).setValue(s);
 //                adapterNew.notifyDataSetChanged();
                 //dang du lieu len firebaser
+                Toast.makeText(getActivity(), "Đăng Bài Thành Công", Toast.LENGTH_SHORT).show();
             }
         });
 

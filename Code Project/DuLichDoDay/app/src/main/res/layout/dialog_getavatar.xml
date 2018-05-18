@@ -3,50 +3,57 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-   <LinearLayout
-       android:background="@color/colorAccent"
-       android:layout_width="match_parent"
-       android:layout_height="270dp"
-       android:orientation="vertical"
-       android:paddingTop="30dp"
-       android:padding="30dp">
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="100dp"
-           android:orientation="horizontal"
 
-           android:background="@color/colorAccent">
-           <ImageView
-               android:layout_width="50dp"
-               android:layout_height="50dp"
-               android:src="@drawable/chooseiimage"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-           <Button
-               android:id="@+id/btn_choosenGallery"
-               android:layout_width="match_parent"
-               android:layout_height="50dp"
-               android:background="@color/colorAccent"
-               android:text="Choose From Gallery"
-               android:textColor="#000000" />
-       </LinearLayout>
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="100dp"
-           android:orientation="horizontal"
-           android:background="@color/colorAccent">
-           <ImageView
-               android:layout_width="50dp"
-               android:layout_height="50dp"
-               android:layout_gravity="center"
-               android:src="@drawable/takephoto"/>
-           <Button
-               android:id="@+id/btn_choosenTakephoto"
-               android:layout_width="match_parent"
-               android:layout_height="100dp"
-               android:text="Take A Photo"
-               android:textColor="#000000"
-               android:background="@color/colorAccent"/>
-       </LinearLayout>
-   </LinearLayout>
-    
+        <LinearLayout
+            style="@style/linear">
+            <TextView
+                android:id="@+id/btnCameraAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_camera"
+                android:drawablePadding="10dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Máy ảnh"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginBottom="0dp"
+            style="@style/linear">
+
+            <TextView
+                android:id="@+id/btnGalleryAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/ic_library"
+                android:drawablePadding="10dp"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:text="Thư viện"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/color_main">
+            <TextView
+                android:id="@+id/btnCancelAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:padding="5dp"
+                android:textColor="@android:color/white"
+                android:text="Đóng"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
 </LinearLayout>

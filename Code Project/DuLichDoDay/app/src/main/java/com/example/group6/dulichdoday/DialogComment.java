@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class DialogComment extends AppCompatActivity {
 
@@ -25,8 +26,8 @@ public class DialogComment extends AppCompatActivity {
         dialog.setContentView(R.layout.dialog_getavatar);
         dialog.setTitle("Choose Avatar Image");
 
-        Button btn_chooseImg = (Button) dialog.findViewById(R.id.btn_choosenGallery);
-        Button btn_takeaphoto = (Button) dialog.findViewById(R.id.btn_choosenTakephoto);
+        TextView btn_chooseImg = (Button) dialog.findViewById(R.id.btnCameraAvatar);
+        TextView btn_takeaphoto = (Button) dialog.findViewById(R.id.btnGalleryAvatar);
 
         btn_chooseImg.setOnClickListener(new View.OnClickListener() {
             @Override

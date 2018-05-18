@@ -75,8 +75,13 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
         refer = database.getReference();
 
 
-
+    try {
         holder.imgTile.setImageBitmap(Base64ToImage(arrNew.get(position).getImgProduct()));
+    }
+    catch (Exception e)
+    {
+
+    }
 
         //
         holder.name.setText(arrNew.get(position).getName());
