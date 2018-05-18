@@ -89,7 +89,7 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
 
         holder.tvNumberLike.setText(arrNew.get(position).getnNumberLike()+ "");
         holder.tvNumberUnlike.setText(arrNew.get(position).getnNumberUnlike()+ "");
-        holder.tvNumberCommment.setText(arrNew.get(position).getnNumberComment()+"");
+      //  holder.tvNumberCommment.setText(arrNew.get(position).getnNumberComment()+"");
         String key = arrNew.get(position).getKey();
 
         //
@@ -227,13 +227,13 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
 
         ImageView imgExit = (ImageView) dialog.findViewById(R.id.exit_dialog);
 
-        holder.imgCommt.setOnClickListener(new View.OnClickListener() {
+      /*  holder.imgCommt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 dialog.show();
             }
-        });
+        });*/
 
         imgExit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -278,11 +278,11 @@ public class AdapterNew extends RecyclerView.Adapter<AdapterNew.ViewHolder> {
 
             tvNumberLike = (TextView) itemView.findViewById(R.id.tv_number_like);
             tvNumberUnlike = (TextView) itemView.findViewById(R.id.tv_number_unlike);
-            tvNumberCommment = (TextView) itemView.findViewById(R.id.tv_number_comment);
+            //tvNumberCommment = (TextView) itemView.findViewById(R.id.tv_number_comment);
             cbxHomeLike = (CheckBox) itemView.findViewById(R.id.cbx_like);
             cbxHomeUnlike = (CheckBox) itemView.findViewById(R.id.cbx_unlike);
 
-            imgCommt = (ImageView) itemView.findViewById(R.id.cbx_comment);
+            //imgCommt = (ImageView) itemView.findViewById(R.id.cbx_comment);
 
         }
     }

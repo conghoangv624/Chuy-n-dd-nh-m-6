@@ -92,6 +92,8 @@
 
                 </LinearLayout>
 
+
+
                 <LinearLayout style="@style/customhome_product_widget">
 
                     <CheckBox
@@ -102,21 +104,6 @@
 
                     <TextView
                         android:id="@+id/tv_number_unlike"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="10dp" />
-                </LinearLayout>
-
-                <LinearLayout style="@style/customhome_product_widget">
-
-                    <ImageView
-                        android:id="@+id/cbx_comment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_chat" />
-
-                    <TextView
-                        android:id="@+id/tv_number_comment"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp" />
