@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.group6.dulichdoday.DetailBusinessActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -19,8 +20,8 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@color/color_main"
-                android:orientation="horizontal"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -31,17 +32,17 @@
 
                     <ImageView
                         android:id="@+id/imgLogo"
-                        android:layout_alignParentTop="true"
-                        android:layout_alignParentLeft="true"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
                         android:src="@drawable/travel" />
 
                     <TextView
-                        android:layout_toRightOf="@id/imgLogo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@id/imgLogo"
                         android:text="Thông tin tài khoản"
                         android:textColor="@android:color/white"
                         android:textSize="20dp"
@@ -49,9 +50,9 @@
 
                     <TextView
                         android:id="@+id/tvBack"
-                        android:layout_alignParentRight="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
                         android:layout_marginRight="15dp"
                         android:text="Trở về"
                         android:textColor="@android:color/white"
@@ -86,11 +87,12 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="160dp"
-                                android:layout_weight="1"
+                                android:layout_marginBottom="20dp"
                                 android:layout_marginTop="5dp"
-                                android:layout_marginBottom="20dp">
+                                android:layout_weight="1">
 
                                 <ImageView
+                                    android:id="@+id/avatar"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:src="@mipmap/nhatrang_ok" />
@@ -121,8 +123,8 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="Du Lịch Đó Đây"
-                                        android:textSize="22dp"
                                         android:textColor="@color/btn_login"
+                                        android:textSize="22dp"
                                         android:textStyle="bold" />
 
                                 </LinearLayout>
@@ -131,25 +133,27 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
-                                    android:paddingLeft="20dp"
-                                    android:paddingTop="10dp"
-                                    android:paddingBottom="10dp"
-                                    android:paddingRight="20dp"
                                     android:background="@android:color/white"
                                     android:gravity="center|left"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="20dp"
+                                    android:paddingRight="20dp"
+                                    android:paddingTop="10dp">
 
                                     <ImageView
                                         android:layout_width="25dp"
                                         android:layout_height="25dp"
-                                        android:src="@drawable/gmail"/>
+                                        android:src="@drawable/detail_user" />
+
                                     <TextView
+                                        android:id="@+id/txtName"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingLeft="20dp"
+                                        android:text="          "
                                         android:textSize="17dp"
-                                        android:text="thphuc202@gmail.com"
-                                        android:textStyle="bold"/>
+                                        android:textStyle="bold" />
 
                                 </LinearLayout>
 
@@ -157,25 +161,27 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
-                                    android:paddingLeft="20dp"
-                                    android:paddingTop="10dp"
-                                    android:paddingBottom="10dp"
-                                    android:paddingRight="20dp"
                                     android:background="@android:color/white"
                                     android:gravity="center|left"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="20dp"
+                                    android:paddingRight="20dp"
+                                    android:paddingTop="10dp">
 
                                     <ImageView
                                         android:layout_width="25dp"
                                         android:layout_height="25dp"
-                                        android:src="@drawable/detail_phone"/>
+                                        android:src="@drawable/gmail" />
+
                                     <TextView
+                                        android:id="@+id/txtEmail"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingLeft="20dp"
+                                        android:text="          "
                                         android:textSize="17dp"
-                                        android:text="01683498079"
-                                        android:textStyle="bold"/>
+                                        android:textStyle="bold" />
 
                                 </LinearLayout>
 
@@ -183,26 +189,55 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="5dp"
-                                    android:paddingLeft="20dp"
-                                    android:paddingTop="10dp"
-                                    android:paddingBottom="10dp"
-                                    android:paddingRight="20dp"
                                     android:background="@android:color/white"
                                     android:gravity="center|left"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="20dp"
+                                    android:paddingRight="20dp"
+                                    android:paddingTop="10dp">
 
                                     <ImageView
                                         android:layout_width="25dp"
                                         android:layout_height="25dp"
-                                        android:src="@drawable/detail_address"/>
+                                        android:src="@drawable/detail_phone" />
 
                                     <TextView
+                                        android:id="@+id/txtPhone"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:paddingLeft="20dp"
+                                        android:text="         "
                                         android:textSize="17dp"
-                                        android:text="123 Nguyễn Trãi , Quận 5 , Thành Phố Hồ Chí Minh"
-                                        android:textStyle="bold"/>
+                                        android:textStyle="bold" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="5dp"
+                                    android:background="@android:color/white"
+                                    android:gravity="center|left"
+                                    android:orientation="horizontal"
+                                    android:paddingBottom="10dp"
+                                    android:paddingLeft="20dp"
+                                    android:paddingRight="20dp"
+                                    android:paddingTop="10dp">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:src="@drawable/detail_address" />
+
+                                    <TextView
+                                        android:id="@+id/txtAddress"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:paddingLeft="20dp"
+                                        android:text="         "
+                                        android:textSize="17dp"
+                                        android:textStyle="bold" />
 
                                 </LinearLayout>
 
@@ -212,7 +247,6 @@
                         </LinearLayout>
 
 
-
                     </ScrollView>
 
                 </LinearLayout>
@@ -220,22 +254,22 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
+                    android:layout_weight="0.8"
+                    android:paddingBottom="10dp"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:layout_weight="0.8">
+                    android:paddingTop="10dp">
 
                     <TextView
                         android:id="@+id/btn_update"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:textSize="15dp"
-                        android:textStyle="bold"
-                        android:textColor="@android:color/white"
                         android:background="@drawable/custom_btn_login"
-                        android:text="Cập nhật thông tin"/>
+                        android:gravity="center"
+                        android:text="Cập nhật thông tin"
+                        android:textColor="@android:color/white"
+                        android:textSize="15dp"
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
