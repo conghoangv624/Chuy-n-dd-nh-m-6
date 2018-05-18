@@ -113,6 +113,7 @@ public class DetailPersonalActivity extends AppCompatActivity {
 
             }
         });
+        tvback = (TextView)findViewById(R.id.tvBack);
         tvback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

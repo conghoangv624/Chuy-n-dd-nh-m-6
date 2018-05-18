@@ -78,7 +78,8 @@ public class PasswordActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         //kiem tra hai tai khoan co giong nhau khong
                         if ( !txtNewPassword.getText().toString().trim().equalsIgnoreCase(txtConfirmNewPassword.getText().toString().trim())) {
-                            Toast.makeText(PasswordActivity.this, "Hai tài khoản khác nhau", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PasswordActivity.this, "Mật khẩu không giống nhau", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
                         }
                         else
                         {
@@ -88,14 +89,14 @@ public class PasswordActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         //startActivity(intent);
-                                        mData.child("Users").addChildEventListener(new ChildEventListener() {
+                                        mData.child(UserInfor.CHILD_USER).addChildEventListener(new ChildEventListener() {
                                             @Override
                                             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                                                 final UserInfor users = dataSnapshot.getValue(UserInfor.class);
                                                 if (users.getEmail().equalsIgnoreCase(mAuth.getCurrentUser().getEmail())) {
                                                     final String userID = mAuth.getCurrentUser().getUid();
                                                     //txtConfirmNewPassword.setText(users.getPass()+"");
-                                                    mData.child("Users").child(userID).child("pass").setValue(txtConfirmNewPassword.getText().toString());
+                                                    mData.child(UserInfor.CHILD_USER).child(userID).child("pass").setValue(txtConfirmNewPassword.getText().toString());
                                                 }
                                             }
 
@@ -141,7 +142,8 @@ public class PasswordActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         //kiem tra hai tai khoan co giong nhau khong
                         if ( !txtNewPassword.getText().toString().trim().equalsIgnoreCase(txtConfirmNewPassword.getText().toString().trim())) {
-                            Toast.makeText(PasswordActivity.this, "Hai tài khoản khác nhau", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PasswordActivity.this, "Mật khẩu không giống nhau", Toast.LENGTH_SHORT).show();
+                            dialog.dismiss();
                         }
                         else
                         {
@@ -151,7 +153,7 @@ public class PasswordActivity extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<Void> task) {
                                     if (task.isSuccessful()) {
                                         //startActivity(intent);
-                                        mData.child("Users").addChildEventListener(new ChildEventListener() {
+                                        mData.child(UserInfor.CHILD_USER).addChildEventListener(new ChildEventListener() {
                                             @Override
                                             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                                                 final UserInfor users = dataSnapshot.getValue(UserInfor.class);
