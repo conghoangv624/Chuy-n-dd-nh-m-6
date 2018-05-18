@@ -150,13 +150,14 @@ public class UpdateInforActivity extends AppCompatActivity {
         });
 
         //huy bo cap nhap thong tin
-        tvCancle_update = (TextView) findViewById(R.id.cancel_update);
-        final Intent intentCancel = new Intent(UpdateInforActivity.this,DetailPersonalActivity.class);
+        tvCancle_update = (TextView) findViewById(R.id.cancel_update_user);
+        //final Intent intentCancel = new Intent(UpdateInforActivity.this,DetailPersonalActivity.class);
         tvCancle_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentCancel = new Intent(UpdateInforActivity.this,DetailPersonalActivity.class);
-                startActivity(intentCancel);
+                //Intent intentCancel = new Intent(UpdateInforActivity.this,DetailPersonalActivity.class);
+                //startActivity(intentCancel);
+                finish();
             }
         });
 

@@ -25,6 +25,7 @@ public class DetailTourActivity extends AppCompatActivity {
     Intent intent;
     Bundle bundle;
     private TextView tvDatTour;
+    private TextView tvBack;
     private TextView tvCode,tvTime,tvPrice,tvName,tvNoidung;
     private ImageView img;
 
@@ -38,6 +39,7 @@ public class DetailTourActivity extends AppCompatActivity {
         mData = FirebaseDatabase.getInstance().getReference();
 
         tvDatTour = (TextView) findViewById(R.id.tvDatTour);
+        tvBack = (TextView) findViewById(R.id.cancel_detail) ;
 
         tvCode = (TextView) findViewById(R.id.tvCodeDetail);
         tvName = (TextView) findViewById(R.id.tvNameDetail);
@@ -70,8 +72,12 @@ public class DetailTourActivity extends AppCompatActivity {
             }
         });
         //
-
-
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void loadData() {

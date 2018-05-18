@@ -127,7 +127,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 mData1.child(UserInfor.CHILD_USER).child(userID).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),userID,"","","",UserInfor.DOANH_NGHIEP,"",""));
                                 //mData.child(userID).setValue(new User(email+"",password +"","Quản lý"));
                             }
-                            //startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                             finish();
                         }
                     }

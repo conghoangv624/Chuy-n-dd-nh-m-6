@@ -34,6 +34,7 @@ import java.util.Calendar;
 public class DetailPersonalActivity extends AppCompatActivity {
 
     private TextView tvUpdate;
+    private TextView tvback;
     private ImageView imgPresonalUrl;
     private TextView txtPresonalName;
     private TextView txtPresonalDate;
@@ -78,7 +79,7 @@ public class DetailPersonalActivity extends AppCompatActivity {
             }
         });
 
-        mData.child("Users").addChildEventListener(new ChildEventListener() {
+        mData.child(UserInfor.CHILD_USER).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);
@@ -110,6 +111,12 @@ public class DetailPersonalActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
 
+            }
+        });
+        tvback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
