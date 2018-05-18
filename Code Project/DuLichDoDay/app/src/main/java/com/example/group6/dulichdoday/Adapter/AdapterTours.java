@@ -130,7 +130,7 @@ public class AdapterTours extends RecyclerView.Adapter<AdapterTours.ViewHolder> 
                                 btnCancel = (TextView) dialog.findViewById(R.id.cancel_edit);
 
                                 storage = FirebaseStorage.getInstance();
-                                storageRef = storage.getReferenceFromUrl("gs://dulichdoday-7d0dd.appspot.com");
+                                storageRef = storage.getReferenceFromUrl("gs://dulichdodaydemo.appspot.com");
                                 mAuth = FirebaseAuth.getInstance();
 
                                 arrTours = new ArrayList<Tours>();
@@ -321,12 +321,12 @@ public class AdapterTours extends RecyclerView.Adapter<AdapterTours.ViewHolder> 
 
         public ViewHolder(View itemView) {
             super(itemView);
-            img = (ImageView) itemView.findViewById(R.id.img_tour);
-            tvCode = (TextView) itemView.findViewById(R.id.tv_code_tour);
-            tvName = (TextView) itemView.findViewById(R.id.tv_name_tour);
-            tvTime = (TextView) itemView.findViewById(R.id.tv_time_tour);
-            tvPrice = (TextView) itemView.findViewById(R.id.tv_price_tour);
-            //buttonViewOption = (TextView) itemView.findViewById(R.id.textViewOptions);
+            img = (ImageView) itemView.findViewById(R.id.img_tour_list);
+            tvCode = (TextView) itemView.findViewById(R.id.tv_code_tour_list);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name_tour_list);
+            tvTime = (TextView) itemView.findViewById(R.id.tv_time_tour_list);
+            tvPrice = (TextView) itemView.findViewById(R.id.tv_price_tour_list);
+            buttonViewOption = (TextView) itemView.findViewById(R.id.textViewOptions);
             //itemView.setOnCreateContextMenuListener(this);
         }
 

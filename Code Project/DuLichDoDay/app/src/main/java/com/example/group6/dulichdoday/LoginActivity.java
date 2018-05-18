@@ -2,6 +2,7 @@ package com.example.group6.dulichdoday;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.AnimationDrawable;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
     private Intent myIntent;
     private Button btn_Login;
     private EditText edtMail, edtPass;
+    SharedPreferences sp;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -42,6 +44,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_Login = (Button) findViewById(R.id.btn_Login);
         edtMail = (EditText) findViewById(R.id.edtMailLogin);
         edtPass = (EditText) findViewById(R.id.edtPassLogin);
+        //sp = getSharedPreferences("login",MODE_PRIVATE);
 
         frameLayout = (FrameLayout) findViewById(R.id.frameLogin);
         animationDrawable = (AnimationDrawable)frameLayout.getBackground();
@@ -50,6 +53,11 @@ public class LoginActivity extends AppCompatActivity {
         animationDrawable.start();
         //Get Firebase
         mAuth = FirebaseAuth.getInstance();
+
+
+        /*    if(sp.getBoolean("logged",false)){
+            goToMainActivity();
+        }*/
 
 
         btn_Login.setOnClickListener(new View.OnClickListener() {
@@ -77,8 +85,8 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (!task.isSuccessful()) {
-                            if (password.length() < 10 || password.length() > 30) {
-                                edtPass.setError("Tối thiểu 10 ký tự");
+                            if (password.length() < 8 || password.length() > 30) {
+                                edtPass.setError("Tối thiểu 8 ký tự");
                                 mProgress.dismiss();
                             } else {
                                 mProgress.dismiss();
@@ -86,8 +94,8 @@ public class LoginActivity extends AppCompatActivity {
                             }
                         } else {
                             Toast.makeText(LoginActivity.this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
-                            Intent myIntentLogin = new Intent(getApplication(), MainLayoutActivity.class);
-                            startActivity(myIntentLogin);
+                            goToMainActivity();
+                            finish();
                         }
                     }
                 });
@@ -97,11 +105,14 @@ public class LoginActivity extends AppCompatActivity {
         tvRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 myIntent = new Intent(getApplication(), RegisterActivity.class);
                 startActivity(myIntent);
-
             }
         });
+    }
+
+    public void goToMainActivity(){
+        Intent myIntentLogin = new Intent(getApplication(), MainLayoutActivity.class);
+        startActivity(myIntentLogin);
     }
 }

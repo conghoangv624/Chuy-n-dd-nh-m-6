@@ -42,7 +42,7 @@ public class UserBusinessFragment extends Fragment {
         manager = (LinearLayout) view.findViewById(R.id.linear_product_manager);
         listTour = (LinearLayout) view.findViewById(R.id.linear_list_tour);
         tourOrder = (LinearLayout) view.findViewById(R.id.linear_product_manager_personal);
-        logout = (LinearLayout) view.findViewById(R.id.linear_logout);
+        logout = (LinearLayout) view.findViewById(R.id.linear_logout_Business);
 
         //Thông tin cá nhân
         business.setOnClickListener(new View.OnClickListener() {

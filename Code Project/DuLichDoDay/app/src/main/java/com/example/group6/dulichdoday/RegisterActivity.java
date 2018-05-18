@@ -76,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity {
         //Get FireBasae
         mAuth = FirebaseAuth.getInstance();
         mData1 = FirebaseDatabase.getInstance().getReference();
-        mData = FirebaseDatabase.getInstance().getReference().child("Users");
+        mData = FirebaseDatabase.getInstance().getReference().child(UserInfor.CHILD_USER);
         //Progressbar
         mProgress = new ProgressDialog(this);
         mProgress.setTitle("Đang tạo tài khoản");
@@ -96,7 +96,7 @@ public class RegisterActivity extends AppCompatActivity {
                 } else if (TextUtils.isEmpty(password)) {
                     Toast.makeText(getApplicationContext(), "Nhập password", Toast.LENGTH_SHORT).show();
                     return;
-                } else if (password.length() < 10 || password.length() > 30) {
+                } else if (password.length() < 8 || password.length() > 30) {
                     Toast.makeText(getApplicationContext(), "Nhập lại password", Toast.LENGTH_SHORT).show();
                     return;
                 } else  {
@@ -120,14 +120,15 @@ public class RegisterActivity extends AppCompatActivity {
                             //String key = mData1.child("Users").push().getKey();
                             if (rb1.isChecked()) {
 
-                                mData1.child("Users").child(userID).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),"","","","","Thành Viên","",""));
+                                mData1.child(UserInfor.CHILD_USER).child(userID).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),userID,"","","",UserInfor.KHACH_HANG,"",""));
                                // mData.child(userID).setValue(new User(email+"",password +"","Thành viên"));
                             }else if (rb2.isChecked()) {
 
-                                mData1.child("Users").child(userID).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),"","","","","Quản lý","",""));
+                                mData1.child(UserInfor.CHILD_USER).child(userID).setValue(new UserInfor("",edtMail.getText().toString(),edtPass.getText().toString(),userID,"","","",UserInfor.DOANH_NGHIEP,"",""));
                                 //mData.child(userID).setValue(new User(email+"",password +"","Quản lý"));
                             }
-                            startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            //startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+                            finish();
                         }
                     }
                 });
@@ -140,8 +141,9 @@ public class RegisterActivity extends AppCompatActivity {
         tvCancelRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                myIntent = new Intent(getApplication(), LoginActivity.class);
-                startActivity(myIntent);
+                /*myIntent = new Intent(getApplication(), LoginActivity.class);
+                startActivity(myIntent);*/
+                finish();
             }
         });
 

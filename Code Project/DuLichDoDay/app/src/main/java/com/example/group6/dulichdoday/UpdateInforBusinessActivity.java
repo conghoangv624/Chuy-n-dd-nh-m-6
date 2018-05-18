@@ -135,23 +135,24 @@ public class UpdateInforBusinessActivity extends AppCompatActivity {
                 });
 
                 //chon hinh anh tu camera
-                btnCamera = (TextView) dialog.findViewById(R.id.btnCamera) ;
+                btnCamera = (TextView) dialog.findViewById(R.id.btnCamera);
                 btnCamera.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent taPicture = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                        startActivityForResult(taPicture,1);
+                        startActivityForResult(taPicture,PICK_IMAGE_CAMERA);
+                        dialog.dismiss();
                     }
                 });
 
                 //chon hinh anh tu thu vien
                 btnGallery = (TextView) dialog.findViewById(R.id.btnGallery);
-                ;
                 btnGallery.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
                         Intent picPhoto = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-                        startActivityForResult(picPhoto,1);
+                        startActivityForResult(picPhoto,PICK_IMAGE_GALLERY);
+                        dialog.dismiss();
                     }
                 });
             }
@@ -159,18 +160,19 @@ public class UpdateInforBusinessActivity extends AppCompatActivity {
 
         //huy bo cap nhap thong tin
         tvCancle_update = (TextView) findViewById(R.id.cancel_update);
-        final Intent intentCancel = new Intent(UpdateInforBusinessActivity.this,DetailBusinessActivity.class);
+       // final Intent intentCancel = new Intent(UpdateInforBusinessActivity.this,DetailBusinessActivity.class);
         tvCancle_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intentCancel = new Intent(UpdateInforBusinessActivity.this,DetailBusinessActivity.class);
-                startActivity(intentCancel);
+                //Intent intentCancel = new Intent(UpdateInforBusinessActivity.this,DetailBusinessActivity.class);
+                //startActivity(intentCancel);
+                finish();
             }
         });
 
 
 
-        mData.child("Users").addChildEventListener(new ChildEventListener() {
+        mData.child(UserInfor.CHILD_USER).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 final UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);
@@ -179,23 +181,23 @@ public class UpdateInforBusinessActivity extends AppCompatActivity {
                     btnUpdateUser.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            mData.child("Users").addChildEventListener(new ChildEventListener() {
+                            mData.child(UserInfor.CHILD_USER).addChildEventListener(new ChildEventListener() {
                                 @Override
                                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                                    UserInfor users = dataSnapshot.getValue(com.example.group6.dulichdoday.Models.UserInfor.class);
+                                    UserInfor users = dataSnapshot.getValue(UserInfor.class);
                                     //UserInfor users = dataSnapshot.getValue(UserInfor.class);
                                     if (users.getEmail().equalsIgnoreCase(mAuth.getCurrentUser().getEmail())) {
                                         final String userID = mAuth.getCurrentUser().getUid();
-                                        Picasso.with(UpdateInforBusinessActivity.this).load(users.getImageUrl()).into(img_Choosen);
-                                        mData.child("Users").child(userID).child("name").setValue(edtUpdateName.getText().toString());
+                                       // Picasso.with(UpdateInforBusinessActivity.this).load(users.getImageUrl()).into(img_Choosen);
+                                        mData.child(UserInfor.CHILD_USER).child(userID).child("name").setValue(edtUpdateName.getText().toString());
                                         //mData.child("Users").child(userID).child("email").setValue(edtUpdateEmail.getText().toString());
-                                        mData.child("Users").child(userID).child("phoneNumber").setValue(edtUpdatePhone.getText().toString());
-                                        mData.child("Users").child(userID).child("address").setValue(edtUpdateAddress.getText().toString());
+                                        mData.child(UserInfor.CHILD_USER).child(userID).child("phoneNumber").setValue(edtUpdatePhone.getText().toString());
+                                        mData.child(UserInfor.CHILD_USER).child(userID).child("address").setValue(edtUpdateAddress.getText().toString());
 
                                         Toast.makeText(UpdateInforBusinessActivity.this, "cập nhật thông tin tài khoản thành công !", Toast.LENGTH_SHORT).show();
                                         finish();
-                                        Intent intent = new Intent(UpdateInforBusinessActivity.this,DetailBusinessActivity.class);
-                                        startActivity(intent);
+                                        //Intent intent = new Intent(UpdateInforBusinessActivity.this,DetailBusinessActivity.class);
+                                        //startActivity(intent);
                                     }
 
                                 }

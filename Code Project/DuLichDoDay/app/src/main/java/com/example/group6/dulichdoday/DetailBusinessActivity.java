@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class DetailBusinessActivity extends AppCompatActivity {
 
     private TextView tvUpdate;
+    private TextView tvBack;
     private ImageView BusinessImgUrl;
     private TextView txtBusinessName;
     private TextView txtBusinessEmail;
@@ -46,6 +47,7 @@ public class DetailBusinessActivity extends AppCompatActivity {
         txtBusinessAddress = (TextView) findViewById(R.id.txtAddress);
 
         tvUpdate = (TextView) findViewById(R.id.btn_update);
+        tvBack = (TextView)findViewById(R.id.tvBack);
         tvUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,8 +55,14 @@ public class DetailBusinessActivity extends AppCompatActivity {
                 startActivity(intentUpdate);
             }
         });
+        tvBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
-        mData.child("Users").addChildEventListener(new ChildEventListener() {
+        mData.child(UserInfor.CHILD_USER).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);

@@ -51,18 +51,18 @@ public class MainLayoutActivity extends AppCompatActivity {
                     fragmentTransaction3.commit();
                     return true;
                 case R.id.navigation_users:
-                    mData.child("Users").addChildEventListener(new ChildEventListener() {
+                    mData.child(UserInfor.CHILD_USER).addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(DataSnapshot dataSnapshot, String s) {
 
                             UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);
                             if (userInfor.getEmail().equalsIgnoreCase(mAuth.getCurrentUser().getEmail())) {
-                                if (userInfor.getUserType().equalsIgnoreCase("Thành viên")) {
+                                if (userInfor.getUserType().equalsIgnoreCase(UserInfor.KHACH_HANG)) {
                                     UserFragment fragmentUser = new UserFragment();
                                     android.support.v4.app.FragmentTransaction fragmentTransaction4 = getSupportFragmentManager().beginTransaction();
                                     fragmentTransaction4.replace(R.id.content,fragmentUser,"Fragment");
                                     fragmentTransaction4.commit();
-                                } else if (userInfor.getUserType().equalsIgnoreCase("Quản lý")) {
+                                } else if (userInfor.getUserType().equalsIgnoreCase(UserInfor.DOANH_NGHIEP)) {
                                     UserBusinessFragment fragmentUserBusiness = new UserBusinessFragment();
                                     android.support.v4.app.FragmentTransaction fragmentTransaction5 = getSupportFragmentManager().beginTransaction();
                                     fragmentTransaction5.replace(R.id.content,fragmentUserBusiness,"Fragment");

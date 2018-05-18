@@ -93,7 +93,7 @@ public class UpdateInforActivity extends AppCompatActivity {
         setContentView(R.layout.update_infor_layout);
 
         firebaseStorage = FirebaseStorage.getInstance();
-        storageReference = firebaseStorage.getReferenceFromUrl("gs://dulichdoday-7d0dd.appspot.com");
+        storageReference = firebaseStorage.getReferenceFromUrl("gs://dulichdodaydemo.appspot.com");
 
         //hien thi dialog chuc nang hinh anh
         init();
@@ -160,7 +160,7 @@ public class UpdateInforActivity extends AppCompatActivity {
             }
         });
 
-        mData.child("Users").addChildEventListener(new ChildEventListener() {
+        mData.child(UserInfor.CHILD_USER).addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                 final UserInfor userInfor = dataSnapshot.getValue(UserInfor.class);
@@ -169,20 +169,21 @@ public class UpdateInforActivity extends AppCompatActivity {
                     btnUpdateUser.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
-                            mData.child("Users").addChildEventListener(new ChildEventListener() {
+                            mData.child(UserInfor.CHILD_USER).addChildEventListener(new ChildEventListener() {
                                 @Override
                                 public void onChildAdded(DataSnapshot dataSnapshot, String s) {
                                     UserInfor users = dataSnapshot.getValue(UserInfor.class);
                                     if (users.getEmail().equalsIgnoreCase(mAuth.getCurrentUser().getEmail())) {
                                         final String userID = mAuth.getCurrentUser().getUid();
-                                        mData.child("Users").child(userID).child("name").setValue(edtUpdateName.getText().toString());
-                                        mData.child("Users").child(userID).child("date").setValue(edtUpdateDate.getText().toString());
-                                        mData.child("Users").child(userID).child("sex").setValue(edtUpdateSex.getText().toString());
-                                        mData.child("Users").child(userID).child("phoneNumber").setValue(edtUpdatePhone.getText().toString());
-                                        mData.child("Users").child(userID).child("address").setValue(edtUpdateAddress.getText().toString());
+                                        mData.child(UserInfor.CHILD_USER).child(userID).child("name").setValue(edtUpdateName.getText().toString());
+                                        mData.child(UserInfor.CHILD_USER).child(userID).child("date").setValue(edtUpdateDate.getText().toString());
+                                        mData.child(UserInfor.CHILD_USER).child(userID).child("sex").setValue(edtUpdateSex.getText().toString());
+                                        mData.child(UserInfor.CHILD_USER).child(userID).child("phoneNumber").setValue(edtUpdatePhone.getText().toString());
+                                        mData.child(UserInfor.CHILD_USER).child(userID).child("address").setValue(edtUpdateAddress.getText().toString());
                                         Toast.makeText(UpdateInforActivity.this, "Cap nhap tài khoản thành công", Toast.LENGTH_SHORT).show();
-                                        Intent intent = new Intent(UpdateInforActivity.this,DetailPersonalActivity.class);
-                                        startActivity(intent);
+                                        //Intent intent = new Intent(UpdateInforActivity.this,DetailPersonalActivity.class);
+                                        //startActivity(intent);
+                                        finish();
                                     }
 
                                     Calendar calendar = Calendar.getInstance();

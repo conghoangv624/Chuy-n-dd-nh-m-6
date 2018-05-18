@@ -29,7 +29,7 @@ public class AdapterBookTour extends RecyclerView.Adapter<AdapterBookTour.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View itemView = layoutInflater.inflate(R.layout.custom_booking_tour,parent,false);
+        View itemView = layoutInflater.inflate(R.layout.custom_tour,parent,false);
         return new ViewHolder(itemView);
     }
 
@@ -37,8 +37,8 @@ public class AdapterBookTour extends RecyclerView.Adapter<AdapterBookTour.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         Picasso.with(context).load(arrNew.get(position).getImgTour()).into(holder.img);
         holder.tvCode.setText(arrNew.get(position).getTour_ID());
-        holder.tvAdd.setText(arrNew.get(position).getTourName());
-        holder.tvDesciption.setText(arrNew.get(position).getTourDescription());
+        holder.tvName.setText(arrNew.get(position).getTourName());
+        holder.tvTime.setText(arrNew.get(position).getTourTime());
         holder.tvPrice.setText(arrNew.get(position).getTourPrice());
     }
 
@@ -54,15 +54,15 @@ public class AdapterBookTour extends RecyclerView.Adapter<AdapterBookTour.ViewHo
 
 
         TextView tvCode;
-        TextView tvAdd;
-        TextView tvDesciption;
+        TextView tvName;
+        TextView tvTime;
         TextView tvPrice;
         public ViewHolder(View itemView) {
             super(itemView);
             img = (ImageView) itemView.findViewById(R.id.img_tour);
             tvCode = (TextView) itemView.findViewById(R.id.tv_code_tour);
-            tvAdd = (TextView) itemView.findViewById(R.id.tv_add_tour);
-            tvDesciption = (TextView) itemView.findViewById(R.id.tv_discip_tour);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name_tour);
+            tvTime = (TextView) itemView.findViewById(R.id.tv_time_tour);
             tvPrice = (TextView) itemView.findViewById(R.id.tv_price_tour);
         }
     }

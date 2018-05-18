@@ -12,7 +12,6 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.group6.dulichdoday.Models.Tour;
 import com.example.group6.dulichdoday.Models.Tours;
 import com.example.group6.dulichdoday.R;
 import com.google.firebase.database.DataSnapshot;
@@ -29,7 +28,7 @@ import java.util.ArrayList;
 
 public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHolder> {
 
-    ArrayList<Tour> arrNew;
+    ArrayList<Tours> arrNew;
     Context context;
     private Context applicationContext;
     DataSnapshot dataSnapshot;
@@ -41,7 +40,7 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
     Query applesQuery = ref.child("TourDat").orderByChild("title");
 
 
-    public AdapterTourList(ArrayList<Tour> arrNew, Context context) {
+    public AdapterTourList(ArrayList<Tours> arrNew, Context context) {
         this.arrNew = arrNew;
         this.context = context;
     }
@@ -72,10 +71,10 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
     public void onBindViewHolder(AdapterTourList.ViewHolder holder, final int position) {
 
         /*Picasso.with(context).load(arrNew.get(position).getImgProduct()).into(holder.img);*/
-        holder.tvCode.setText(arrNew.get(position).getCodeTour());
-        holder.tvName.setText(arrNew.get(position).getAddTour());
-        holder.tvTime.setText(arrNew.get(position).getDiscripTour());
-        holder.tvPrice.setText(arrNew.get(position).getPriceTour());
+        holder.tvCode.setText(arrNew.get(position).getTour_ID());
+        holder.tvName.setText(arrNew.get(position).getTourName());
+        holder.tvTime.setText(arrNew.get(position).getTourTime());
+        holder.tvPrice.setText(arrNew.get(position).getTourPrice());
         final Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.dialog_listtour_reque);

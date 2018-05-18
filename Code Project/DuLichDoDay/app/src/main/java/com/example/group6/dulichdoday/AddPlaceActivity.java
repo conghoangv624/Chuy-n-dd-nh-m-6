@@ -53,6 +53,7 @@ public class AddPlaceActivity extends AppCompatActivity {
     EditText edtDescript;
     EditText edtTourPrice;
     TextView btnAdd;
+    TextView btnBack;
     TextView btnCancel;
     TextView btnGallery;
     TextView btnCamera;
@@ -277,7 +278,7 @@ public class AddPlaceActivity extends AppCompatActivity {
                 });//ket thuc get hinh
             }
         });
-        btnCancel.setOnClickListener(new View.OnClickListener() {
+        btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
@@ -296,11 +297,11 @@ public class AddPlaceActivity extends AppCompatActivity {
         edtDescript = (EditText) findViewById(R.id.tourDescript);
         edtTourPrice = (EditText) findViewById(R.id.tourPrice);
         btnAdd = (TextView) findViewById(R.id.btnAdd);
-        btnCancel = (TextView) findViewById(R.id.cancel_add);
+        btnBack = (TextView) findViewById(R.id.cancel_add);
 
         mData = FirebaseDatabase.getInstance().getReference();
         storage = FirebaseStorage.getInstance();
-        storageRef = storage.getReferenceFromUrl("gs://dulichdoday-7d0dd.appspot.com");
+        storageRef = storage.getReferenceFromUrl("gs://dulichdodaydemo.appspot.com");
         mAuth = FirebaseAuth.getInstance();
         arrTours = new ArrayList<Tours>();
     }
