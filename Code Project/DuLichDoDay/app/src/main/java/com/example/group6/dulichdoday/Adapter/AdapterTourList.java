@@ -81,9 +81,9 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
         dialog.setCanceledOnTouchOutside(false);
 
 
-        holder.img.setOnLongClickListener(new View.OnLongClickListener() {
+       /* holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onLongClick(View view) {
+            public void onClick(View view) {
                 dialog.show();
                 TextView tvDelete = (TextView) dialog.findViewById(R.id.deleteTourList);
                 TextView tvCancel = (TextView) dialog.findViewById(R.id.cancelTourList);
@@ -102,9 +102,8 @@ public class AdapterTourList extends RecyclerView.Adapter<AdapterTourList.ViewHo
                         dialog.dismiss();
                     }
                 });
-                return false;
             }
-        });
+        });*/
     }
 
     @Override

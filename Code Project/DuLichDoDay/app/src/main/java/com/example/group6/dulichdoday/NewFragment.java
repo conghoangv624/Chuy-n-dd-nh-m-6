@@ -116,7 +116,8 @@ public class NewFragment extends Fragment {
         btn_chooseImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                chooseFromGallery();
+                //chooseFromGallery();
+                profilepictureOnClick();
             }
         });
 
@@ -124,7 +125,8 @@ public class NewFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                profilepictureOnClick();
+               // profilepictureOnClick();
+                chooseFromGallery();
             }
         });
 
