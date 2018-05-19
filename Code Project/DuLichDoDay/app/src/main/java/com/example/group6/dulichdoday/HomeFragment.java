@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
          mLocations.push().setValue(marker);
          ArrayList<mdLocation> arrayList = new ArrayList<>();
 
-
+/*
          arrayList.add(new mdLocation("KDL Suối Tiên","", 10.861760, 106.802324));
          arrayList.add(new mdLocation("Đầm sen tam đa ","", 10.794751, 106.842922));
          arrayList.add(new mdLocation("Đền thờ tổ nghiệp nghệ sỹ hoài linh ","", 10.824624, 106.864849));
@@ -183,7 +183,7 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
          arrayList.add(new mdLocation("Khu du lịch Mũi Nai","", 10.383137, 104.448182));
          arrayList.add(new mdLocation("Khu du lịch Đồi Nai Vàng","", 10.383599, 104.444384));
 
-         mLocations.child("Locations").setValue(arrayList);
+         mLocations.child("Locations").setValue(arrayList);*/
          mTravel = FirebaseDatabase.getInstance().getReference();
 
          return view;
