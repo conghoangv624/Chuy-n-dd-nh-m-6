@@ -224,6 +224,7 @@ public class NewFragment extends Fragment {
 //                adapterNew.notifyDataSetChanged();
                 //dang du lieu len firebaser
                 Toast.makeText(getActivity(), "Đăng Bài Thành Công", Toast.LENGTH_SHORT).show();
+                newfeed.setText("");
             }
         });
 

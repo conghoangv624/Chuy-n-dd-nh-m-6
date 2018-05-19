@@ -109,6 +109,12 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(myIntent);
             }
         });
+
+        //Duy trì đăng nhập
+        if(mAuth.getCurrentUser()!=null){
+            goToMainActivity();
+            finish();
+        }
     }
 
     public void goToMainActivity(){

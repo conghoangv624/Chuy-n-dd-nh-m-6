@@ -10,7 +10,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.group6.dulichdoday.Models.TourBooking;
 import com.example.group6.dulichdoday.Models.Tours;
+import com.example.group6.dulichdoday.Models.UserInfor;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -30,6 +33,10 @@ public class DetailTourActivity extends AppCompatActivity {
     private ImageView img;
 
     private DatabaseReference mData;
+
+    FirebaseAuth mAuth;
+    String tour_ID;
+    String account_ID;
     //private ArrayList<Tours> arrTour;
 
     @Override
@@ -37,6 +44,7 @@ public class DetailTourActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_tour_layout);
         mData = FirebaseDatabase.getInstance().getReference();
+        mAuth = FirebaseAuth.getInstance();
 
         tvDatTour = (TextView) findViewById(R.id.tvDatTour);
         tvBack = (TextView) findViewById(R.id.cancel_detail) ;
@@ -54,6 +62,41 @@ public class DetailTourActivity extends AppCompatActivity {
 
 
         loadData();
+
+        //Lay user
+        mData.child(UserInfor.CHILD_USER).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                UserInfor user = dataSnapshot.getValue(UserInfor.class);
+                if (user.getEmail().equalsIgnoreCase(mAuth.getCurrentUser().getEmail())){
+                    String userID = mAuth.getCurrentUser().getUid();
+                    account_ID = userID;
+                }
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
+
         tvDatTour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +106,9 @@ public class DetailTourActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         //new Tours("","","","","","","","");
-                        mData.child("TourDat").push().setValue(new Tours(tvCode.getText().toString(),"",tvName.getText().toString(),tvTime.getText().toString(),tvPrice.getText().toString(),tvNoidung.getText().toString(),"",""));
+                       // mData.child("TourDat").push().setValue(new Tours(tvCode.getText().toString(),"",tvName.getText().toString(),tvTime.getText().toString(),tvPrice.getText().toString(),tvNoidung.getText().toString(),"",""));
+                        mData.child(TourBooking.CHILD_BOOK_TOUR).push().setValue(new TourBooking(account_ID,tvCode.getText().toString()));
+
                         dialog.dismiss();
                         Toast.makeText(DetailTourActivity.this, "Đặt thành công", Toast.LENGTH_SHORT).show();
                         finish();

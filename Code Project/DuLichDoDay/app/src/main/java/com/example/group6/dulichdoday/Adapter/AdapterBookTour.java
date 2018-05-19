@@ -10,6 +10,7 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.group6.dulichdoday.Models.TourBooking;
 import com.example.group6.dulichdoday.Models.Tours;
 import com.example.group6.dulichdoday.R;
 import com.google.firebase.database.DatabaseReference;
@@ -34,13 +35,13 @@ public class AdapterBookTour extends RecyclerView.Adapter<AdapterBookTour.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View itemView = layoutInflater.inflate(R.layout.custom_tour,parent,false);
+        View itemView = layoutInflater.inflate(R.layout.custom_tour_book,parent,false);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
-//        Picasso.with(context).load(arrNew.get(position).getImgTour()).into(holder.img);
+        Picasso.with(context).load(arrNew.get(position).getImgTour()).into(holder.img);
         holder.tvCode.setText(arrNew.get(position).getTour_ID());
         holder.tvName.setText(arrNew.get(position).getTourName());
         holder.tvTime.setText(arrNew.get(position).getTourTime());
@@ -60,7 +61,7 @@ public class AdapterBookTour extends RecyclerView.Adapter<AdapterBookTour.ViewHo
                     @Override
                     public void onClick(View view) {
                         arrNew.remove(arrNew.get(position));
-                        mData.child("TourDat").setValue(arrNew);
+                        mData.child(TourBooking.CHILD_BOOK_TOUR).setValue(arrNew);
                         notifyDataSetChanged();
                         dialog.dismiss();
 
@@ -83,21 +84,17 @@ public class AdapterBookTour extends RecyclerView.Adapter<AdapterBookTour.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView img;
-
-
-
-
         TextView tvCode;
         TextView tvName;
         TextView tvTime;
         TextView tvPrice;
         public ViewHolder(View itemView) {
             super(itemView);
-            img = (ImageView) itemView.findViewById(R.id.img_tour);
-            tvCode = (TextView) itemView.findViewById(R.id.tv_code_tour);
-            tvName = (TextView) itemView.findViewById(R.id.tv_name_tour);
-            tvTime = (TextView) itemView.findViewById(R.id.tv_time_tour);
-            tvPrice = (TextView) itemView.findViewById(R.id.tv_price_tour);
+            img = (ImageView) itemView.findViewById(R.id.img_tour_book);
+            tvCode = (TextView) itemView.findViewById(R.id.tv_code_tour_book);
+            tvName = (TextView) itemView.findViewById(R.id.tv_name_tour_book);
+            tvTime = (TextView) itemView.findViewById(R.id.tv_time_tour_book);
+            tvPrice = (TextView) itemView.findViewById(R.id.tv_price_tour_book);
         }
     }
 }
