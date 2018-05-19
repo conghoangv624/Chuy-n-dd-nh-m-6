@@ -302,7 +302,7 @@ public class HomeFragment extends Fragment  implements OnMapReadyCallback, Googl
                         {
                             LatLng latLng = new LatLng(venue.getLatitude(),venue.getLongitude());
                             if (mMap != null) {
-                                marker = mMap.addMarker(new MarkerOptions().position(latLng).title(venue.getStrNameAđ()).icon(BitmapDescriptorFactory.fromResource(R.drawable.flag)));
+                                marker = mMap.addMarker(new MarkerOptions().position(latLng).title(venue.getStrNameAđ()).icon(BitmapDescriptorFactory.fromResource(R.drawable.hot)));
                             }
                         }
                     }

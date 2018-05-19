@@ -51,6 +51,8 @@ public class DetailTourActivity extends AppCompatActivity {
         final Dialog dialog = new Dialog(DetailTourActivity.this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE); //before
         dialog.setContentView(R.layout.dialog_accept);
+
+
         loadData();
         tvDatTour.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +69,14 @@ public class DetailTourActivity extends AppCompatActivity {
                         finish();
                         // Intent intent = new Intent(DetailTourActivity.this,MainLayoutActivity.class);
                         //startActivity(intent);
+                    }
+                });
+
+                TextView btnHuy = dialog.findViewById(R.id.btnCancel);
+                btnHuy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        dialog.dismiss();
                     }
                 });
             }
