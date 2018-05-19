@@ -36,8 +36,8 @@ public class BookTour extends AppCompatActivity {
     private AdapterBookTour adapterTourList;
 
 
-    //DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-    //Query applesQuery = ref.child("TourDat").orderByChild("title").equalTo("codeTour");
+/*    DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
+    Query applesQuery = ref.child("Tour_Book").orderByChild("title").equalTo("codeTour");*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

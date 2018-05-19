@@ -27,6 +27,7 @@ public class DetailTourActivity extends AppCompatActivity {
 
     Intent intent;
     Bundle bundle;
+    ArrayList<TourBooking> arrTourBook;
     private TextView tvDatTour;
     private TextView tvBack;
     private TextView tvCode,tvTime,tvPrice,tvName,tvNoidung;
@@ -45,6 +46,7 @@ public class DetailTourActivity extends AppCompatActivity {
         setContentView(R.layout.detail_tour_layout);
         mData = FirebaseDatabase.getInstance().getReference();
         mAuth = FirebaseAuth.getInstance();
+        arrTourBook = new ArrayList<TourBooking>();
 
         tvDatTour = (TextView) findViewById(R.id.tvDatTour);
         tvBack = (TextView) findViewById(R.id.cancel_detail) ;
@@ -95,6 +97,33 @@ public class DetailTourActivity extends AppCompatActivity {
             }
         });
 
+        mData.child(TourBooking.CHILD_BOOK_TOUR).addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                TourBooking tourBooking = dataSnapshot.getValue(TourBooking.class);
+                arrTourBook.add(new TourBooking(tourBooking.getAccount_ID(),tourBooking.getTour_ID()));
+            }
+
+            @Override
+            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
 
         tvDatTour.setOnClickListener(new View.OnClickListener() {
@@ -107,7 +136,8 @@ public class DetailTourActivity extends AppCompatActivity {
                     public void onClick(View view) {
                         //new Tours("","","","","","","","");
                        // mData.child("TourDat").push().setValue(new Tours(tvCode.getText().toString(),"",tvName.getText().toString(),tvTime.getText().toString(),tvPrice.getText().toString(),tvNoidung.getText().toString(),"",""));
-                        mData.child(TourBooking.CHILD_BOOK_TOUR).push().setValue(new TourBooking(account_ID,tvCode.getText().toString()));
+                        arrTourBook.add(new TourBooking(account_ID,tvCode.getText().toString()));
+                        mData.child(TourBooking.CHILD_BOOK_TOUR).setValue(arrTourBook);
 
                         dialog.dismiss();
                         Toast.makeText(DetailTourActivity.this, "Đặt thành công", Toast.LENGTH_SHORT).show();

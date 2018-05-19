@@ -41,7 +41,7 @@ public class AdapterManagerBookTour extends RecyclerView.Adapter<AdapterManagerB
     public void onBindViewHolder(ViewHolder holder, int position) {
         Picasso.with(context).load(arrNew.get(position).getImgTour()).into(holder.img);
 
-       // holder.tvUserName.setText(position + ". " + arrUser.get(position).getName());
+//        holder.tvUserName.setText(arrUser.get(position).getName());
         holder.tvCode.setText(arrNew.get(position).getTour_ID());
         holder.tvName.setText(arrNew.get(position).getTourName());
         holder.tvTime.setText(arrNew.get(position).getTourTime());

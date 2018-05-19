@@ -13,6 +13,9 @@ import android.widget.TextView;
 import com.example.group6.dulichdoday.Models.TourBooking;
 import com.example.group6.dulichdoday.Models.Tours;
 import com.example.group6.dulichdoday.R;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
@@ -54,6 +57,34 @@ public class AdapterBookTour extends RecyclerView.Adapter<AdapterBookTour.ViewHo
         holder.img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final ArrayList<TourBooking> arrBook = new ArrayList<TourBooking>();
+                mData.child(TourBooking.CHILD_BOOK_TOUR).addChildEventListener(new ChildEventListener() {
+                    @Override
+                    public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+                        TourBooking tourBooking = dataSnapshot.getValue(TourBooking.class);
+                        arrBook.add(new TourBooking(tourBooking.getAccount_ID(),tourBooking.getTour_ID()));
+                    }
+
+                    @Override
+                    public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onChildRemoved(DataSnapshot dataSnapshot) {
+
+                    }
+
+                    @Override
+                    public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
                 dialog.show();
                 TextView tvDelete = (TextView) dialog.findViewById(R.id.deleteTourList);
                 TextView tvCancel = (TextView) dialog.findViewById(R.id.cancelTourList);
@@ -61,7 +92,8 @@ public class AdapterBookTour extends RecyclerView.Adapter<AdapterBookTour.ViewHo
                     @Override
                     public void onClick(View view) {
                         arrNew.remove(arrNew.get(position));
-                        mData.child(TourBooking.CHILD_BOOK_TOUR).setValue(arrNew);
+                        arrBook.remove(position);
+                        mData.child(TourBooking.CHILD_BOOK_TOUR).setValue(arrBook);
                         notifyDataSetChanged();
                         dialog.dismiss();
 
