@@ -195,9 +195,10 @@ public class UpdateInforBusinessActivity extends AppCompatActivity {
                                         mData.child(UserInfor.CHILD_USER).child(userID).child("address").setValue(edtUpdateAddress.getText().toString());
 
                                         Toast.makeText(UpdateInforBusinessActivity.this, "cập nhật thông tin tài khoản thành công !", Toast.LENGTH_SHORT).show();
+
+                                        Intent intent = new Intent(UpdateInforBusinessActivity.this,DetailBusinessActivity.class);
+                                        startActivity(intent);
                                         finish();
-                                        //Intent intent = new Intent(UpdateInforBusinessActivity.this,DetailBusinessActivity.class);
-                                        //startActivity(intent);
                                     }
 
                                 }
